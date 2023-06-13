@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c20c5104752d9494e8559c01c58ae550
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Chesspiece: {instanceID: 0}
+  - Gameboard: {instanceID: 0}
+  - panel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
