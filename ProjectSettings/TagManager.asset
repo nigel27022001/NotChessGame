@@ -11,6 +11,7 @@ TagManager:
   - RestartText
   - Turn
   - ConfirmationWindow
+  - Music
   layers:
   - Default
   - TransparentFX

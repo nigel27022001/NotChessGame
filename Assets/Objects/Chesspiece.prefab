@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   movePlate: {fileID: 4381701610988769653, guid: e96c8f8bae902514b821c60b4e241671, type: 3}
+  audio: {fileID: 0}
   bQ: {fileID: 21300000, guid: 46d5ea13869a0304a80d9676d2ba79a3, type: 3}
   bN: {fileID: 21300000, guid: f2a3e07f92f2a1849b08b78c0d9603ca, type: 3}
   bB: {fileID: 21300000, guid: bffa8f3b5d33a7c4f96b1015184b0b94, type: 3}

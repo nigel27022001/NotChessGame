@@ -13,7 +13,6 @@ public class MovePlate : MonoBehaviour
     public GameObject controller;
 
     private GameObject reference = null;
-    
 
     private int matrixX;
     private int matrixY;
