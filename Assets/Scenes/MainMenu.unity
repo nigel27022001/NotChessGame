@@ -656,7 +656,34 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dogdogdogdogdodogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdoggdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdodogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdoggdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdog
+  m_text: 'Your pawns can now move twice.
+
+    Your pawns can now convert a captured
+    piece.
+
+    Your rook can now jump over a piece to capture it (cannot capture
+    through the old means)
+
+    Your rook can traverse over a terrain hazard
+
+    Your
+    bishop can also take one step forward and backwards
+
+    Your bishop can convert
+    captured pieces into your pawns
+
+    Your knight can resist capture once (with
+    the first time, capturing the other piece that tries to capture your knight)
+
+    Your
+    Queen can now also move like a knight.
+
+    Kings can no longer be on the same
+    column as each other.
+
+    
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d409c281b31cfb34eb05b1ecfa47c813, type: 2}
   m_sharedMaterial: {fileID: -3104818793030193242, guid: d409c281b31cfb34eb05b1ecfa47c813, type: 2}
@@ -3688,7 +3715,25 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: catcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcatcat
+  m_text: 'Random tiles become lava and cannot be landed on.
+
+    A river appears
+    and units that have crossed it cannot go back.
+
+    Mountains spawn that restrict
+    movement and molehills facilitate movement.
+
+    Only Pawns can move for the
+    next 5 turns
+
+    Every unit upgrade will be nullified for the next 5 turns
+
+    Random
+    units will be pushed to surrounding tiles based on the direction of the wind.
+
+    
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d409c281b31cfb34eb05b1ecfa47c813, type: 2}
   m_sharedMaterial: {fileID: -3104818793030193242, guid: d409c281b31cfb34eb05b1ecfa47c813, type: 2}
