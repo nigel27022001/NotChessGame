@@ -20,8 +20,11 @@ public class Chessman : MonoBehaviour
     private string player;
 
     //References for all the sprites that the chesspiece can be
-    public Sprite bQ, bN, bB, bK, bR, bP;
-    public Sprite wQ, wN, wB, wK, wR, wP;
+    public Sprite bQ, bN, bB, bK, bR, bP, bSP2, bSP1;
+    public Sprite wQ, wN, wB, wK, wR, wP, wSP2, wSP1;
+    
+    //References for Obstacle Sprites
+    public Sprite lava;
 
     public void Activate()
     {
@@ -31,24 +34,24 @@ public class Chessman : MonoBehaviour
 
         switch (this.name)
         {   
+            case "LAVA" :
+                this.GetComponent<SpriteRenderer>().sprite = lava;
+                player = "OBSTACLE";
+                break;
             case "wSP1" :
-                this.GetComponent<SpriteRenderer>().sprite = wP;
-                this.GetComponent<SpriteRenderer>().color = Color.red;
+                this.GetComponent<SpriteRenderer>().sprite = wSP1;
                 player = "white";
                 break;
             case "bSP1" :
-                this.GetComponent<SpriteRenderer>().sprite = wP;
-                this.GetComponent<SpriteRenderer>().color = Color.red;
+                this.GetComponent<SpriteRenderer>().sprite = bSP1;
                 player = "black";
                 break;
             case "wSP2" :
-                this.GetComponent<SpriteRenderer>().sprite = wP;
-                this.GetComponent<SpriteRenderer>().color = Color.green;
+                this.GetComponent<SpriteRenderer>().sprite = wSP2;
                 player = "white";
                 break;
             case "bSP2" :
-                this.GetComponent<SpriteRenderer>().sprite = wP;
-                this.GetComponent<SpriteRenderer>().color = Color.green;
+                this.GetComponent<SpriteRenderer>().sprite = bSP2;
                 player = "black";
                 break;
             case "wSB1" :
@@ -258,7 +261,8 @@ public class Chessman : MonoBehaviour
                 y += yIncrement;
             }
 
-            if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
+            if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<Chessman>().player != player
+                && sc.GetPosition(x, y).GetComponent<Chessman>().player != "OBSTACLE")
             {
                 MovePlateAttackSpawn(x, y);
             }
@@ -278,7 +282,8 @@ public class Chessman : MonoBehaviour
                  y += yIncrement;
              }
              
-             if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
+             if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<Chessman>().player != player
+                 && sc.GetPosition(x, y).GetComponent<Chessman>().player != "OBSTACLE")
              {
                  MovePlateAttackSpawn(x, y);
                  x += xIncrement;
@@ -291,7 +296,8 @@ public class Chessman : MonoBehaviour
                  {
                      while (sc.PositionOnBoard(x, y))
                      {
-                         if (sc.GetPosition(x,y) != null && sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
+                         if (sc.GetPosition(x,y) != null && sc.GetPosition(x, y).GetComponent<Chessman>().player != player
+                             && sc.GetPosition(x, y).GetComponent<Chessman>().player != "OBSTACLE")
                          {
                              MovePlateAttackSpawn(x, y);
                              return;
@@ -337,7 +343,7 @@ public class Chessman : MonoBehaviour
                 if (cp == null)
                 {
                     MovePlateSpawn(x, y);
-                } else if (cp.GetComponent<Chessman>().player != player)
+                } else if (cp.GetComponent<Chessman>().player != player && cp.GetComponent<Chessman>().player != "OBSTACLE")
                 {
                     MovePlateAttackSpawn(x, y);
                 }
@@ -355,13 +361,15 @@ public class Chessman : MonoBehaviour
                 }
 
                 if (sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null &&
-                    sc.GetPosition(x + 1, y).GetComponent<Chessman>().player != player)
+                    sc.GetPosition(x + 1, y).GetComponent<Chessman>().player != player && 
+                    sc.GetPosition(x + 1, y).GetComponent<Chessman>().player != "OBSTACLE")
                 {
                     MovePlateAttackSpawn(x + 1, y);
                 }
                 
                 if (sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null &&
-                    sc.GetPosition(x - 1, y).GetComponent<Chessman>().player != player)
+                    sc.GetPosition(x - 1, y).GetComponent<Chessman>().player != player &&
+                    sc.GetPosition(x - 1, y).GetComponent<Chessman>().player != "OBSTACLE")
                 {
                     MovePlateAttackSpawn(x - 1, y);
                 }
@@ -404,7 +412,7 @@ public class Chessman : MonoBehaviour
             this.name = newUnit;
             this.Activate();
         }
-        else
+        else if (colour == 'w')
         {
             string newUnit = 'b' + unitName.Substring(1);
             this.name = newUnit;

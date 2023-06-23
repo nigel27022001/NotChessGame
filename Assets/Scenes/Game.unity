@@ -151,7 +151,7 @@ RectTransform:
   m_GameObject: {fileID: 242042779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 5, z: 1}
+  m_LocalScale: {x: 1.5, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1133206788}
@@ -161,7 +161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301, y: 165}
+  m_AnchoredPosition: {x: -342.2, y: 185.9}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242042781
@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &835453579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,11 +736,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133206787}
   m_CullTransparentMesh: 1
---- !u!1 &1283286908 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8048483731975532824, guid: e4a224a4ba288ad4bba394c7f6e3b70f, type: 3}
-  m_PrefabInstance: {fileID: 6935691088325893196}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1283286909 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8144735064751285945, guid: e4a224a4ba288ad4bba394c7f6e3b70f, type: 3}
@@ -912,7 +907,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chesspiece: {fileID: 6203757184339225184, guid: d9f65a435171452428d246db60bc7260, type: 3}
   Gameboard: {fileID: 864393825}
-  panel: {fileID: 1283286908}
+  panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
+  WhiteAugments: 000000000000000000
+  BlackAugments: 000000000000000000
 --- !u!4 &1435107154
 Transform:
   m_ObjectHideFlags: 0

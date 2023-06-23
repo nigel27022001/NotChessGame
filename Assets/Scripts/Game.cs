@@ -7,13 +7,21 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
+using Random = System.Random;
 
 public class Game : MonoBehaviour
 {
     public GameObject Chesspiece;
     public Transform Gameboard;
     public GameObject panel;
+    public static int numOfUpgrade = 4;
+    // Random Number Generator to Generate Random Augments
+    public Random rnd = new Random();
+    // Augment Index: 1: Pawn1 2: Pawn2 3: Rook1 4: Rook2 5: Bishop1 6: Bishop2 7: Knight1 8: Knight2 9:Queen 10: King
+    public bool[] WhiteAugments = new bool[numOfUpgrade];
+    public bool[] BlackAugments = new bool[numOfUpgrade];
 
     private GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
@@ -52,6 +60,12 @@ public class Game : MonoBehaviour
         {
             SetPosition(playerBlack[i]);
             SetPosition(playerWhite[i]);
+        }
+
+        for (int i = 0; i < WhiteAugments.Length; i++)
+        {
+            WhiteAugments[i] = false;
+            BlackAugments[i] = false;
         }
     }
 
@@ -125,14 +139,19 @@ public class Game : MonoBehaviour
     {
         if (turnNumber == 10 && panelActive == false)
         {
-            this.OpenPanel();
+            this.UpgradePanel();
             panelActive = true;
         }
 
         if (turnNumber == 11 && panelActive == false) 
         {
-            this.OpenPanel();
+            this.UpgradePanel();
             panelActive = true;
+        }
+
+        if (turnNumber == 2)
+        {
+            this.LavaEvent(5);
         }
         if (gameOver == true && Input.GetMouseButtonDown(0))
         {
@@ -159,36 +178,189 @@ public class Game : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<TextMeshProUGUI>().text = "Tap to Restart";
     }
 
-    public void OpenPanel()
+    private void LavaEvent(int noOfLava)
+    {
+        int i = 0;
+        while (i < noOfLava)
+        {
+            int randomRow = rnd.Next(1, 6);
+            int randomCol = rnd.Next(0, 7);
+            if (GetPosition(randomRow, randomCol) != null)
+            {
+                GameObject lava = Create("LAVA", randomCol, randomRow);
+                SetPosition(lava);
+                i++;
+            }
+        }
+    }
+
+    public void UpgradePanel()
     {
         GameObject obj = Instantiate(panel, new Vector3(0, 0, 10), Quaternion.identity);
         PanelManager panelManager = obj.GetComponent<PanelManager>();
         panelManager.openPanel();
-        panelManager.GetComponent<PanelManager>().Option1Text.GetComponent<TextMeshProUGUI>().text =
-            "Turns all your Pawns to be able to take two steps forward";
-        panelManager.GetComponent<PanelManager>().Option1Button.GetComponent<Button>().onClick
-            .AddListener(delegate
+        void AllocateUpgrade(int optionNumber)
+        {
+            int curr;
+            if (currentPlayer != "white")
             {
-                PawnUpgrade1();
-                obj.SetActive(false);
-            });
-        panelManager.GetComponent<PanelManager>().Option2Text.GetComponent<TextMeshProUGUI>().text =
-            "Your Rooks will be able to also jump over an enemy piece to capture an enemy piece behind it";
-        panelManager.GetComponent<PanelManager>().Option2Button.GetComponent<Button>().onClick
-            .AddListener(delegate
+                
+                bool check = false;
+                for (int i = 0; i < WhiteAugments.Length; i++)
+                {
+                    check = check || !WhiteAugments[i];
+                }
+
+                if (check == false)
+                {
+                    print("No More Upgrades");
+                    return;
+                }
+
+                curr = rnd.Next(0, numOfUpgrade - 1);
+                while (WhiteAugments[curr] == true)
+                {
+                    curr = rnd.Next(0, numOfUpgrade - 1);
+                }
+                WhiteAugments[curr] = true;
+            }
+            else
             {
-                RookUpgrade1();
-                obj.SetActive(false);
-            });
-        panelManager.GetComponent<PanelManager>().Option3Text.GetComponent<TextMeshProUGUI>().text =
-            "Your Bishops will also be able to take one step forward and backwards";
-        panelManager.GetComponent<PanelManager>().Option3Button.GetComponent<Button>().onClick
-            .AddListener(delegate
+                
+                bool check = false;
+                for (int i = 0; i < BlackAugments.Length; i++)
+                {
+                    check = check || !BlackAugments[i];
+                }
+
+                if (check == false)
+                {
+                    print("No More Upgrades");
+                    return;
+                }
+
+                curr = rnd.Next(0, numOfUpgrade - 1);
+                while (BlackAugments[curr] == true)
+                {
+                    curr = rnd.Next(0, numOfUpgrade - 1);
+                }
+
+                BlackAugments[curr] = true;
+            }
+
+
+            switch (optionNumber)
             {
-                BishopUpgrade1();
-                obj.SetActive(false);
-            });
+                case 1 :
+                    panelManager.GetComponent<PanelManager>().Option1Text.GetComponent<TextMeshProUGUI>().text =
+                        UpgradeTexter(3);
+                    panelManager.GetComponent<PanelManager>().Option1Button.GetComponent<Button>().onClick
+                        .AddListener(delegate
+                        {
+                            SelectUpgrades(3);
+                            obj.SetActive(false);
+                        });
+                    break;
+                case 2 :
+                    panelManager.GetComponent<PanelManager>().Option2Text.GetComponent<TextMeshProUGUI>().text =
+                        UpgradeTexter(curr);
+                    panelManager.GetComponent<PanelManager>().Option2Button.GetComponent<Button>().onClick
+                        .AddListener(delegate
+                        {
+                            SelectUpgrades(curr);
+                            obj.SetActive(false);
+                        });
+                    break;
+                case 3:
+                    panelManager.GetComponent<PanelManager>().Option3Text.GetComponent<TextMeshProUGUI>().text =
+                        UpgradeTexter(curr);
+                    panelManager.GetComponent<PanelManager>().Option3Button.GetComponent<Button>().onClick
+                        .AddListener(delegate
+                        {
+                            SelectUpgrades(curr);
+                            obj.SetActive(false);
+                        });
+                    break;
+            }
+        }
+        void SelectUpgrades(int number)
+        {
+            // Augment Index: 1: Pawn1 2: Pawn2 3: Rook1 4: Rook2 5: Bishop1 6: Bishop2 7: Knight1 8: Knight2 9:Queen 10: King
+            // Currently, we have 1: Pawn1 2: Pawn2 3: Rook1 4: Bishop1 
+            if (currentPlayer != "white")
+            {
+                switch (number)
+                {
+                    case 0:
+                        WhiteAugments[0] = true;
+                        PawnUpgrade1();
+                        break;
+                    case 1:
+                        WhiteAugments[1] = true;
+                        PawnUpgrade2();
+                        break;
+                    case 2:
+                        WhiteAugments[2] = true;
+                        RookUpgrade1();
+                        break;
+                    case 3:
+                        WhiteAugments[3] = true;
+                        BishopUpgrade1();
+                        break;
+                }
+            }
+            else
+            {
+                switch (number)
+                {
+                    case 0:
+                        BlackAugments[0] = true;
+                        PawnUpgrade1();
+                        break;
+                    case 1:
+                        BlackAugments[1] = true;
+                        PawnUpgrade2();
+                        break;
+                    case 2:
+                        BlackAugments[2] = true;
+                        RookUpgrade1();
+                        break;
+                    case 3:
+                        BlackAugments[3] = true;
+                        BishopUpgrade1();
+                        break;
+                }
+            }
+        }
+
+        string UpgradeTexter(int Number)
+        {
+            switch (Number)
+            {
+                case 0:
+                    return "Your pawns can now move twice.";
+                    break;
+                case 1:
+                    return "Your pawns can now convert a captured piece.";
+                    break;
+                case 2:
+                    return "Your rooks can now jump over a piece to capture it";
+                    break;
+                case 3:
+                    return "Your bishop can also take one step forward and backwards";
+                    break;
+            }
+
+            return "error";
+        }
+        
+        
+        AllocateUpgrade(1);
+        AllocateUpgrade(2);
+        AllocateUpgrade(3);
     }
+
+    
 
     public void PawnUpgrade1()
     {
@@ -196,7 +368,7 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k].GetComponent<Chessman>().name == "bP")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bP")
                 {
                     playerBlack[k].GetComponent<Chessman>().name = "bSP1";
                     playerBlack[k].GetComponent<Chessman>().Activate();
@@ -208,9 +380,37 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k].GetComponent<Chessman>().name == "wP")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wP")
                 {
                     playerWhite[k].GetComponent<Chessman>().name = "wSP1";
+                    playerWhite[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+    }
+
+    public void PawnUpgrade2()
+    {
+        if (currentPlayer != "black")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bP")
+                {
+                    playerBlack[k].GetComponent<Chessman>().name = "bSP2";
+                    playerBlack[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+        else if (currentPlayer != "white")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wP")
+                {
+                    playerWhite[k].GetComponent<Chessman>().name = "wSP2";
                     playerWhite[k].GetComponent<Chessman>().Activate();
                 }
             }
@@ -224,7 +424,7 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k].GetComponent<Chessman>().name == "bR")
+                if (playerBlack[k].GetComponent<Chessman>() != null && playerBlack[k].GetComponent<Chessman>().name == "bR")
                 {
                     playerBlack[k].GetComponent<Chessman>().name = "bSR1";
                     playerBlack[k].GetComponent<Chessman>().Activate();
@@ -236,7 +436,7 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k].GetComponent<Chessman>().name == "wR")
+                if (playerWhite[k].GetComponent<Chessman>() != null && playerWhite[k].GetComponent<Chessman>().name == "wR")
                 {
                     playerWhite[k].GetComponent<Chessman>().name = "wSR1";
                     playerWhite[k].GetComponent<Chessman>().Activate();
@@ -252,7 +452,7 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k].GetComponent<Chessman>().name == "bB")
+                if (playerBlack[k].GetComponent<Chessman>() != null && playerBlack[k].GetComponent<Chessman>().name == "bB")
                 {
                     playerBlack[k].GetComponent<Chessman>().name = "bSB1";
                     playerBlack[k].GetComponent<Chessman>().Activate();
@@ -264,7 +464,7 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k].GetComponent<Chessman>().name == "wB")
+                if (playerWhite[k].GetComponent<Chessman>() != null && playerWhite[k].GetComponent<Chessman>().name == "wB")
                 {
                     playerWhite[k].GetComponent<Chessman>().name = "wSB1";
                     playerWhite[k].GetComponent<Chessman>().Activate();

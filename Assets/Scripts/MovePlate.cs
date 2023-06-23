@@ -41,23 +41,6 @@ public class MovePlate : MonoBehaviour
             {
                 reference.GetComponent<Chessman>().Convert(cp.name);
             }
-
-            if (attackingName == "bB")
-            {
-                reference.GetComponent<Chessman>().name = "bSB1";
-                reference.GetComponent<Chessman>().Activate();
-            }
-            if (attackingName == "wB")
-            {
-                reference.GetComponent<Chessman>().name = "wSB1";
-                reference.GetComponent<Chessman>().Activate();
-            }
-
-            if (attackingName == "wR")
-            {
-                reference.GetComponent<Chessman>().name = "wSR1";
-                reference.GetComponent<Chessman>().Activate();
-            }
             if (cp.name == "bK")
             {
                 controller.GetComponent<Game>().Winner("White");
