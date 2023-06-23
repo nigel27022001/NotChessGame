@@ -375,6 +375,7 @@
 "Assets/Scripts/Chessman.cs"
 "Assets/Scripts/Game.cs"
 "Assets/Scripts/MainMenu.cs"
+"Assets/Scripts/MoveAnimation.cs"
 "Assets/Scripts/MovePlate.cs"
 "Assets/Scripts/Music.cs"
 "Assets/Scripts/PanelManager.cs"

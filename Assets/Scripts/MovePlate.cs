@@ -67,13 +67,14 @@ public class MovePlate : MonoBehaviour
             Destroy(cp);
         }
         // empty the old position
-        controller.GetComponent<Game>().SetPositionEmpty(reference.GetComponent<Chessman>().GetXBoard(), 
-            reference.GetComponent<Chessman>().GetYBoard());
+        int originalX = reference.GetComponent<Chessman>().GetXBoard();
+        int originalY = reference.GetComponent<Chessman>().GetYBoard();
+        controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
         
         reference.GetComponent<Chessman>().SetXBoard(matrixX);
         reference.GetComponent<Chessman>().SetYBoard(matrixY);
         print(matrixX + "" + matrixY);
-        reference.GetComponent<Chessman>().SetCoords();
+        reference.GetComponent<Chessman>().MovePiece();
         
         controller.GetComponent<Game>().SetPosition(reference);
         controller.GetComponent<Game>().NextTurn();

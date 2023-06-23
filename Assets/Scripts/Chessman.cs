@@ -27,7 +27,7 @@ public class Chessman : MonoBehaviour
     public void Activate()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
-        // takes the instantiated the location and adjust the transform
+        // takes the instantiated location and adjust the transform
         SetCoords();
 
         switch (this.name)
@@ -111,16 +111,29 @@ public class Chessman : MonoBehaviour
     {
         float x = xBoard;
         float y = yBoard;
-
+        
         x *= 1.11f;
         y *= 1.11f;
-
+        
         x += -3.9f;
         y += -3.9f;
-
+        
         this.transform.position = new Vector3(x, y, -1.0f);
     }
 
+    public void MovePiece()
+    {
+        float x = xBoard;
+        float y = yBoard;
+        
+        x *= 1.11f;
+        y *= 1.11f;
+        
+        x += -3.9f;
+        y += -3.9f;
+        MoveAnimation move = this.GetComponent<MoveAnimation>();
+        move.SetVector(x, y);
+    }
     public int GetXBoard()
     {
         return xBoard;

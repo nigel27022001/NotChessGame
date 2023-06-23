@@ -681,7 +681,7 @@ MonoBehaviour:
     Kings can no longer be on the same
     column as each other.
 
-    
+
 
 '
   m_isRightToLeft: 0
@@ -3731,7 +3731,7 @@ MonoBehaviour:
     Random
     units will be pushed to surrounding tiles based on the direction of the wind.
 
-    
+
 
 '
   m_isRightToLeft: 0
