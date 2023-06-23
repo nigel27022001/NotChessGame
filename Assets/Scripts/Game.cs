@@ -254,11 +254,11 @@ public class Game : MonoBehaviour
             {
                 case 1 :
                     panelManager.GetComponent<PanelManager>().Option1Text.GetComponent<TextMeshProUGUI>().text =
-                        UpgradeTexter(curr);
+                        UpgradeTexter(3);
                     panelManager.GetComponent<PanelManager>().Option1Button.GetComponent<Button>().onClick
                         .AddListener(delegate
                         {
-                            SelectUpgrades(curr);
+                            SelectUpgrades(3);
                             obj.SetActive(false);
                         });
                     break;
