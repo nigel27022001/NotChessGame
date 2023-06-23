@@ -14,6 +14,7 @@ public class Game : MonoBehaviour
     public GameObject Chesspiece;
     public Transform Gameboard;
     public GameObject panel;
+    private AudioSource audio;
 
     private GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
@@ -119,6 +120,8 @@ public class Game : MonoBehaviour
 
         turnNumber++;
         panelActive = false;
+        audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 
     public void Update()
