@@ -9,10 +9,7 @@ public class Chessman : MonoBehaviour
     // References
     public GameObject controller;
     public GameObject movePlate;
-
-    public AudioSource audio;
     
-
     // Positions
     private int xBoard = -1;
     private int yBoard = -1;
