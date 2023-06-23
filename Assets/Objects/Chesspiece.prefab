@@ -108,12 +108,17 @@ MonoBehaviour:
   bK: {fileID: 21300000, guid: 870d369c4fb85974c830e3f59de61fa0, type: 3}
   bR: {fileID: 21300000, guid: bba1d83b471ab2842877d7fdb376d73a, type: 3}
   bP: {fileID: 21300000, guid: e90ae5c64bab7a742b6263c9fd64cde2, type: 3}
+  bSP2: {fileID: 21300000, guid: 47c169250ad371445b5da4dd0b96cb2d, type: 3}
+  bSP1: {fileID: 21300000, guid: 01db797374c08aa47b76270bccf9de57, type: 3}
   wQ: {fileID: 21300000, guid: d27d9358cac3a324087715b51ccd1a95, type: 3}
   wN: {fileID: 21300000, guid: 55ca03c6b71487942bd5fd0ee0b1b412, type: 3}
   wB: {fileID: 21300000, guid: 805d9ab6fe7c3a644a946be60e491ceb, type: 3}
   wK: {fileID: 21300000, guid: bd39874a06fd9ca42a95e254622f832b, type: 3}
   wR: {fileID: 21300000, guid: 5fa6dda7bdcda0d4d8ea8789c2b8e8f7, type: 3}
   wP: {fileID: 21300000, guid: cbd34350609978248812b919d90e9946, type: 3}
+  wSP2: {fileID: 21300000, guid: fc905e1106a43264ca7ba7f2387b5a3a, type: 3}
+  wSP1: {fileID: 21300000, guid: 3d750288ef70f0f44bfc92dd8784755c, type: 3}
+  lava: {fileID: 21300000, guid: 1edd6208bc2dec44aa7af9e5381b55c9, type: 3}
 --- !u!61 &471150492930527990
 BoxCollider2D:
   m_ObjectHideFlags: 0
