@@ -17,12 +17,12 @@ public class Game : MonoBehaviour
     public GameObject panel;
     private AudioSource audio;
 
-    public static int numOfUpgrade = 4;
+    public static int numOfUpgrade = 7;
     // Random Number Generator to Generate Random Augments
     public Random rnd = new Random();
     // Augment Index: 1: Pawn1 2: Pawn2 3: Rook1 4: Rook2 5: Bishop1 6: Bishop2 7: Knight1 8: Knight2 9:Queen 10: King
-    public bool[] WhiteAugments = new bool[numOfUpgrade];
-    public bool[] BlackAugments = new bool[numOfUpgrade];
+    public bool[] WhiteAugments = new bool[7];
+    public bool[] BlackAugments = new bool[7];
 
     private GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
@@ -62,6 +62,12 @@ public class Game : MonoBehaviour
         {
             SetPosition(playerBlack[i]);
             SetPosition(playerWhite[i]);
+        }
+        print(BlackAugments.Length);
+        for (int i = 0; i < BlackAugments.Length; i++)
+        {
+            BlackAugments[i] = false;
+            WhiteAugments[i] = false;
         }
     }
 
@@ -142,13 +148,13 @@ public class Game : MonoBehaviour
             panelActive = true;
         }
 
-        if (turnNumber == 11 && panelActive == false) 
+        if ((turnNumber == 11) && panelActive == false) 
         {
             this.UpgradePanel();
             panelActive = true;
         }
 
-        if (turnNumber == 2 && !eventDone)
+        if (turnNumber%15 == 0 && !eventDone)
         {
             this.LavaEvent(5);
             eventDone = true;
@@ -184,9 +190,9 @@ public class Game : MonoBehaviour
         
         while (i < noOfLava)
         {
-            int randomRow = rnd.Next(1,6);
-            int randomCol = rnd.Next(0,7);
-            if (GetPosition(randomRow, randomCol) != null && PositionOnBoard(randomRow, randomCol))
+            int randomRow = rnd.Next(2,6);
+            int randomCol = rnd.Next(0,8);
+            if (GetPosition(randomRow, randomCol) == null && PositionOnBoard(randomCol, randomRow))
             {
                 GameObject lava = Create("LAVA", randomCol, randomRow);
                 SetPosition(lava);
@@ -202,7 +208,7 @@ public class Game : MonoBehaviour
         panelManager.openPanel();
         void AllocateUpgrade(int optionNumber)
         {
-            int curr;
+            int curr = 0;
             if (currentPlayer != "white")
             {
                 
@@ -218,14 +224,15 @@ public class Game : MonoBehaviour
                     return;
                 }
 
-                curr = rnd.Next(0, numOfUpgrade - 1);
+                curr = rnd.Next(0, numOfUpgrade );
+                print(WhiteAugments);
                 while (WhiteAugments[curr] == true)
                 {
-                    curr = rnd.Next(0, numOfUpgrade - 1);
+                    curr = rnd.Next(0, numOfUpgrade);
                 }
                 WhiteAugments[curr] = true;
             }
-            else
+            if (currentPlayer != "black")
             {
                 
                 bool check = false;
@@ -240,10 +247,10 @@ public class Game : MonoBehaviour
                     return;
                 }
 
-                curr = rnd.Next(0, numOfUpgrade - 1);
+                curr = rnd.Next(0, numOfUpgrade);
                 while (BlackAugments[curr] == true)
                 {
-                    curr = rnd.Next(0, numOfUpgrade - 1);
+                    curr = rnd.Next(0, numOfUpgrade);
                 }
 
                 BlackAugments[curr] = true;
@@ -254,11 +261,11 @@ public class Game : MonoBehaviour
             {
                 case 1 :
                     panelManager.GetComponent<PanelManager>().Option1Text.GetComponent<TextMeshProUGUI>().text =
-                        UpgradeTexter(3);
+                        UpgradeTexter(curr);
                     panelManager.GetComponent<PanelManager>().Option1Button.GetComponent<Button>().onClick
                         .AddListener(delegate
                         {
-                            SelectUpgrades(3);
+                            SelectUpgrades(curr);
                             obj.SetActive(false);
                         });
                     break;
@@ -306,7 +313,19 @@ public class Game : MonoBehaviour
                         break;
                     case 3:
                         WhiteAugments[3] = true;
+                        RookUpgrade2();
+                        break;
+                    case 4:
+                        WhiteAugments[3] = true;
                         BishopUpgrade1();
+                        break;
+                    case 5:
+                        WhiteAugments[5] = true;
+                        KnightUpgrade1();
+                        break;
+                    case 6:
+                        WhiteAugments[5] = true;
+                        QueenUpgrade1();
                         break;
                 }
             }
@@ -328,7 +347,19 @@ public class Game : MonoBehaviour
                         break;
                     case 3:
                         BlackAugments[3] = true;
+                        RookUpgrade2();
+                        break;
+                    case 4:
+                        BlackAugments[4] = true;
                         BishopUpgrade1();
+                        break;
+                    case 5:
+                        BlackAugments[5] = true;
+                        KnightUpgrade1();
+                        break;
+                    case 6:
+                        BlackAugments[6] = true;
+                        QueenUpgrade1();
                         break;
                 }
             }
@@ -348,12 +379,51 @@ public class Game : MonoBehaviour
                     return "Your rooks can now jump over a piece to capture it";
                     break;
                 case 3:
+                    return "Your rooks can now remove terrain obstacles by capturing them";
+                    break;
+                case 4:
                     return "Your bishop can also take one step forward and backwards";
+                    break;
+                case 5:
+                    return "Your knights can resist capture once";
+                    break;
+                case 6:
+                    return "Your queen can also move in a L Shape";
                     break;
             }
 
             return "error";
         }
+        
+        // Sprite UpgradeImage(int upgradeNumber, int slotNumber)
+        // {
+        //     switch (upgradeNumber)
+        //     {
+        //         case 0:
+        //             return 
+        //             break;
+        //         case 1:
+        //             return "Your pawns can now convert a captured piece.";
+        //             break;
+        //         case 2:
+        //             return "Your rooks can now jump over a piece to capture it";
+        //             break;
+        //         case 3:
+        //             return "Your rooks can now remove terrain obstacles by capturing them";
+        //             break;
+        //         case 4:
+        //             return "Your bishop can also take one step forward and backwards";
+        //             break;
+        //         case 5:
+        //             return "Your knights can resist capture once";
+        //             break;
+        //         case 6:
+        //             return "Your queen can also move in a L Shape";
+        //             break;
+        //     }
+        //
+        //     return "error";
+        // }
         
         
         AllocateUpgrade(1);
@@ -425,7 +495,7 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k].GetComponent<Chessman>() != null && playerBlack[k].GetComponent<Chessman>().name == "bR")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bR")
                 {
                     playerBlack[k].GetComponent<Chessman>().name = "bSR1";
                     playerBlack[k].GetComponent<Chessman>().Activate();
@@ -437,9 +507,65 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k].GetComponent<Chessman>() != null && playerWhite[k].GetComponent<Chessman>().name == "wR")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wR")
                 {
                     playerWhite[k].GetComponent<Chessman>().name = "wSR1";
+                    playerWhite[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+    }
+    
+    public void RookUpgrade2()
+    {
+        if (currentPlayer != "black")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bR")
+                {
+                    playerBlack[k].GetComponent<Chessman>().name = "bSR2";
+                    playerBlack[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+        else if (currentPlayer != "white")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wR")
+                {
+                    playerWhite[k].GetComponent<Chessman>().name = "wSR2";
+                    playerWhite[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+    }
+    
+    public void KnightUpgrade1()
+    {
+        if (currentPlayer != "black")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bN")
+                {
+                    playerBlack[k].GetComponent<Chessman>().name = "bSN1";
+                    playerBlack[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+        else if (currentPlayer != "white")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wN")
+                {
+                    playerWhite[k].GetComponent<Chessman>().name = "wSN1";
                     playerWhite[k].GetComponent<Chessman>().Activate();
                 }
             }
@@ -453,7 +579,7 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k].GetComponent<Chessman>() != null && playerBlack[k].GetComponent<Chessman>().name == "bB")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bB")
                 {
                     playerBlack[k].GetComponent<Chessman>().name = "bSB1";
                     playerBlack[k].GetComponent<Chessman>().Activate();
@@ -465,9 +591,36 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k].GetComponent<Chessman>() != null && playerWhite[k].GetComponent<Chessman>().name == "wB")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wB")
                 {
                     playerWhite[k].GetComponent<Chessman>().name = "wSB1";
+                    playerWhite[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+    }
+    public void QueenUpgrade1()
+    {
+        if (currentPlayer != "black")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bQ")
+                {
+                    playerBlack[k].GetComponent<Chessman>().name = "bSQ1";
+                    playerBlack[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+        else if (currentPlayer != "white")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wQ")
+                {
+                    playerWhite[k].GetComponent<Chessman>().name = "wSQ1";
                     playerWhite[k].GetComponent<Chessman>().Activate();
                 }
             }

@@ -151,7 +151,7 @@ RectTransform:
   m_GameObject: {fileID: 242042779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 3.5, z: 1}
+  m_LocalScale: {x: 1.5, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1133206788}
@@ -161,7 +161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -534, y: 305}
+  m_AnchoredPosition: {x: -344, y: 173}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242042781
@@ -391,6 +391,14 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3878745526033976846, guid: ed6bda4b41aef894d891c06de1b44cc7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878745526033976846, guid: ed6bda4b41aef894d891c06de1b44cc7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878745526033976846, guid: ed6bda4b41aef894d891c06de1b44cc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -420,11 +428,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3878745526033976846, guid: ed6bda4b41aef894d891c06de1b44cc7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -551
+      value: -344
       objectReference: {fileID: 0}
     - target: {fileID: 3878745526033976846, guid: ed6bda4b41aef894d891c06de1b44cc7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -311
+      value: -194
       objectReference: {fileID: 0}
     - target: {fileID: 3878745526033976846, guid: ed6bda4b41aef894d891c06de1b44cc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -931,6 +939,8 @@ MonoBehaviour:
   Chesspiece: {fileID: 6203757184339225184, guid: d9f65a435171452428d246db60bc7260, type: 3}
   Gameboard: {fileID: 864393825}
   panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
+  WhiteAugments: 00000000000000
+  BlackAugments: 00000000000000
 --- !u!4 &1435107154
 Transform:
   m_ObjectHideFlags: 0
