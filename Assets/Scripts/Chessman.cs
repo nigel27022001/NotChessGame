@@ -9,10 +9,7 @@ public class Chessman : MonoBehaviour
     // References
     public GameObject controller;
     public GameObject movePlate;
-
-    public AudioSource audio;
     
-
     // Positions
     private int xBoard = -1;
     private int yBoard = -1;
@@ -68,6 +65,41 @@ public class Chessman : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().sprite = wR;
                 this.GetComponent<SpriteRenderer>().color = Color.red;
                 player = "white";
+                break;
+            case "bSR1" :
+                this.GetComponent<SpriteRenderer>().sprite = wR;
+                this.GetComponent<SpriteRenderer>().color = Color.red;
+                player = "black";
+                break;
+            case "wSR2" :
+                this.GetComponent<SpriteRenderer>().sprite = wR;
+                this.GetComponent<SpriteRenderer>().color = Color.green;
+                player = "white";
+                break;
+            case "bSR2" :
+                this.GetComponent<SpriteRenderer>().sprite = wR;
+                this.GetComponent<SpriteRenderer>().color = Color.green;
+                player = "black";
+                break;
+            case "wSN1" :
+                this.GetComponent<SpriteRenderer>().sprite = wN;
+                this.GetComponent<SpriteRenderer>().color = Color.red;
+                player = "white";
+                break;
+            case "bSN1" :
+                this.GetComponent<SpriteRenderer>().sprite = wN;
+                this.GetComponent<SpriteRenderer>().color = Color.red;
+                player = "black";
+                break;
+            case "wSQ1" :
+                this.GetComponent<SpriteRenderer>().sprite = wQ;
+                this.GetComponent<SpriteRenderer>().color = Color.red;
+                player = "white";
+                break;
+            case "bSQ1" :
+                this.GetComponent<SpriteRenderer>().sprite = wN;
+                this.GetComponent<SpriteRenderer>().color = Color.red;
+                player = "black";
                 break;
             case "bQ" :
                 this.GetComponent<SpriteRenderer>().sprite = bQ;
@@ -181,9 +213,12 @@ public class Chessman : MonoBehaviour
         switch (this.name)
         {
             case "wSP1" :
-            case "bSP1" :
                 PawnMovePlate(xBoard, yBoard + 2);
                 PawnMovePlate(xBoard, yBoard + 1);
+                break;
+            case "bSP1" :
+                PawnMovePlate(xBoard, yBoard - 2);
+                PawnMovePlate(xBoard, yBoard - 1);
                 break;
             case "wSB1" :
             case "bSB1" :
@@ -201,6 +236,13 @@ public class Chessman : MonoBehaviour
                 SpecialRook1Plate(0, -1);
                 SpecialRook1Plate(-1, 0);
                 break;
+            case "bSR2" :
+            case "wSR2" :
+                SpecialRook2Plate(0,1);
+                SpecialRook2Plate(1,0);
+                SpecialRook2Plate(0,-1);
+                SpecialRook2Plate(-1,0);
+                    break;
             case "bQ":
             case "wQ":
                 LineMovePlate(1, 0);
@@ -212,8 +254,22 @@ public class Chessman : MonoBehaviour
                 LineMovePlate(-1, 1);
                 LineMovePlate(1, -1);
                 break;
+            case "bSQ1" :
+                case "wSQ1" :
+                LineMovePlate(1, 0);
+                LineMovePlate(0, 1);
+                LineMovePlate(1, 1);
+                LineMovePlate(-1, 0);
+                LineMovePlate(0, -1);
+                LineMovePlate(-1, -1);
+                LineMovePlate(-1, 1);
+                LineMovePlate(1, -1);
+                LMovePlate();
+                break;
             case "bN":
             case "wN":
+            case "bSN1":
+            case "wSN1":
                 LMovePlate();
                 break;
             case "bB" :
@@ -320,6 +376,26 @@ public class Chessman : MonoBehaviour
                          y += yIncrement;
                      }
                  }
+             }
+         }
+         
+         void SpecialRook2Plate(int xIncrement, int yIncrement)
+         {
+             Game sc = controller.GetComponent<Game>();
+
+             int x = xBoard + xIncrement;
+             int y = yBoard + yIncrement;
+
+             while (sc.PositionOnBoard(x, y) && sc.GetPosition(x,y) == null)
+             {
+                 MovePlateSpawn(x, y);
+                 x += xIncrement;
+                 y += yIncrement;
+             }
+
+             if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
+             {
+                 MovePlateAttackSpawn(x, y);
              }
          }
 

@@ -36,26 +36,26 @@ public class MovePlate : MonoBehaviour
         {
             GameObject cp = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
             String attackingName = reference.GetComponent<Chessman>().name;
-            if (attackingName == "bSP2")
+            if (attackingName == "bSP2" || attackingName == "wSP2")
             {
                 reference.GetComponent<Chessman>().Convert(cp.name);
             }
 
-            if (attackingName == "bB")
+            if (cp.name == "wSN1" || cp.name == "bSN1")
             {
-                reference.GetComponent<Chessman>().name = "bSB1";
-                reference.GetComponent<Chessman>().Activate();
-            }
-            if (attackingName == "wB")
-            {
-                reference.GetComponent<Chessman>().name = "wSB1";
-                reference.GetComponent<Chessman>().Activate();
-            }
-
-            if (attackingName == "wR")
-            {
-                reference.GetComponent<Chessman>().name = "wSR1";
-                reference.GetComponent<Chessman>().Activate();
+                if (cp.name == "wSN1")
+                {
+                    cp.GetComponent<Chessman>().name = "wN";
+                    cp.GetComponent<Chessman>().Activate();
+                }
+                if (cp.name == "bSN1")
+                {
+                    cp.GetComponent<Chessman>().name = "bN";
+                    cp.GetComponent<Chessman>().Activate();
+                }
+                controller.GetComponent<Game>().NextTurn();
+                reference.GetComponent<Chessman>().DestroyMovePlates();
+                return;
             }
             if (cp.name == "bK")
             {
