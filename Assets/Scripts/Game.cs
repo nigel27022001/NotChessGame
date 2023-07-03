@@ -13,21 +13,26 @@ using Random = System.Random;
 public class Game : MonoBehaviour
 {
     public GameObject Chesspiece;
+    public GameObject PortalObject;
+    public GameObject MountainObject;
+    public GameObject LavaObject;
     public Transform Gameboard;
     public GameObject panel;
     private AudioSource audio;
 
-    public static int numOfUpgrade = 7;
+    public static int numOfUpgrade = 8;
     // Random Number Generator to Generate Random Augments
     public Random rnd = new Random();
     // Augment Index: 1: Pawn1 2: Pawn2 3: Rook1 4: Rook2 5: Bishop1 6: Bishop2 7: Knight1 8: Knight2 9:Queen 10: King
-    public bool[] WhiteAugments = new bool[7];
-    public bool[] BlackAugments = new bool[7];
+    public bool[] WhiteAugments;
+    public bool[] BlackAugments;
 
     private GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
     private GameObject[] playerWhite = new GameObject[16];
-    
+    private GameObject[] portalPair1;
+    private GameObject[] portalPair2;
+
     private string currentPlayer = "white";
 
     private int turnNumber = 1;
@@ -52,18 +57,19 @@ public class Game : MonoBehaviour
         };
         playerBlack = new GameObject[]
         {
-            Create("bR", 0, 7), Create("bN", 1, 7), Create("bB", 2, 7), Create("bQ", 3, 7),
+            Create("bR", 0, 7), Create("bN", 1, 7), Create("bB", 2, 7), Create("bSQ1", 3, 7),
             Create("bK", 4, 7), Create("bB", 5, 7), Create("bN", 6, 7), Create("bR", 7, 7),
             Create("bP", 0, 6), Create("bP", 1, 6), Create("bP", 2, 6), Create("bP", 3, 6),
             Create("bP", 4, 6), Create("bP", 5, 6), Create("bP", 6, 6), Create("bP", 7, 6),
         };
-
         for (int i = 0; i < playerBlack.Length; i++)
         {
             SetPosition(playerBlack[i]);
             SetPosition(playerWhite[i]);
         }
-        print(BlackAugments.Length);
+
+        BlackAugments = new bool[numOfUpgrade];
+        WhiteAugments = new bool[numOfUpgrade];
         for (int i = 0; i < BlackAugments.Length; i++)
         {
             BlackAugments[i] = false;
@@ -142,6 +148,12 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
+        if (turnNumber == 2 && !eventDone)
+        {
+            print("Portal Event Begins");
+            this.PortalEvent();
+            eventDone = true;
+        }
         if (turnNumber == 10 && panelActive == false)
         {
             this.UpgradePanel();
@@ -183,19 +195,102 @@ public class Game : MonoBehaviour
         GameObject.FindGameObjectWithTag("Turn").GetComponent<TextMeshProUGUI>().text = playerWinner + " wins!";
         GameObject.FindGameObjectWithTag("Player").GetComponent<TextMeshProUGUI>().text = "Tap to Restart";
     }
+
+    public int RowCheck(int rowNum)
+    {
+        
+        bool checkIfNotFull = false;
+        for (int k = 0; k <= 7; k++)
+        {
+            if (GetPosition(k, rowNum) == null)
+            {
+                checkIfNotFull = true;
+            }
+        }
+        if (!checkIfNotFull)
+        {
+            return -1;
+        }
+        else
+        {
+            int rndCol = rnd.Next(0, 8);
+            while (GetPosition(rndCol, rowNum) != null)
+            {
+                rndCol = rnd.Next(0, 8);
+            }
+
+            return rndCol;
+        }
+    }
+
+    private void PortalEvent()
+    {
+        Portal CreatePortal(int x, int y)
+        {
+            GameObject obj = Instantiate(PortalObject, new Vector3(0, 0, -1), quaternion.identity);
+            Portal cm = obj.GetComponent<Portal>();
+            obj.transform.parent = Gameboard;
+            cm.name = "PORTAL";
+            cm.SetXBoard(x);
+            cm.SetYBoard(y);
+            cm.Activate();
+            positions[x, y] = obj;
+            return cm;
+        }
+        Portal CreatePairedPortal(int x, int y, Portal pairing)
+        {
+            GameObject obj = Instantiate(PortalObject, new Vector3(0, 0, -1), quaternion.identity);
+            Portal cm = obj.GetComponent<Portal>();
+            obj.transform.parent = Gameboard;
+            cm.name = "PORTAL";
+            cm.SetXBoard(x);
+            cm.SetYBoard(y);
+            cm.Activate(pairing);
+            positions[x, y] = obj;
+            return cm;
+        }
     
+        void CreateMountain(int x, int y)
+        {
+            GameObject obj = Instantiate(MountainObject, new Vector3(0, 0, -1), quaternion.identity);
+            Mountains cm = obj.GetComponent<Mountains>();
+            obj.transform.parent = Gameboard;
+            cm.name = "OBSTACLE";
+            cm.SetXBoard(x);
+            cm.SetYBoard(y);
+            cm.Activate();
+            positions[x, y] = obj;
+        }
+    
+        Portal portal1 = CreatePortal(3, 3);
+        Portal portal2 = CreatePairedPortal(3, 5, portal1);
+        portal1.SetPair(portal2);
+        CreateMountain(3,4);
+        CreateMountain(4,4);
+        CreateMountain(2,4);
+    }
     private void LavaEvent(int noOfLava)
     {
+        void CreateLava(int x, int y)
+        {
+            GameObject obj = Instantiate(LavaObject, new Vector3(0, 0, -1), quaternion.identity);
+            Lava cm = obj.GetComponent<Lava>();
+            obj.transform.parent = Gameboard;
+            cm.name = "OBSTACLE";
+            cm.SetXBoard(x);
+            cm.SetYBoard(y);
+            cm.Activate();
+            positions[x, y] = obj;
+        }
         int i = 0;
         
         while (i < noOfLava)
         {
             int randomRow = rnd.Next(2,6);
             int randomCol = rnd.Next(0,8);
-            if (GetPosition(randomRow, randomCol) == null && PositionOnBoard(randomCol, randomRow))
+            if (GetPosition(randomCol, randomRow) == null && PositionOnBoard(randomCol, randomRow))
             {
-                GameObject lava = Create("LAVA", randomCol, randomRow);
-                SetPosition(lava);
+                CreateLava(randomCol,randomRow);
                 i++;
             }
         }
@@ -293,8 +388,6 @@ public class Game : MonoBehaviour
         }
         void SelectUpgrades(int number)
         {
-            // Augment Index: 1: Pawn1 2: Pawn2 3: Rook1 4: Rook2 5: Bishop1 6: Bishop2 7: Knight1 8: Knight2 9:Queen 10: King
-            // Currently, we have 1: Pawn1 2: Pawn2 3: Rook1 4: Bishop1 
             if (currentPlayer != "white")
             {
                 switch (number)
@@ -326,6 +419,10 @@ public class Game : MonoBehaviour
                     case 6:
                         WhiteAugments[5] = true;
                         QueenUpgrade1();
+                        break;
+                    case 7:
+                        WhiteAugments[7] = true;
+                        BishopUpgrade2();
                         break;
                 }
             }
@@ -361,6 +458,10 @@ public class Game : MonoBehaviour
                         BlackAugments[6] = true;
                         QueenUpgrade1();
                         break;
+                    case 7:
+                        BlackAugments[7] = true;
+                        BishopUpgrade2();
+                        break;
                 }
             }
         }
@@ -382,7 +483,7 @@ public class Game : MonoBehaviour
                     return "Your rooks can now remove terrain obstacles by capturing them";
                     break;
                 case 4:
-                    return "Your bishop can also take one step forward and backwards";
+                    return "Your bishops can also take one step forward and backwards";
                     break;
                 case 5:
                     return "Your knights can resist capture once";
@@ -390,6 +491,8 @@ public class Game : MonoBehaviour
                 case 6:
                     return "Your queen can also move in a L Shape";
                     break;
+                case 7:
+                    return "Your bishops will spawn pawns everytime you capture an opposing unit";
             }
 
             return "error";
@@ -594,6 +697,34 @@ public class Game : MonoBehaviour
                 if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wB")
                 {
                     playerWhite[k].GetComponent<Chessman>().name = "wSB1";
+                    playerWhite[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+    }
+    
+    public void BishopUpgrade2()
+    {
+        if (currentPlayer != "black")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bB")
+                {
+                    playerBlack[k].GetComponent<Chessman>().name = "bSB2";
+                    playerBlack[k].GetComponent<Chessman>().Activate();
+                }
+            }
+            this.selectedUpgrade = true;
+        }
+        else if (currentPlayer != "white")
+        {
+            for (int k = 0; k < playerBlack.Length; k++)
+            {
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wB")
+                {
+                    playerWhite[k].GetComponent<Chessman>().name = "wSB2";
                     playerWhite[k].GetComponent<Chessman>().Activate();
                 }
             }

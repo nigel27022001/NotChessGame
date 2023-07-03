@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6348964151747645963}
   - component: {fileID: 471150492930527990}
   - component: {fileID: 2764698950757753258}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Chesspiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6203757184339225184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1337796071
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1b38a74811d3b9f43b7df4ba9249b4be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   movePlate: {fileID: 4381701610988769653, guid: e96c8f8bae902514b821c60b4e241671, type: 3}
-  audio: {fileID: 0}
   bQ: {fileID: 21300000, guid: 46d5ea13869a0304a80d9676d2ba79a3, type: 3}
   bN: {fileID: 21300000, guid: f2a3e07f92f2a1849b08b78c0d9603ca, type: 3}
   bB: {fileID: 21300000, guid: bffa8f3b5d33a7c4f96b1015184b0b94, type: 3}
@@ -110,6 +109,12 @@ MonoBehaviour:
   bP: {fileID: 21300000, guid: e90ae5c64bab7a742b6263c9fd64cde2, type: 3}
   bSP2: {fileID: 21300000, guid: 47c169250ad371445b5da4dd0b96cb2d, type: 3}
   bSP1: {fileID: 21300000, guid: 01db797374c08aa47b76270bccf9de57, type: 3}
+  bSR1: {fileID: 21300000, guid: ff6606e6ff8db8241b6932da03a7b244, type: 3}
+  bSR2: {fileID: 21300000, guid: fdc3b417e9ab4ae40a239009fffc7846, type: 3}
+  bSN1: {fileID: 21300000, guid: 37a123dedac474341b5ff143f3a507c2, type: 3}
+  bSB1: {fileID: 21300000, guid: 8c428d4b4d9a7af439fe1e3c9d366af3, type: 3}
+  bSB2: {fileID: 21300000, guid: f7c363960551d084992e3e74c6c8eb64, type: 3}
+  bSQ1: {fileID: 21300000, guid: 7a41028e94d6c9a429bec99ed518f323, type: 3}
   wQ: {fileID: 21300000, guid: d27d9358cac3a324087715b51ccd1a95, type: 3}
   wN: {fileID: 21300000, guid: 55ca03c6b71487942bd5fd0ee0b1b412, type: 3}
   wB: {fileID: 21300000, guid: 805d9ab6fe7c3a644a946be60e491ceb, type: 3}
@@ -118,7 +123,14 @@ MonoBehaviour:
   wP: {fileID: 21300000, guid: cbd34350609978248812b919d90e9946, type: 3}
   wSP2: {fileID: 21300000, guid: fc905e1106a43264ca7ba7f2387b5a3a, type: 3}
   wSP1: {fileID: 21300000, guid: 3d750288ef70f0f44bfc92dd8784755c, type: 3}
+  wSR1: {fileID: 21300000, guid: 20c6376cd65f117498b873bc9baa538e, type: 3}
+  wSR2: {fileID: 21300000, guid: 4ae9c17adc077ea4dbb2f9f8e95792e1, type: 3}
+  wSN1: {fileID: 21300000, guid: 4226c97e48d5d80428c459c94a03de8d, type: 3}
+  wSB1: {fileID: 21300000, guid: 1cd958d3fb30cf741826954b34d33cea, type: 3}
+  wSB2: {fileID: 21300000, guid: af0f20b0245224046859906618a9c063, type: 3}
+  wSQ1: {fileID: 21300000, guid: d18cbc0fa6b499143aaeaaa9691c148c, type: 3}
   lava: {fileID: 21300000, guid: 1edd6208bc2dec44aa7af9e5381b55c9, type: 3}
+  portal: {fileID: 0}
 --- !u!61 &471150492930527990
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -49,3 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Obstacles
+    uniqueID: 1415779367
+    locked: 0
+  - name: ChessPieces
+    uniqueID: 2957171225
+    locked: 0
