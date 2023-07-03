@@ -937,6 +937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chesspiece: {fileID: 6203757184339225184, guid: d9f65a435171452428d246db60bc7260, type: 3}
+  PortalObject: {fileID: 5840104240472991741, guid: f6e2f97d26d56f04a8f4417595dc5a56, type: 3}
+  MountainObject: {fileID: 3963379540646096122, guid: 52f9209f87ccdb845bce78d794f49534, type: 3}
+  LavaObject: {fileID: 7143300379723639896, guid: 81f681d793825cb46965cd2f4df99a6f, type: 3}
   Gameboard: {fileID: 864393825}
   panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
   WhiteAugments: 00000000000000

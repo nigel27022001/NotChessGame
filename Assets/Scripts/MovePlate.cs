@@ -32,40 +32,60 @@ public class MovePlate : MonoBehaviour
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
-        if (attack) // remove attacked piece
+        GameObject cp = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
+        if (cp != null)
         {
-            GameObject cp = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
-            String attackingName = reference.GetComponent<Chessman>().name;
-            if (attackingName == "bSP2" || attackingName == "wSP2")
+            if (attack) // remove attacked piece
             {
-                reference.GetComponent<Chessman>().Convert(cp.name);
+                String attackingName = reference.GetComponent<Chessman>().name;
+                if (attackingName == "bSB2" || attackingName == "wSB2")
+                {
+                    reference.GetComponent<Chessman>().PawnNecromancy(1);
+                    print("tick");
+                }
+
+                if (cp.name == "wSN1" || cp.name == "bSN1")
+                {
+                    if (cp.name == "wSN1")
+                    {
+                        cp.GetComponent<Chessman>().name = "wN";
+                        cp.GetComponent<Chessman>().Activate();
+                    }
+
+                    if (cp.name == "bSN1")
+                    {
+                        cp.GetComponent<Chessman>().name = "bN";
+                        cp.GetComponent<Chessman>().Activate();
+                    }
+
+                    controller.GetComponent<Game>().NextTurn();
+                    reference.GetComponent<Chessman>().DestroyMovePlates();
+                    return;
+                }
+
+                if (cp.name == "bK")
+                {
+                    controller.GetComponent<Game>().Winner("White");
+                }
+                else if (cp.name == "wK")
+                {
+                    controller.GetComponent<Game>().Winner("Black");
+                }
+
+                Destroy(cp);
             }
 
-            if (cp.name == "wSN1" || cp.name == "bSN1")
+            if (cp.name == "PORTAL")
+                //need to update moveplate to allow cp.name == portal
             {
-                if (cp.name == "wSN1")
-                {
-                    cp.GetComponent<Chessman>().name = "wN";
-                    cp.GetComponent<Chessman>().Activate();
-                }
-                if (cp.name == "bSN1")
-                {
-                    cp.GetComponent<Chessman>().name = "bN";
-                    cp.GetComponent<Chessman>().Activate();
-                }
-                controller.GetComponent<Game>().NextTurn();
-                reference.GetComponent<Chessman>().DestroyMovePlates();
-                return;
+                int otherX = cp.GetComponent<Portal>().GetPairPortal().GetXBoard();
+                int otherY = cp.GetComponent<Portal>().GetPairPortal().GetYBoard();
+                matrixX = otherX;
+                matrixY = otherY;
             }
-            if (cp.name == "bK")
-            {
-                controller.GetComponent<Game>().Winner("White");
-            } else if (cp.name == "wK")
-            {
-                controller.GetComponent<Game>().Winner("Black");
-            }
-            Destroy(cp);
         }
+
+
         // empty the old position
         int originalX = reference.GetComponent<Chessman>().GetXBoard();
         int originalY = reference.GetComponent<Chessman>().GetYBoard();
