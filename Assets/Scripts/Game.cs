@@ -13,8 +13,7 @@ using Random = System.Random;
 public class Game : MonoBehaviour
 {
     public GameObject Chesspiece;
-    public GameObject PortalObject;
-    public GameObject MountainObject;
+    public GameObject EventManager;
     public GameObject LavaObject;
     public Transform Gameboard;
     public GameObject panel;
@@ -27,7 +26,7 @@ public class Game : MonoBehaviour
     public bool[] WhiteAugments;
     public bool[] BlackAugments;
 
-    private GameObject[,] positions = new GameObject[8, 8];
+    public GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
     private GameObject[] playerWhite = new GameObject[16];
     private GameObject[] portalPair1;
@@ -41,9 +40,9 @@ public class Game : MonoBehaviour
 
     private bool panelActive = false;
 
-    private bool selectedUpgrade = false;
-
     private bool eventDone = false;
+
+    private bool selectedUpgrade = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +56,7 @@ public class Game : MonoBehaviour
         };
         playerBlack = new GameObject[]
         {
-            Create("bR", 0, 7), Create("bN", 1, 7), Create("bB", 2, 7), Create("bSQ1", 3, 7),
+            Create("bR", 0, 7), Create("bN", 1, 7), Create("bB", 2, 7), Create("bQ", 3, 7),
             Create("bK", 4, 7), Create("bB", 5, 7), Create("bN", 6, 7), Create("bR", 7, 7),
             Create("bP", 0, 6), Create("bP", 1, 6), Create("bP", 2, 6), Create("bP", 3, 6),
             Create("bP", 4, 6), Create("bP", 5, 6), Create("bP", 6, 6), Create("bP", 7, 6),
@@ -148,10 +147,11 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber == 2 && !eventDone)
+        if (turnNumber == 1 && !eventDone)
         {
-            print("Portal Event Begins");
-            this.PortalEvent();
+            GameObject obj = Instantiate(this.EventManager);
+            ObstacleEventManager OEM = obj.GetComponent<ObstacleEventManager>();
+            OEM.LavaEvent(10);
             eventDone = true;
         }
         if (turnNumber == 10 && panelActive == false)
@@ -168,7 +168,6 @@ public class Game : MonoBehaviour
 
         if (turnNumber%15 == 0 && !eventDone)
         {
-            this.LavaEvent(5);
             eventDone = true;
         }
         if (gameOver == true && Input.GetMouseButtonDown(0))
@@ -222,79 +221,7 @@ public class Game : MonoBehaviour
             return rndCol;
         }
     }
-
-    private void PortalEvent()
-    {
-        Portal CreatePortal(int x, int y)
-        {
-            GameObject obj = Instantiate(PortalObject, new Vector3(0, 0, -1), quaternion.identity);
-            Portal cm = obj.GetComponent<Portal>();
-            obj.transform.parent = Gameboard;
-            cm.name = "PORTAL";
-            cm.SetXBoard(x);
-            cm.SetYBoard(y);
-            cm.Activate();
-            positions[x, y] = obj;
-            return cm;
-        }
-        Portal CreatePairedPortal(int x, int y, Portal pairing)
-        {
-            GameObject obj = Instantiate(PortalObject, new Vector3(0, 0, -1), quaternion.identity);
-            Portal cm = obj.GetComponent<Portal>();
-            obj.transform.parent = Gameboard;
-            cm.name = "PORTAL";
-            cm.SetXBoard(x);
-            cm.SetYBoard(y);
-            cm.Activate(pairing);
-            positions[x, y] = obj;
-            return cm;
-        }
     
-        void CreateMountain(int x, int y)
-        {
-            GameObject obj = Instantiate(MountainObject, new Vector3(0, 0, -1), quaternion.identity);
-            Mountains cm = obj.GetComponent<Mountains>();
-            obj.transform.parent = Gameboard;
-            cm.name = "OBSTACLE";
-            cm.SetXBoard(x);
-            cm.SetYBoard(y);
-            cm.Activate();
-            positions[x, y] = obj;
-        }
-    
-        Portal portal1 = CreatePortal(3, 3);
-        Portal portal2 = CreatePairedPortal(3, 5, portal1);
-        portal1.SetPair(portal2);
-        CreateMountain(3,4);
-        CreateMountain(4,4);
-        CreateMountain(2,4);
-    }
-    private void LavaEvent(int noOfLava)
-    {
-        void CreateLava(int x, int y)
-        {
-            GameObject obj = Instantiate(LavaObject, new Vector3(0, 0, -1), quaternion.identity);
-            Lava cm = obj.GetComponent<Lava>();
-            obj.transform.parent = Gameboard;
-            cm.name = "OBSTACLE";
-            cm.SetXBoard(x);
-            cm.SetYBoard(y);
-            cm.Activate();
-            positions[x, y] = obj;
-        }
-        int i = 0;
-        
-        while (i < noOfLava)
-        {
-            int randomRow = rnd.Next(2,6);
-            int randomCol = rnd.Next(0,8);
-            if (GetPosition(randomCol, randomRow) == null && PositionOnBoard(randomCol, randomRow))
-            {
-                CreateLava(randomCol,randomRow);
-                i++;
-            }
-        }
-    }
 
     public void UpgradePanel()
     {

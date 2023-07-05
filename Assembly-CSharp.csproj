@@ -52,6 +52,8 @@
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\MoveAnimation.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\ObstacleEventManager.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\Rivers.cs" />
      <Compile Include="Assets\Scripts\Obstacles\Portal.cs" />
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />

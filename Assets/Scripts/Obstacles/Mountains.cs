@@ -9,11 +9,13 @@ public class Mountains : MonoBehaviour
     private int yBoard = -1;
     public Sprite MountainSprite;
     
-    public void Activate()
+    public void Activate(int x, int y)
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
         this.GetComponent<SpriteRenderer>().sprite = MountainSprite;
         // takes the instantiated the location and adjust the transform
+        this.xBoard = x;
+        this.yBoard = y;
         SetCoords();
     }
 

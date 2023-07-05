@@ -771,6 +771,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133206787}
   m_CullTransparentMesh: 1
+--- !u!1 &1359019399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1359019400}
+  - component: {fileID: 1359019402}
+  - component: {fileID: 1359019401}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1359019400
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359019399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1779459135}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.7562195, y: 0.05}
+  m_AnchorMax: {x: 1, y: 0.66749823}
+  m_AnchoredPosition: {x: 0.11489868, y: 1.404007}
+  m_SizeDelta: {x: -8.23, y: 0.94000244}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1359019401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359019399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cf1462bc694c3c249831ad8ac5293aa2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1359019402
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359019399}
+  m_CullTransparentMesh: 1
 --- !u!1 &1398366929
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,6 +993,7 @@ GameObject:
   - component: {fileID: 1435107154}
   - component: {fileID: 1435107153}
   - component: {fileID: 1435107155}
+  - component: {fileID: 1435107156}
   m_Layer: 0
   m_Name: Controller
   m_TagString: GameController
@@ -937,8 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chesspiece: {fileID: 6203757184339225184, guid: d9f65a435171452428d246db60bc7260, type: 3}
-  PortalObject: {fileID: 5840104240472991741, guid: f6e2f97d26d56f04a8f4417595dc5a56, type: 3}
-  MountainObject: {fileID: 3963379540646096122, guid: 52f9209f87ccdb845bce78d794f49534, type: 3}
+  EventManager: {fileID: 5058213141597219757, guid: 857c6b5b46a265a4e8c35da25afcc0a3, type: 3}
   LavaObject: {fileID: 7143300379723639896, guid: 81f681d793825cb46965cd2f4df99a6f, type: 3}
   Gameboard: {fileID: 864393825}
   panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
@@ -1055,6 +1131,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1435107156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435107152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831a5b2b35105f64f99140d9c2e95079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RiverPrefab: {fileID: 6464084626532730927, guid: b4107d2a1ae373f4ea8cdafef0b3d585, type: 3}
+  PortalPrefab: {fileID: 5840104240472991741, guid: f6e2f97d26d56f04a8f4417595dc5a56, type: 3}
+  MountainPrefab: {fileID: 3963379540646096122, guid: 52f9209f87ccdb845bce78d794f49534, type: 3}
+  LavaPrefab: {fileID: 7143300379723639896, guid: 81f681d793825cb46965cd2f4df99a6f, type: 3}
 --- !u!1 &1469946628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1312,7 @@ RectTransform:
   - {fileID: 988883949}
   - {fileID: 242042780}
   - {fileID: 694396595}
+  - {fileID: 1359019400}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
