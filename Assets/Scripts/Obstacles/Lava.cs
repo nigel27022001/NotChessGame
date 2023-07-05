@@ -9,11 +9,13 @@ public class Lava : MonoBehaviour
     private int yBoard = -1;
     public Sprite LavaSprite;
     
-    public void Activate()
+    public void Activate(int x, int y)
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
         this.GetComponent<SpriteRenderer>().sprite = LavaSprite;
         // takes the instantiated the location and adjust the transform
+        this.xBoard = x;
+        this.yBoard = y;
         SetCoords();
     }
 
@@ -22,11 +24,32 @@ public class Lava : MonoBehaviour
         float x = xBoard;
         float y = yBoard;
         
-        x *= 1.11f;
-        y *= 1.11f;
+        x *= 1.107f;
+        y *= 1.107f;
         
-        x += -3.9f;
-        y += -3.9f;
+        x += -3.87f;
+        y += -3.87f;
+        if (x <= 0)
+        {
+            x += 0.0069f;
+            
+        }
+        if (x > 0)
+        {
+            x -= 0.0069f;
+            
+        }
+        if (y <= 0)
+        {
+            y += 0.006f;
+            
+        }
+        if (y > 0)
+        {
+            y -= 0.0060f;
+            
+        }
+            
         
         this.transform.position = new Vector3(x, y, -1.0f);
     }

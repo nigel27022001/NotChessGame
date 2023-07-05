@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 5ee8234f7b837ca429f5f9acdabdac45
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - RiverObject: {fileID: 6464084626532730927, guid: b4107d2a1ae373f4ea8cdafef0b3d585, type: 3}
+  - RiverSprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

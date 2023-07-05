@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 213370227733356591}
   - component: {fileID: 1288150340348622065}
-  - component: {fileID: 8389587736864009472}
+  - component: {fileID: 1823065476287662269}
   m_Layer: 0
   m_Name: Mountain
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8389587736864009472
+--- !u!114 &1823065476287662269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
