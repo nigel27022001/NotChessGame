@@ -18,10 +18,9 @@ public class PanelManager : MonoBehaviour
     public GameObject Option1Image;
     public GameObject Option2Image;
     public GameObject Option3Image;
-
+    
     public void openPanel()
     {
         Panel.SetActive(true);
     }
-
 }

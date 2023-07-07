@@ -386,6 +386,7 @@
 "Assets/Scripts/PanelManager.cs"
 "Assets/Scripts/SceneLoader.cs"
 "Assets/Scripts/SoundManager.cs"
+"Assets/Scripts/TypeWriter.cs"
 -langversion:9.0
 
 /deterministic
