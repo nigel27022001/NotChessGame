@@ -147,11 +147,11 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber == 1 && !eventDone)
+        if (turnNumber == 5 && !eventDone)
         {
             GameObject obj = Instantiate(this.EventManager);
             ObstacleEventManager OEM = obj.GetComponent<ObstacleEventManager>();
-            OEM.LavaEvent(10);
+            OEM.PortalEvent();
             eventDone = true;
         }
         if (turnNumber == 10 && panelActive == false)
@@ -195,6 +195,7 @@ public class Game : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<TextMeshProUGUI>().text = "Tap to Restart";
     }
 
+    // Returns a random empty column number from the row
     public int RowCheck(int rowNum)
     {
         

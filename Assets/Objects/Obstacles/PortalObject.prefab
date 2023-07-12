@@ -98,3 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalSprite: {fileID: 21300000, guid: 4a49eb891a1fbb54aafa1e3d7d1b87c2, type: 3}
+  portal2Sprite: {fileID: 21300000, guid: 432acdd761be3044ab25588a3d38b44f, type: 3}
