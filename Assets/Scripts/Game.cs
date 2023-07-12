@@ -147,12 +147,12 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber == 1 && !eventDone)
+        if (turnNumber == 2 && !eventDone)
         {
             GameObject obj = Instantiate(this.EventManager);
             ObstacleEventManager OEM = obj.GetComponent<ObstacleEventManager>();
-            //OEM.LavaEvent(10);
-            OEM.RiverEvent(4);
+            OEM.LavaEvent(10);
+            //OEM.RiverEvent(4);
             eventDone = true;
         }
         

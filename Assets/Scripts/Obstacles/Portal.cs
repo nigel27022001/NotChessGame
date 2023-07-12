@@ -9,20 +9,35 @@ public class Portal : MonoBehaviour
     private int xBoard = -1;
     private int yBoard = -1;
     public Sprite portalSprite;
+    public Sprite portal2Sprite;
     
-    public void Activate(int x, int y)
+    public void Activate(int x, int y, int portalColour)
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
-        this.GetComponent<SpriteRenderer>().sprite = portalSprite;
+        if (portalColour == 1)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = portalSprite;
+        }
+        if (portalColour == 2)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = portal2Sprite;
+        }
         // takes the instantiated the location and adjust the transform
         this.xBoard = x;
         this.yBoard = y;
         SetCoords();
     }
-    public void Activate(int x, int y, Portal portalPair)
+    public void Activate(int x, int y, int portalColour, Portal portalPair)
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
-        this.GetComponent<SpriteRenderer>().sprite = portalSprite;
+        if (portalColour == 1)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = portalSprite;
+        }
+        if (portalColour == 2)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = portal2Sprite;
+        }
         // takes the instantiated the location and adjust the transform
         this.xBoard = x;
         this.yBoard = y;

@@ -32,9 +32,27 @@ public class ObstacleEventManager : MonoBehaviour
         {
             GameObject obj = Instantiate(RiverPrefab, new Vector3(0, 0, 10), quaternion.identity);
             Rivers river = obj.GetComponent<Rivers>();
+            river.name = "OBSTACLE";
             obj.transform.parent = Gamestate.Gameboard;
-            river.Activate(k,rownum);
-            Gamestate.positions[k, rownum] = obj;
+            if (Gamestate.GetPosition(k, rownum) != null)
+            {
+                if (Gamestate.GetPosition(k, rownum - 1) == null)
+                {
+                    river.Activate(k,rownum - 1);
+                    Gamestate.positions[k, rownum - 1] = obj;
+                }
+                if (Gamestate.GetPosition(k, rownum + 1) == null)
+                {
+                    river.Activate(k,rownum + 1);
+                    Gamestate.positions[k, rownum - 1] = obj;
+                }
+            }
+            else
+            {
+                river.Activate(k,rownum);
+                Gamestate.positions[k, rownum] = obj;
+            }
+            
         }
     }
     
@@ -47,7 +65,7 @@ public class ObstacleEventManager : MonoBehaviour
             Portal cm = obj.GetComponent<Portal>();
             obj.transform.parent = Gamestate.Gameboard;
             cm.name = "PORTAL";
-            cm.Activate(x,y);
+            cm.Activate(x,y,1);
             Gamestate.positions[x, y] = obj;
             return cm;
         }
@@ -57,7 +75,7 @@ public class ObstacleEventManager : MonoBehaviour
             Portal cm = obj.GetComponent<Portal>();
             obj.transform.parent = Gamestate.Gameboard;
             cm.name = "PORTAL";
-            cm.Activate(x,y,pairing);
+            cm.Activate(x,y,2,pairing);
             Gamestate.positions[x, y] = obj;
             return cm;
         }
@@ -71,7 +89,16 @@ public class ObstacleEventManager : MonoBehaviour
             cm.Activate(x,y);
             Gamestate.positions[x, y] = obj;
         }
-    
+
+        int count = 0;
+        for (int k = 0; k < 8; k++)
+        {
+            if (Gamestate.GetPosition(k, 4) == null)
+            {
+                count++;
+            }
+            
+        }
         Portal portal1 = CreatePortal(3, 3);
         Portal portal2 = CreatePairedPortal(3, 5, portal1);
         portal1.SetPair(portal2);
