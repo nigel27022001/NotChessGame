@@ -78,7 +78,7 @@ public class Game : MonoBehaviour
 
     public GameObject Create(string name, int x, int y)
     {
-        GameObject obj = Instantiate(Chesspiece, new Vector3(0, 0, -1), quaternion.identity);
+        GameObject obj = Instantiate(Chesspiece, new Vector3(0, 0, 10), quaternion.identity);
         Chessman cm = obj.GetComponent<Chessman>();
         obj.transform.parent = Gameboard;
         cm.name = name;
@@ -151,31 +151,41 @@ public class Game : MonoBehaviour
         {
             GameObject obj = Instantiate(this.EventManager);
             ObstacleEventManager OEM = obj.GetComponent<ObstacleEventManager>();
-            OEM.LavaEvent(10);
+            //OEM.LavaEvent(10);
+            OEM.RiverEvent(4);
             eventDone = true;
         }
+        
         if (turnNumber == 10 && panelActive == false)
         {
             this.UpgradePanel();
             panelActive = true;
         }
 
+        if (turnNumber % 10 == 9)
+        {
+            Animator anim = GameObject.FindGameObjectWithTag("Reminder").GetComponent<Animator>();
+            anim.Play("Remind");
+        }
+        
         if ((turnNumber == 11) && panelActive == false) 
         {
             this.UpgradePanel();
             panelActive = true;
         }
-
+        
         if (turnNumber%15 == 0 && !eventDone)
         {
             eventDone = true;
         }
+        
         if (gameOver == true && Input.GetMouseButtonDown(0))
         {
             gameOver = false;
 
             SceneManager.LoadScene("Game");
         }
+        
         if (turnNumber % 2 == 0 && gameOver != true)
         {
             GameObject.FindGameObjectWithTag("Turn").GetComponent<TextMeshProUGUI>().text = "Turn " + turnNumber;
@@ -191,6 +201,7 @@ public class Game : MonoBehaviour
     public void Winner(string playerWinner)
     {
         gameOver = true;
+        GameObject.FindGameObjectWithTag("WinSound").GetComponent<AudioSource>().Play();
         GameObject.FindGameObjectWithTag("Turn").GetComponent<TextMeshProUGUI>().text = playerWinner + " wins!";
         GameObject.FindGameObjectWithTag("Player").GetComponent<TextMeshProUGUI>().text = "Tap to Restart";
     }
@@ -225,8 +236,9 @@ public class Game : MonoBehaviour
 
     public void UpgradePanel()
     {
-        GameObject obj = Instantiate(panel, new Vector3(0, 0, 10), Quaternion.identity);
+        GameObject obj = Instantiate(panel, new Vector3(100, 100, 10), Quaternion.identity);
         PanelManager panelManager = obj.GetComponent<PanelManager>();
+        //panelManager.audio1.Play();
         panelManager.openPanel();
         void AllocateUpgrade(int optionNumber)
         {
@@ -288,6 +300,7 @@ public class Game : MonoBehaviour
                         .AddListener(delegate
                         {
                             SelectUpgrades(curr);
+                            GameObject.FindGameObjectWithTag("UpgradeSound").GetComponent<AudioSource>().Play();
                             obj.SetActive(false);
                         });
                     break;
@@ -298,6 +311,7 @@ public class Game : MonoBehaviour
                         .AddListener(delegate
                         {
                             SelectUpgrades(curr);
+                            GameObject.FindGameObjectWithTag("UpgradeSound").GetComponent<AudioSource>().Play();
                             obj.SetActive(false);
                         });
                     break;
@@ -308,6 +322,7 @@ public class Game : MonoBehaviour
                         .AddListener(delegate
                         {
                             SelectUpgrades(curr);
+                            GameObject.FindGameObjectWithTag("UpgradeSound").GetComponent<AudioSource>().Play();
                             obj.SetActive(false);
                         });
                     break;

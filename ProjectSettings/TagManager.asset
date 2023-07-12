@@ -12,6 +12,10 @@ TagManager:
   - Turn
   - ConfirmationWindow
   - Music
+  - EventAnimator
+  - Reminder
+  - UpgradeSound
+  - WinSound
   layers:
   - Default
   - TransparentFX
@@ -54,4 +58,7 @@ TagManager:
     locked: 0
   - name: ChessPieces
     uniqueID: 2957171225
+    locked: 0
+  - name: Game
+    uniqueID: 1176651289
     locked: 0
