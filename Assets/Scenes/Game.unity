@@ -2422,7 +2422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chesspiece: {fileID: 6203757184339225184, guid: d9f65a435171452428d246db60bc7260, type: 3}
   EventManager: {fileID: 5058213141597219757, guid: 857c6b5b46a265a4e8c35da25afcc0a3, type: 3}
-  LavaObject: {fileID: 7143300379723639896, guid: 81f681d793825cb46965cd2f4df99a6f, type: 3}
+  UnitManagerPrefab: {fileID: 6071471730286629784, guid: d6922498eea83b64f9b60adda2aa2160, type: 3}
   Gameboard: {fileID: 0}
   panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
   WhiteAugments: 00000000000000

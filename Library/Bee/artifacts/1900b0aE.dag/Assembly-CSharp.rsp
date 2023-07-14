@@ -387,6 +387,22 @@
 "Assets/Scripts/SceneLoader.cs"
 "Assets/Scripts/SoundManager.cs"
 "Assets/Scripts/TypeWriter.cs"
+"Assets/Scripts/Units/Bishop.cs"
+"Assets/Scripts/Units/ChessPiece.cs"
+"Assets/Scripts/Units/King.cs"
+"Assets/Scripts/Units/Knight.cs"
+"Assets/Scripts/Units/Pawn.cs"
+"Assets/Scripts/Units/Queen.cs"
+"Assets/Scripts/Units/Rook.cs"
+"Assets/Scripts/Units/SBishop1.cs"
+"Assets/Scripts/Units/SBishop2.cs"
+"Assets/Scripts/Units/SKnight1.cs"
+"Assets/Scripts/Units/SPawn1.cs"
+"Assets/Scripts/Units/SPawn2.cs"
+"Assets/Scripts/Units/SQueen1.cs"
+"Assets/Scripts/Units/SRook1.cs"
+"Assets/Scripts/Units/SRook2.cs"
+"Assets/Scripts/Units/UnitManager.cs"
 -langversion:9.0
 
 /deterministic

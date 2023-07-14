@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SRook2 : ChessPiece
+{
+    public Sprite bSR2, wSR2;
+
+    public override void Activate(string player, int xCoord, int yCoord)
+    {
+        if (player == "white")
+        {
+            this.GetComponent<SpriteRenderer>().sprite = wSR2;
+            this.player = player;
+            this.upgraded = true;
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().sprite = bSR2;
+            this.player = player;
+            this.upgraded = true;
+        }
+
+        this.name = "rookS2";
+        this.xBoard = xCoord;
+        this.yBoard = yCoord;
+        this.SetCoords();
+    }
+
+    protected override void InitiateMovePlates()
+    {
+
+        SpecialRook2Plate(0, 1);
+        SpecialRook2Plate(1, 0);
+        SpecialRook2Plate(0, -1);
+        SpecialRook2Plate(-1, 0);
+    }
+
+    void SpecialRook2Plate(int xIncrement, int yIncrement)
+    {
+        Game sc = controller.GetComponent<Game>();
+
+        int x = xBoard + xIncrement;
+        int y = yBoard + yIncrement;
+
+        while (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y) == null)
+        {
+            MovePlateSpawn(x, y);
+            x += xIncrement;
+            y += yIncrement;
+        }
+
+        if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+        {
+            MovePlateAttackSpawn(x, y);
+        }
+    }
+}

@@ -16,6 +16,7 @@ TagManager:
   - Reminder
   - UpgradeSound
   - WinSound
+  - UnitManager
   layers:
   - Default
   - TransparentFX

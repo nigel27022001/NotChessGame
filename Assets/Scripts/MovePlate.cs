@@ -11,7 +11,7 @@ using Image = UnityEngine.UI.Image;
 public class MovePlate : MonoBehaviour
 {
     public GameObject controller;
-
+    public Sprite AttackMovePlate;
     private GameObject reference = null;
 
     private int matrixX;
@@ -25,10 +25,10 @@ public class MovePlate : MonoBehaviour
         if (attack)
         {
             //change to red tile
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            gameObject.GetComponent<SpriteRenderer>().sprite = AttackMovePlate;
         }
     }
-
+    
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
@@ -37,13 +37,15 @@ public class MovePlate : MonoBehaviour
         {
             if (attack) // remove attacked piece
             {
-                String attackingName = reference.GetComponent<Chessman>().name;
+                ChessPiece attackingPiece = reference.GetComponent<ChessPiece>();
+                ChessPiece attackedPiece = cp.GetComponent<ChessPiece>();
+                /*String attackingName = reference.GetComponent<Chessman>().name;
                 if (attackingName == "bSB2" || attackingName == "wSB2")
                 {
                     reference.GetComponent<Chessman>().PawnNecromancy(1);
                     print("tick");
                 }
-
+                
                 if (cp.name == "wSN1" || cp.name == "bSN1")
                 {
                     if (cp.name == "wSN1")
@@ -62,43 +64,56 @@ public class MovePlate : MonoBehaviour
                     reference.GetComponent<Chessman>().DestroyMovePlates();
                     return;
                 }
-
-                if (cp.name == "bK")
+                */
+                if (attackedPiece.name == "king")
                 {
-                    controller.GetComponent<Game>().Winner("White");
+                    if (attackedPiece.player == "black")
+                    {
+                        controller.GetComponent<Game>().Winner("White");
+                    }
+                    if (attackedPiece.player == "white")
+                    {
+                        controller.GetComponent<Game>().Winner("Black");
+                    }
                 }
-                else if (cp.name == "wK")
+                
+                /*if (attackingPiece.name == "pawnS2")
                 {
-                    controller.GetComponent<Game>().Winner("Black");
+                    SPawn2 obj = attackingPiece.gameObject.GetComponent<SPawn2>();
+                    reference = obj.Convert(cp);
                 }
-
-                Destroy(cp);
+                */
+                else
+                {
+                    attackedPiece.Defence();
+                    attackingPiece.Attack(cp, matrixX, matrixY);
+                }
             }
 
             if (cp.name == "PORTAL")
                 //need to update moveplate to allow cp.name == portal
             {
-                int otherX = cp.GetComponent<Portal>().GetPairPortal().GetXBoard();
-                int otherY = cp.GetComponent<Portal>().GetPairPortal().GetYBoard();
-                matrixX = otherX;
-                matrixY = otherY;
+                matrixX = cp.GetComponent<Portal>().GetPairPortal().GetXBoard();
+                matrixY = cp.GetComponent<Portal>().GetPairPortal().GetYBoard();
             }
         }
 
+        else
+        {
+            // empty the old position
+            int originalX = reference.GetComponent<ChessPiece>().GetXBoard();
+            int originalY = reference.GetComponent<ChessPiece>().GetYBoard();
+            controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
 
-        // empty the old position
-        int originalX = reference.GetComponent<Chessman>().GetXBoard();
-        int originalY = reference.GetComponent<Chessman>().GetYBoard();
-        controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
-        
-        reference.GetComponent<Chessman>().SetXBoard(matrixX);
-        reference.GetComponent<Chessman>().SetYBoard(matrixY);
-        print(matrixX + "" + matrixY);
-        reference.GetComponent<Chessman>().MovePiece();
-        
-        controller.GetComponent<Game>().SetPosition(reference);
-        controller.GetComponent<Game>().NextTurn();
-        reference.GetComponent<Chessman>().DestroyMovePlates();
+            reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
+            reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
+            //print(matrixX + "" + matrixY);
+            reference.GetComponent<ChessPiece>().MovePiece();
+
+            controller.GetComponent<Game>().SetPosition(reference);
+            controller.GetComponent<Game>().NextTurn();
+            reference.GetComponent<ChessPiece>().DestroyMovePlates();
+        }
     }
 
     public void SetCoords(int x, int y)

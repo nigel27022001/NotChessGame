@@ -16,7 +16,7 @@ public class Chessman : MonoBehaviour
     private int yBoard = -1;
 
     // Variable to keep track of "black" or "white" player
-    private string player;
+    public string player;
 
     //References for all the sprites that the chesspiece can be
     public Sprite bQ, bN, bB, bK, bR, bP, bSP2, bSP1, bSR1, bSR2, bSN1, bSB1, bSB2, bSQ1;

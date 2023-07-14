@@ -14,7 +14,8 @@ public class Game : MonoBehaviour
 {
     public GameObject Chesspiece;
     public GameObject EventManager;
-    public GameObject LavaObject;
+    public GameObject UnitManagerPrefab;
+    private UnitManager UM;
     public Transform Gameboard;
     public GameObject panel;
     private AudioSource audio;
@@ -44,22 +45,36 @@ public class Game : MonoBehaviour
 
     private bool selectedUpgrade = false;
 
+    public void Awake()
+    {
+        GameObject obj = Instantiate(this.UnitManagerPrefab);
+        this.UM = obj.GetComponent<UnitManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         playerWhite = new GameObject[]
         {
-            Create("wR", 0, 0), Create("wN", 1, 0), Create("wB", 2, 0), Create("wQ", 3, 0),
-            Create("wK", 4, 0), Create("wB", 5, 0), Create("wN", 6, 0), Create("wR", 7, 0),
-            Create("wP", 0, 1), Create("wP", 1, 1), Create("wP", 2, 1), Create("wP", 3, 1),
-            Create("wP", 4, 1), Create("wP", 5, 1), Create("wP", 6, 1), Create("wP", 7, 1),
+            UM.Create("rook","white", 0, 0), UM.Create("knight","white", 1, 0),
+            UM.Create("bishop","white", 2, 0), UM.Create("queen", "white", 3, 0),
+            UM.Create("king", "white", 4, 0), UM.Create("bishop","white", 5, 0), 
+            UM.Create("knight","white", 6, 0), UM.Create("rook","white", 7, 0),
+            UM.Create("pawn", "white",0, 1), UM.Create("pawn", "white",1, 1),
+            UM.Create("pawn", "white",2, 1), UM.Create("pawn", "white",3, 1),
+            UM.Create("pawn", "white",4, 1), UM.Create("pawn", "white",5, 1), 
+            UM.Create("pawn", "white",6, 1), UM.Create("pawn", "white",7, 1),
         };
         playerBlack = new GameObject[]
         {
-            Create("bR", 0, 7), Create("bN", 1, 7), Create("bB", 2, 7), Create("bQ", 3, 7),
-            Create("bK", 4, 7), Create("bB", 5, 7), Create("bN", 6, 7), Create("bR", 7, 7),
-            Create("bP", 0, 6), Create("bP", 1, 6), Create("bP", 2, 6), Create("bP", 3, 6),
-            Create("bP", 4, 6), Create("bP", 5, 6), Create("bP", 6, 6), Create("bP", 7, 6),
+            UM.Create("rook","black", 0, 7), UM.Create("knight","black", 1, 7), 
+            UM.Create("bishop","black", 2, 7), UM.Create("queen", "black", 3, 7),
+            UM.Create("king", "black", 4, 7), UM.Create("bishop","black", 5, 7),
+            UM.Create("knight","black", 6, 7), UM.Create("rook","black", 7, 7),
+            UM.Create("pawn","black", 0, 6), UM.Create("pawn","black", 1, 6), 
+            UM.Create("pawn","black", 2, 6), UM.Create("pawn","black", 3, 6),
+            UM.Create("pawn","black", 4, 6), UM.Create("pawn","black", 5, 6), 
+            UM.Create("pawn","black", 6, 6), UM.Create("pawn","black", 7, 6),
         };
         for (int i = 0; i < playerBlack.Length; i++)
         {
@@ -90,9 +105,8 @@ public class Game : MonoBehaviour
 
     public void SetPosition(GameObject obj)
     {
-        Chessman cm = obj.GetComponent<Chessman>();
-
-        positions[cm.GetXBoard(), cm.GetYBoard()] = obj;
+            ChessPiece cp = obj.GetComponent<ChessPiece>();
+            positions[cp.GetXBoard(), cp.GetYBoard()] = obj;
     }
 
     public void SetPositionEmpty(int x, int y)
@@ -138,6 +152,8 @@ public class Game : MonoBehaviour
             currentPlayer = "white";
         }
 
+        print(currentPlayer);
+
         turnNumber++;
         panelActive = false;
         eventDone = false;
@@ -147,16 +163,17 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber == 2 && !eventDone)
+        if (turnNumber == 15 && !eventDone)
         {
+            
             GameObject obj = Instantiate(this.EventManager);
             ObstacleEventManager OEM = obj.GetComponent<ObstacleEventManager>();
-            OEM.LavaEvent(10);
+            //OEM.PortalEvent();
             //OEM.RiverEvent(4);
             eventDone = true;
         }
         
-        if (turnNumber == 10 && panelActive == false)
+        if (turnNumber == 3 && panelActive == false)
         {
             this.UpgradePanel();
             panelActive = true;
@@ -295,11 +312,11 @@ public class Game : MonoBehaviour
             {
                 case 1 :
                     panelManager.GetComponent<PanelManager>().Option1Text.GetComponent<TextMeshProUGUI>().text =
-                        UpgradeTexter(curr);
+                        UpgradeTexter(5);
                     panelManager.GetComponent<PanelManager>().Option1Button.GetComponent<Button>().onClick
                         .AddListener(delegate
                         {
-                            SelectUpgrades(curr);
+                            SelectUpgrades(5);
                             GameObject.FindGameObjectWithTag("UpgradeSound").GetComponent<AudioSource>().Play();
                             obj.SetActive(false);
                         });
@@ -484,10 +501,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bP")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<ChessPiece>().name == "pawn")
                 {
-                    playerBlack[k].GetComponent<Chessman>().name = "bSP1";
-                    playerBlack[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerBlack[k], "pawnS1");
+                    playerBlack[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -496,10 +514,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wP")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<ChessPiece>().name == "pawn")
                 {
-                    playerWhite[k].GetComponent<Chessman>().name = "wSP1";
-                    playerWhite[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerWhite[k], "pawnS1");
+                    playerWhite[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -512,10 +531,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bP")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<ChessPiece>().name == "pawn")
                 {
-                    playerBlack[k].GetComponent<Chessman>().name = "bSP2";
-                    playerBlack[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerBlack[k], "pawnS2");
+                    playerBlack[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -524,10 +544,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wP")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<ChessPiece>().name == "pawn")
                 {
-                    playerWhite[k].GetComponent<Chessman>().name = "wSP2";
-                    playerWhite[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerWhite[k], "pawnS2");
+                    playerWhite[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -540,10 +561,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bR")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<ChessPiece>().name == "rook")
                 {
-                    playerBlack[k].GetComponent<Chessman>().name = "bSR1";
-                    playerBlack[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerBlack[k], "rookS1");
+                    playerBlack[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -552,10 +574,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wR")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<ChessPiece>().name == "rook")
                 {
-                    playerWhite[k].GetComponent<Chessman>().name = "wSR1";
-                    playerWhite[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerWhite[k], "rookS1");
+                    playerWhite[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -568,10 +591,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bR")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<ChessPiece>().name == "rook")
                 {
-                    playerBlack[k].GetComponent<Chessman>().name = "bSR2";
-                    playerBlack[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerBlack[k], "rookS2");
+                    playerBlack[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -580,10 +604,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wR")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<ChessPiece>().name == "rook")
                 {
-                    playerWhite[k].GetComponent<Chessman>().name = "wSR2";
-                    playerWhite[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerWhite[k], "rookS2");
+                    playerWhite[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -596,10 +621,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bN")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<ChessPiece>().name == "knight")
                 {
-                    playerBlack[k].GetComponent<Chessman>().name = "bSN1";
-                    playerBlack[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerBlack[k], "knightS1");
+                    playerBlack[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -608,10 +634,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wN")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<ChessPiece>().name == "knight")
                 {
-                    playerWhite[k].GetComponent<Chessman>().name = "wSN1";
-                    playerWhite[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerWhite[k], "knightS1");
+                    playerWhite[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -624,10 +651,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerBlack[k] != null && playerBlack[k].GetComponent<Chessman>().name == "bB")
+                if (playerBlack[k] != null && playerBlack[k].GetComponent<ChessPiece>().name == "bishop")
                 {
-                    playerBlack[k].GetComponent<Chessman>().name = "bSB1";
-                    playerBlack[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerBlack[k], "bishopS1");
+                    playerBlack[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
@@ -636,10 +664,11 @@ public class Game : MonoBehaviour
         {
             for (int k = 0; k < playerBlack.Length; k++)
             {
-                if (playerWhite[k] != null && playerWhite[k].GetComponent<Chessman>().name == "wB")
+                if (playerWhite[k] != null && playerWhite[k].GetComponent<ChessPiece>().name == "bishop")
                 {
-                    playerWhite[k].GetComponent<Chessman>().name = "wSB1";
-                    playerWhite[k].GetComponent<Chessman>().Activate();
+                    GameObject obj = UM.Replace(playerWhite[k], "bishopS1");
+                    playerWhite[k] = obj;
+                    SetPosition(obj);
                 }
             }
             this.selectedUpgrade = true;
