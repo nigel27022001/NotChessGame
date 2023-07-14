@@ -403,6 +403,16 @@
 "Assets/Scripts/Units/SRook1.cs"
 "Assets/Scripts/Units/SRook2.cs"
 "Assets/Scripts/Units/UnitManager.cs"
+"Assets/Scripts/Upgrades/BishopUpgrade1.cs"
+"Assets/Scripts/Upgrades/BishopUpgrade2.cs"
+"Assets/Scripts/Upgrades/KnightUpgrade1.cs"
+"Assets/Scripts/Upgrades/PawnUpgrade1.cs"
+"Assets/Scripts/Upgrades/PawnUpgrade2.cs"
+"Assets/Scripts/Upgrades/QueenUpgrade1.cs"
+"Assets/Scripts/Upgrades/RookUpgrade1.cs"
+"Assets/Scripts/Upgrades/RookUpgrade2.cs"
+"Assets/Scripts/Upgrades/Upgradeable.cs"
+"Assets/Scripts/Upgrades/UpgradeManager.cs"
 -langversion:9.0
 
 /deterministic

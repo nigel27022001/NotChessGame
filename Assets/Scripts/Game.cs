@@ -19,6 +19,8 @@ public class Game : MonoBehaviour
     public Transform Gameboard;
     public GameObject panel;
     private AudioSource audio;
+    public GameObject UpgradeManagerPrefab;
+    public UpgradeManager UpgradeM;
 
     public static int numOfUpgrade = 8;
     // Random Number Generator to Generate Random Augments
@@ -28,12 +30,12 @@ public class Game : MonoBehaviour
     public bool[] BlackAugments;
 
     public GameObject[,] positions = new GameObject[8, 8];
-    private GameObject[] playerBlack = new GameObject[16];
-    private GameObject[] playerWhite = new GameObject[16];
+    public GameObject[] playerBlack = new GameObject[16];
+    public GameObject[] playerWhite = new GameObject[16];
     private GameObject[] portalPair1;
     private GameObject[] portalPair2;
 
-    private string currentPlayer = "white";
+    public string currentPlayer = "white";
 
     private int turnNumber = 1;
 
@@ -43,12 +45,13 @@ public class Game : MonoBehaviour
 
     private bool eventDone = false;
 
-    private bool selectedUpgrade = false;
+    public bool selectedUpgrade = false;
 
     public void Awake()
     {
         GameObject obj = Instantiate(this.UnitManagerPrefab);
         this.UM = obj.GetComponent<UnitManager>();
+        UpgradeM = Instantiate(UpgradeManagerPrefab).GetComponent<UpgradeManager>();
     }
 
     // Start is called before the first frame update
@@ -175,7 +178,7 @@ public class Game : MonoBehaviour
         
         if (turnNumber == 3 && panelActive == false)
         {
-            this.UpgradePanel();
+            UpgradeM.UpgradePanel();
             panelActive = true;
         }
 
@@ -187,7 +190,7 @@ public class Game : MonoBehaviour
         
         if ((turnNumber == 11) && panelActive == false) 
         {
-            this.UpgradePanel();
+            UpgradeM.UpgradePanel();
             panelActive = true;
         }
         
@@ -250,7 +253,7 @@ public class Game : MonoBehaviour
         }
     }
     
-
+/*
     public void UpgradePanel()
     {
         GameObject obj = Instantiate(panel, new Vector3(100, 100, 10), Quaternion.identity);
@@ -492,7 +495,7 @@ public class Game : MonoBehaviour
         AllocateUpgrade(2);
         AllocateUpgrade(3);
     }
-
+*/
     
 
     public void PawnUpgrade1()

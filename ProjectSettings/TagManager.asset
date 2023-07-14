@@ -17,6 +17,8 @@ TagManager:
   - UpgradeSound
   - WinSound
   - UnitManager
+  - PanelManager
+  - UpgradeManager
   layers:
   - Default
   - TransparentFX

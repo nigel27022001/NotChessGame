@@ -2425,8 +2425,46 @@ MonoBehaviour:
   UnitManagerPrefab: {fileID: 6071471730286629784, guid: d6922498eea83b64f9b60adda2aa2160, type: 3}
   Gameboard: {fileID: 0}
   panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
+  UpgradeManagerPrefab: {fileID: 5157973904316235821, guid: 82559d178d707b24f8089e74a06a85c2, type: 3}
+  UpgradeM: {fileID: 0}
   WhiteAugments: 00000000000000
   BlackAugments: 00000000000000
+  playerBlack:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerWhite:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentPlayer: white
+  selectedUpgrade: 0
 --- !u!4 &1435107154
 Transform:
   m_ObjectHideFlags: 0

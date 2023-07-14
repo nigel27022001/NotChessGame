@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5157973904316235821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6805268638595415289}
+  - component: {fileID: 388959350777954212}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: UpgradeManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6805268638595415289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5157973904316235821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388959350777954212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5157973904316235821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b65e00f3c56e5e40ae44e13c75f1cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
+  PU1: {fileID: 1221714859601242028, guid: cc105071f44826641904b13aa18dcbcb, type: 3}
+  PU2: {fileID: 5735672261975734201, guid: dc93f4952216c564d975d0574d1caa63, type: 3}
+  RU1: {fileID: 5735672261975734201, guid: e24f352c9df616f4ebc2354fd5527ee1, type: 3}
+  RU2: {fileID: 5735672261975734201, guid: 2e9a91919ce13cb4086f9049a0bfe72a, type: 3}
+  BU1: {fileID: 5735672261975734201, guid: 24cc05b5ceaefb4468d27f7d85629876, type: 3}
+  BU2: {fileID: 5735672261975734201, guid: 6194ae9a3638b594e951e426216cae59, type: 3}
+  KU1: {fileID: 5735672261975734201, guid: 5a46497cdbff44649ab3561c0ffad555, type: 3}
+  QU1: {fileID: 5735672261975734201, guid: 085e73f29a2f8bb498dc91890a8f1184, type: 3}
+  numOfUpgrade: 8
