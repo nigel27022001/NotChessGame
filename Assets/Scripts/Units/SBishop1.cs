@@ -20,8 +20,9 @@ public class SBishop1 : ChessPiece
             this.player = player;
             this.upgraded = true;
         }
-
+        
         this.name = "bishopS1";
+        this.rawName = "bishop";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

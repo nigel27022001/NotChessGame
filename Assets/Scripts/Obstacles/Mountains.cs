@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mountains : MonoBehaviour
+public class Mountains : Obstacles
 {
     private GameObject controller;
-    private int xBoard = -1;
-    private int yBoard = -1;
     public Sprite MountainSprite;
     
     public void Activate(int x, int y)

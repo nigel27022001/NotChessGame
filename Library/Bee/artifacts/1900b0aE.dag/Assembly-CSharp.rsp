@@ -381,6 +381,7 @@
 "Assets/Scripts/Obstacles/Lava.cs"
 "Assets/Scripts/Obstacles/Mountains.cs"
 "Assets/Scripts/Obstacles/ObstacleEventManager.cs"
+"Assets/Scripts/Obstacles/Obstacles.cs"
 "Assets/Scripts/Obstacles/Portal.cs"
 "Assets/Scripts/Obstacles/Rivers.cs"
 "Assets/Scripts/PanelManager.cs"

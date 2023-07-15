@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2767302378214456805}
   m_Layer: 0
   m_Name: River
-  m_TagString: Untagged
+  m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,5 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee8234f7b837ca429f5f9acdabdac45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RiverObject: {fileID: 6464084626532730927}
   RiverSprite: {fileID: 21300000, guid: b3bab404436f74d47a1f085e602d1253, type: 3}

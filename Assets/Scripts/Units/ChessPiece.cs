@@ -11,6 +11,7 @@ public abstract class ChessPiece: MonoBehaviour
     public bool upgraded;
     public int xBoard = -1;
     public int yBoard = -1;
+    public string rawName;
 
     public void Awake()
     {
@@ -86,7 +87,7 @@ public abstract class ChessPiece: MonoBehaviour
             }
             else
             {
-                if (controller.GetComponent<Game>().restriction == this.name)
+                if (controller.GetComponent<Game>().restriction == this.name || controller.GetComponent<Game>().restriction == rawName )
                 {
                     DestroyMovePlates();
 

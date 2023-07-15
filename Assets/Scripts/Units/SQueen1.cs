@@ -22,6 +22,7 @@ public class SQueen1 : ChessPiece
         }
 
         this.name = "queenS1";
+        this.rawName = "queen";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

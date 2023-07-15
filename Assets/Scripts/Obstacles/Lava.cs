@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lava : MonoBehaviour
+public class Lava : Obstacles
 {
     private GameObject controller;
-    private int xBoard = -1;
-    private int yBoard = -1;
     public Sprite LavaSprite;
     
     public void Activate(int x, int y)

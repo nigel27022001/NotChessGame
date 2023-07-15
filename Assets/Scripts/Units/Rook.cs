@@ -21,6 +21,7 @@ public class Rook : ChessPiece
             this.upgraded = false;
         }
         this.name = "rook";
+        this.rawName = "rook";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

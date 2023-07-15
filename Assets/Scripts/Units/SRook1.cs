@@ -22,6 +22,7 @@ public class SRook1 : ChessPiece
         }
 
         this.name = "rookS1";
+        this.rawName = "rook";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

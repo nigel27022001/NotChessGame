@@ -38,55 +38,63 @@ public class MovePlate : MonoBehaviour
             if (attack) // remove attacked piece
             {
                 ChessPiece attackingPiece = reference.GetComponent<ChessPiece>();
-                ChessPiece attackedPiece = cp.GetComponent<ChessPiece>();
-                /*String attackingName = reference.GetComponent<Chessman>().name;
-                if (attackingName == "bSB2" || attackingName == "wSB2")
+                if (cp.name == "OBSTACLE")
                 {
-                    reference.GetComponent<Chessman>().PawnNecromancy(1);
-                    print("tick");
+                    attackingPiece.Attack(cp, matrixX, matrixY);
                 }
-                
-                if (cp.name == "wSN1" || cp.name == "bSN1")
-                {
-                    if (cp.name == "wSN1")
-                    {
-                        cp.GetComponent<Chessman>().name = "wN";
-                        cp.GetComponent<Chessman>().Activate();
-                    }
-
-                    if (cp.name == "bSN1")
-                    {
-                        cp.GetComponent<Chessman>().name = "bN";
-                        cp.GetComponent<Chessman>().Activate();
-                    }
-
-                    controller.GetComponent<Game>().NextTurn();
-                    reference.GetComponent<Chessman>().DestroyMovePlates();
-                    return;
-                }
-                */
-                if (attackedPiece.name == "king")
-                {
-                    if (attackedPiece.player == "black")
-                    {
-                        controller.GetComponent<Game>().Winner("White");
-                    }
-                    if (attackedPiece.player == "white")
-                    {
-                        controller.GetComponent<Game>().Winner("Black");
-                    }
-                }
-                
-                /*if (attackingPiece.name == "pawnS2")
-                {
-                    SPawn2 obj = attackingPiece.gameObject.GetComponent<SPawn2>();
-                    reference = obj.Convert(cp);
-                }
-                */
                 else
                 {
-                    attackedPiece.Defence();
-                    attackingPiece.Attack(cp, matrixX, matrixY);
+                    ChessPiece attackedPiece = cp.GetComponent<ChessPiece>();
+                    /*String attackingName = reference.GetComponent<Chessman>().name;
+                    if (attackingName == "bSB2" || attackingName == "wSB2")
+                    {
+                        reference.GetComponent<Chessman>().PawnNecromancy(1);
+                        print("tick");
+                    }
+                    
+                    if (cp.name == "wSN1" || cp.name == "bSN1")
+                    {
+                        if (cp.name == "wSN1")
+                        {
+                            cp.GetComponent<Chessman>().name = "wN";
+                            cp.GetComponent<Chessman>().Activate();
+                        }
+    
+                        if (cp.name == "bSN1")
+                        {
+                            cp.GetComponent<Chessman>().name = "bN";
+                            cp.GetComponent<Chessman>().Activate();
+                        }
+    
+                        controller.GetComponent<Game>().NextTurn();
+                        reference.GetComponent<Chessman>().DestroyMovePlates();
+                        return;
+                    }
+                    */
+                    if (attackedPiece.name == "king")
+                    {
+                        if (attackedPiece.player == "black")
+                        {
+                            controller.GetComponent<Game>().Winner("White");
+                        }
+
+                        if (attackedPiece.player == "white")
+                        {
+                            controller.GetComponent<Game>().Winner("Black");
+                        }
+                    }
+
+                    /*if (attackingPiece.name == "pawnS2")
+                    {
+                        SPawn2 obj = attackingPiece.gameObject.GetComponent<SPawn2>();
+                        reference = obj.Convert(cp);
+                    }
+                    */
+                    else
+                    {
+                        attackedPiece.Defence();
+                        attackingPiece.Attack(cp, matrixX, matrixY);
+                    }
                 }
             }
 

@@ -20,6 +20,7 @@ public class Pawn : ChessPiece
             this.upgraded = false;
         }
         this.name = "pawn";
+        this.rawName = "pawn";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

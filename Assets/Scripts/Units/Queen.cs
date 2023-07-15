@@ -21,6 +21,7 @@ public class Queen : ChessPiece
             this.upgraded = false;
         }
         this.name = "queen";
+        this.rawName = "queen";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();
