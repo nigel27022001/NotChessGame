@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Portal : MonoBehaviour
+public class Portal : Obstacles
 {
     private Portal pair;
     private GameObject controller;
-    private int xBoard = -1;
-    private int yBoard = -1;
     public Sprite portalSprite;
     public Sprite portal2Sprite;
     

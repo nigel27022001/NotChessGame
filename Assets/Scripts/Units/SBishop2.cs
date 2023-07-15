@@ -29,6 +29,7 @@ public class SBishop2 : ChessPiece
         }
 
         this.name = "bishopS1";
+        this.rawName = "bishop";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

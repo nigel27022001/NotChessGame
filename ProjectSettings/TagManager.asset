@@ -19,6 +19,7 @@ TagManager:
   - UnitManager
   - PanelManager
   - UpgradeManager
+  - OBSTACLE
   layers:
   - Default
   - TransparentFX

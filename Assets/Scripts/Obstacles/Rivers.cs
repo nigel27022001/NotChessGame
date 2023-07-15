@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Rivers : MonoBehaviour
+public class Rivers : Obstacles
 {
     private GameObject controller;
-    private int xBoard = -1;
-    private int yBoard = -1;
     public Sprite RiverSprite;
     
     public void Activate(int x, int y)

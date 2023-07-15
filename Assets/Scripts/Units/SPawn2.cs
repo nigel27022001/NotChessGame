@@ -29,6 +29,7 @@ public class SPawn2 : ChessPiece
         }
 
         this.name = "pawnS2";
+        this.rawName = "pawn";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

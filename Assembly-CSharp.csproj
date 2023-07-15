@@ -86,6 +86,7 @@
      <Compile Include="Assets\Scripts\Obstacles\Mountains.cs" />
      <Compile Include="Assets\Scripts\Units\SRook1.cs" />
      <Compile Include="Assets\Scripts\Units\Knight.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\Obstacles.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

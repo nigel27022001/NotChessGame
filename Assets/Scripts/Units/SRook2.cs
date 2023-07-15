@@ -22,6 +22,7 @@ public class SRook2 : ChessPiece
         }
 
         this.name = "rookS2";
+        this.rawName = "rook";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();
@@ -49,10 +50,45 @@ public class SRook2 : ChessPiece
             x += xIncrement;
             y += yIncrement;
         }
-
-        if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+        if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).name == "OBSTACLE")
         {
             MovePlateAttackSpawn(x, y);
+        }
+        else
+        {
+            if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+            {
+                MovePlateAttackSpawn(x, y);
+            }
+        }
+    }
+
+    public override void Attack(GameObject captured, int x, int y)
+    {
+        if (captured.name == "OBSTACLE")
+        {
+            Destroy(captured);
+            controller.GetComponent<Game>().SetPositionEmpty(xBoard, yBoard);
+            this.SetXBoard(x);
+            this.SetYBoard(y);
+            this.MovePiece();
+            controller.GetComponent<Game>().SetPosition(this.gameObject);
+            this.DestroyMovePlates();
+        }
+        else
+        {
+            if (!captured.GetComponent<ChessPiece>().Defence())
+            {
+                Destroy(captured);
+                controller.GetComponent<Game>().SetPositionEmpty(xBoard, yBoard);
+                this.SetXBoard(x);
+                this.SetYBoard(y);
+                this.MovePiece();
+                controller.GetComponent<Game>().SetPosition(this.gameObject);
+                this.DestroyMovePlates();
+            }
+
+            controller.GetComponent<Game>().NextTurn();
         }
     }
 }

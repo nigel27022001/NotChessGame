@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = System.Random;
 
 public class ObstacleEventManager : MonoBehaviour
@@ -135,5 +136,36 @@ public class ObstacleEventManager : MonoBehaviour
     public void PawnEvent()
     {
         Gamestate.restriction = "pawn";
+    }
+
+    public void RandomEvent()
+    {
+        int randomnum = rnd.Next(-1, 4);
+        print(randomnum);
+        switch (randomnum)
+        {
+            case 0 :
+                RiverEvent(3);
+                break;
+            case 1 :
+                LavaEvent(9);
+                break;
+            case 2 :
+                PawnEvent();
+                break;
+            case 3 :
+                PortalEvent();
+                break;
+        }
+    }
+    public void ClearEvent()
+    {
+        GameObject[] Obstacles = GameObject.FindGameObjectsWithTag("OBSTACLE");
+        for (int k = 0; k < Obstacles.Length; k++)
+        {
+            Destroy(Obstacles[k]);
+            Gamestate.SetPositionEmpty(Obstacles[k].GetComponent<Obstacles>().GetXBoard(), Obstacles[k].GetComponent<Obstacles>().GetYBoard());
+        }
+        Gamestate.restriction = null;
     }
 }

@@ -30,6 +30,7 @@ public class SKnight1 : ChessPiece
         }
 
         this.name = "knightS1";
+        this.rawName = "knight";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

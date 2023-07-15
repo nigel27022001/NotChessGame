@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class BishopUpgrade1 : Upgradeable
 {
-
+    public Sprite wSB1, bSB1;
     public override void Upgrade()
     {
         if (gameState.currentPlayer != "black")
         {
                 for (int k = 0; k < gameState.playerBlack.Length; k++)
                 {
-                    if (gameState.playerBlack[k] != null && gameState.playerBlack[k].GetComponent<ChessPiece>().name == "bishop")
+                    if (gameState.playerBlack[k] != null && gameState.playerBlack[k].GetComponent<ChessPiece>().rawName == "bishop")
                     {
                         GameObject obj = UM.Replace(gameState.playerBlack[k], "bishopS1");
                         gameState.playerBlack[k] = obj;
@@ -25,7 +25,7 @@ public class BishopUpgrade1 : Upgradeable
         {
                 for (int k = 0; k < gameState.playerWhite.Length; k++)
                 {
-                    if (gameState.playerWhite[k] != null && gameState.playerWhite[k].GetComponent<ChessPiece>().name == "bishop")
+                    if (gameState.playerWhite[k] != null && gameState.playerWhite[k].GetComponent<ChessPiece>().rawName == "bishop")
                     {
                         GameObject obj = UM.Replace(gameState.playerWhite[k], "bishopS1");
                         gameState.playerWhite[k] = obj;

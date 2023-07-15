@@ -21,6 +21,7 @@ public class Knight : ChessPiece
             this.upgraded = false;
         }
         this.name = "knight";
+        this.rawName = "knight";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

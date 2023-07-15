@@ -90,6 +90,8 @@ public class UpgradeManager : MonoBehaviour
                 case 1:
                     panelManager.GetComponent<PanelManager>().Option1Text.GetComponent<TextMeshProUGUI>().text =
                         UpgradeTexter(curr);
+                    panelManager.GetComponent<PanelManager>().Option1Image.GetComponent<Image>().sprite =
+                        UpgradeImaging(curr);
                     panelManager.GetComponent<PanelManager>().Option1Button.GetComponent<Button>().onClick
                         .AddListener(delegate
                         {
@@ -101,6 +103,8 @@ public class UpgradeManager : MonoBehaviour
                 case 2:
                     panelManager.GetComponent<PanelManager>().Option2Text.GetComponent<TextMeshProUGUI>().text =
                         UpgradeTexter(curr);
+                    panelManager.GetComponent<PanelManager>().Option2Image.GetComponent<Image>().sprite =
+                       UpgradeImaging(curr);
                     panelManager.GetComponent<PanelManager>().Option2Button.GetComponent<Button>().onClick
                         .AddListener(delegate
                         {
@@ -112,6 +116,8 @@ public class UpgradeManager : MonoBehaviour
                 case 3:
                     panelManager.GetComponent<PanelManager>().Option3Text.GetComponent<TextMeshProUGUI>().text =
                         UpgradeTexter(curr);
+                    panelManager.GetComponent<PanelManager>().Option3Image.GetComponent<Image>().sprite =
+                        UpgradeImaging(curr);
                     panelManager.GetComponent<PanelManager>().Option3Button.GetComponent<Button>().onClick
                         .AddListener(delegate
                         {
@@ -250,6 +256,87 @@ public class UpgradeManager : MonoBehaviour
             }
 
             return "error";
+        }
+
+        Sprite UpgradeImaging(int number)
+        {
+            switch (number)
+            {
+                case 0:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return PU1.GetComponent<PawnUpgrade1>().bSP1;
+                    }
+                    else
+                    {
+                        return PU1.GetComponent<PawnUpgrade1>().wSP1;
+                    }
+                case 1:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return PU2.GetComponent<PawnUpgrade2>().bSP2;
+                    }
+                    else
+                    {
+                        return PU2.GetComponent<PawnUpgrade2>().wSP2;
+                    }
+                case 2:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return RU1.GetComponent<RookUpgrade1>().bSR1;
+                    }
+                    else
+                    {
+                        return RU1.GetComponent<RookUpgrade1>().wSR1;
+                    }
+                case 3:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return RU2.GetComponent<RookUpgrade2>().bSR2;
+                    }
+                    else
+                    {
+                        return RU2.GetComponent<RookUpgrade2>().wSR2;
+                    }
+                case 4:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return BU1.GetComponent<BishopUpgrade1>().bSB1;
+                    }
+                    else
+                    {
+                        return BU1.GetComponent<BishopUpgrade1>().wSB1;
+                    }
+                case 5:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return KU1.GetComponent<KnightUpgrade1>().bSN1;
+                    }
+                    else
+                    {
+                        return KU1.GetComponent<KnightUpgrade1>().wSN1;
+                    }
+                case 6:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return QU1.GetComponent<QueenUpgrade1>().bSQ1;
+                    }
+                    else
+                    {
+                        return QU1.GetComponent<QueenUpgrade1>().wSQ1;
+                    }
+                case 7:
+                    if (gameState.currentPlayer != "black")
+                    {
+                        return BU2.GetComponent<BishopUpgrade2>().bSB2;
+                    }
+                    else
+                    {
+                        return BU2.GetComponent<BishopUpgrade2>().wSB2;
+                    }
+            }
+            print("upgrade imaging error");
+            return null;
         }
         AllocateUpgrade(1);
         AllocateUpgrade(2);
