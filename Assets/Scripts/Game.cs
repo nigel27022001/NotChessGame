@@ -61,7 +61,7 @@ public class Game : MonoBehaviour
     {
         playerWhite = new GameObject[]
         {
-            UM.Create("rookS2","white", 0, 0), UM.Create("knight","white", 1, 0),
+            UM.Create("rook","white", 0, 0), UM.Create("knight","white", 1, 0),
             UM.Create("bishop","white", 2, 0), UM.Create("queen", "white", 3, 0),
             UM.Create("king", "white", 4, 0), UM.Create("bishop","white", 5, 0), 
             UM.Create("knight","white", 6, 0), UM.Create("rook","white", 7, 0),
@@ -167,7 +167,7 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber == 2/*% 15 == 0 */&& !eventDone)
+        if (turnNumber % 15 == 0 && !eventDone)
         {
             
             GameObject obj = Instantiate(this.EventManager);
@@ -178,7 +178,7 @@ public class Game : MonoBehaviour
             eventDone = true;
         }
         
-        if (turnNumber == 3/*% 10 == 0*/ && panelActive == false)
+        if (turnNumber % 10 == 0 && panelActive == false)
         {
             UpgradeM.UpgradePanel();
             panelActive = true;
