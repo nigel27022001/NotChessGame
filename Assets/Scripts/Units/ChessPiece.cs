@@ -75,13 +75,24 @@ public abstract class ChessPiece: MonoBehaviour
     }
     private void OnMouseUp()
     {
-        
         if (!controller.GetComponent<Game>().IsGameOver() &&
             controller.GetComponent<Game>().GetCurrentPlayer() == player)
         {
-            DestroyMovePlates();
+            if (controller.GetComponent<Game>().restriction == null)
+            {
+                DestroyMovePlates();
 
-            InitiateMovePlates();
+                InitiateMovePlates();
+            }
+            else
+            {
+                if (controller.GetComponent<Game>().restriction == this.name)
+                {
+                    DestroyMovePlates();
+
+                    InitiateMovePlates();
+                }
+            }
         }
     }
     protected MovePlate MovePlateSpawn(int matrixX, int matrixY)

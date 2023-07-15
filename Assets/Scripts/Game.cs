@@ -47,6 +47,8 @@ public class Game : MonoBehaviour
 
     public bool selectedUpgrade = false;
 
+    public string restriction;
+
     public void Awake()
     {
         GameObject obj = Instantiate(this.UnitManagerPrefab);
@@ -92,6 +94,8 @@ public class Game : MonoBehaviour
             BlackAugments[i] = false;
             WhiteAugments[i] = false;
         }
+
+        restriction = null;
     }
 
     public GameObject Create(string name, int x, int y)
@@ -166,17 +170,15 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber == 15 && !eventDone)
+        if (turnNumber == 3 && !eventDone)
         {
             
             GameObject obj = Instantiate(this.EventManager);
             ObstacleEventManager OEM = obj.GetComponent<ObstacleEventManager>();
-            //OEM.PortalEvent();
-            //OEM.RiverEvent(4);
             eventDone = true;
         }
         
-        if (turnNumber == 3 && panelActive == false)
+        if (turnNumber == 10 && panelActive == false)
         {
             UpgradeM.UpgradePanel();
             panelActive = true;

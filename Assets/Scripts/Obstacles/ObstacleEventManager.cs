@@ -131,4 +131,9 @@ public class ObstacleEventManager : MonoBehaviour
             }
         }
     }
+
+    public void PawnEvent()
+    {
+        Gamestate.restriction = "pawn";
+    }
 }

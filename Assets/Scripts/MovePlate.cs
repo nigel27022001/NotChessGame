@@ -101,18 +101,18 @@ public class MovePlate : MonoBehaviour
         else
         {
             // empty the old position
-            int originalX = reference.GetComponent<ChessPiece>().GetXBoard();
-            int originalY = reference.GetComponent<ChessPiece>().GetYBoard();
-            controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
+                int originalX = reference.GetComponent<ChessPiece>().GetXBoard();
+                int originalY = reference.GetComponent<ChessPiece>().GetYBoard();
+                controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
 
-            reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
-            reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
-            //print(matrixX + "" + matrixY);
-            reference.GetComponent<ChessPiece>().MovePiece();
+                reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
+                reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
+                //print(matrixX + "" + matrixY);
+                reference.GetComponent<ChessPiece>().MovePiece();
 
-            controller.GetComponent<Game>().SetPosition(reference);
-            controller.GetComponent<Game>().NextTurn();
-            reference.GetComponent<ChessPiece>().DestroyMovePlates();
+                controller.GetComponent<Game>().SetPosition(reference);
+                controller.GetComponent<Game>().NextTurn();
+                reference.GetComponent<ChessPiece>().DestroyMovePlates();
         }
     }
 
