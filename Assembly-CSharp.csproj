@@ -91,206 +91,57 @@
      <Compile Include="Assets\Scripts\Units\Knight.cs" />
      <Compile Include="Assets\Scripts\Obstacles\Obstacles.cs" />
      <Folder Include="Assets" />
-     <None Include="Library\PackageCache\com.unity.modules.subsystems@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-     <None Include="Library\PackageCache\com.unity.modules.jsonserialize@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.test-framework@1.1.33" />
-     <None Include="Library\PackageCache\com.unity.modules.screencapture@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.cloth@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-     <Folder Include="Library\PackageCache\com.unity.modules.imgui@1.0.0" />
      <Folder Include="Assets\Yoge\ParallaxBackground 1\Images" />
      <Folder Include="Assets\TextMesh Pro\Sprites" />
-     <None Include="Library\PackageCache\com.unity.modules.unitywebrequesttexture@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.ai@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.2d.tilemap.extras@3.1.0" />
-     <None Include="Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\README.txt" />
-     <Folder Include="Library\PackageCache\com.unity.modules.animation@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.ugui@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.xr@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\package.json" />
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
-     <None Include="Library\PackageCache\com.unity.ext.nunit@1.0.6\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.ide.rider@3.0.21\Rider" />
-     <Folder Include="Library\PackageCache\com.unity.2d.pixel-perfect@5.0.3" />
-     <Folder Include="Library\PackageCache\com.unity.2d.pixel-perfect@5.0.3\Tests" />
-     <None Include="Library\PackageCache\com.unity.2d.pixel-perfect@5.0.3\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources" />
-     <Folder Include="Library\PackageCache\com.unity.2d.common@8.0.1\Tests" />
-     <None Include="Library\PackageCache\com.unity.modules.assetbundle@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-     <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.imgui@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.visualscripting@1.8.0\Graphics" />
-     <None Include="Library\PackageCache\com.unity.modules.tilemap@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.assetbundle@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.burst@1.8.4\Tests" />
-     <None Include="Library\PackageCache\com.unity.timeline@1.7.4\package.json" />
      <Folder Include="Assets\Scenes" />
-     <Folder Include="Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Objects" />
-     <Folder Include="Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport" />
      <Folder Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
-     <Folder Include="Library\PackageCache\com.unity.collections@1.2.4" />
-     <Folder Include="Library\PackageCache\com.unity.visualscripting@1.8.0" />
      <Folder Include="Assets\Objects\Upgrades" />
-     <None Include="Library\PackageCache\com.unity.ide.visualstudio@2.0.18\ValidationConfig.json" />
-     <Folder Include="Library\PackageCache\com.unity.ext.nunit@1.0.6\net35" />
      <Folder Include="Assets\Yoge\ParallaxBackground 1" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-     <None Include="Library\PackageCache\com.unity.modules.terrainphysics@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.mathematics@1.2.6\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.2d.animation@9.0.3\Tests" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <Folder Include="Assets\TextMesh Pro\Resources" />
      <Folder Include="Assets\Music" />
-     <Folder Include="Library\PackageCache\com.unity.modules.screencapture@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.visualscripting@1.8.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.timeline@1.7.4\ValidationExceptions.json" />
-     <None Include="Library\PackageCache\com.unity.collab-proxy@2.0.4\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.timeline@1.7.4" />
-     <Folder Include="Library\PackageCache\com.unity.modules.cloth@1.0.0" />
      <Folder Include="Assets\Scripts\Obstacles" />
-     <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\PackageConversionData.json" />
-     <None Include="Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.ext.nunit@1.0.6" />
-     <Folder Include="Library\PackageCache\com.unity.2d.animation@9.0.3\IK" />
-     <Folder Include="Library\PackageCache\com.unity.burst@1.8.4" />
-     <None Include="Library\PackageCache\com.unity.ide.visualstudio@2.0.18\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-     <Folder Include="Library\PackageCache\com.unity.feature.2d@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.modules.imageconversion@1.0.0" />
      <Folder Include="Assets\Animation" />
-     <Folder Include="Library\PackageCache\com.unity.modules.terrainphysics@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.modules.imageconversion@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.2d.common@8.0.1" />
-     <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\ValidationExceptions.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0" />
      <Folder Include="Assets\TextMesh Pro" />
-     <None Include="Library\PackageCache\com.unity.modules.unityanalytics@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.subsystems@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.ide.rider@3.0.21\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.video@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.test-framework@1.1.33\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.unityanalytics@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.modules.physics@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Scripts" />
      <Folder Include="Assets\Objects\Obstacles" />
-     <Folder Include="Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime" />
-     <Folder Include="Library\PackageCache\com.unity.modules.vr@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.modules.physics2d@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.2d.common@8.0.1\Path" />
      <Folder Include="Assets\Scripts\Units" />
-     <None Include="Library\PackageCache\com.unity.modules.particlesystem@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.wind@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.modules.physics2d@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-     <None Include="Library\PackageCache\com.unity.modules.vr@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.uielements@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.visualscripting@1.8.0\ValidationExceptions.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-     <Folder Include="Library\PackageCache\com.unity.modules.particlesystem@1.0.0" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-     <None Include="Library\PackageCache\com.unity.2d.common@8.0.1\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-     <None Include="Library\PackageCache\com.unity.ide.visualstudio@2.0.18\ValidationExceptions.json" />
-     <None Include="Library\PackageCache\com.unity.modules.wind@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-     <Folder Include="Library\PackageCache\com.unity.ugui@1.0.0\Tests" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-     <None Include="Library\PackageCache\com.unity.modules.umbra@1.0.0\package.json" />
      <Folder Include="Assets\Yoge" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Textures" />
-     <Folder Include="Library\PackageCache\com.unity.2d.sprite@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.modules.tilemap@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.modules.ui@1.0.0" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <Folder Include="Assets\Fantasy Wooden GUI  Free" />
-     <Folder Include="Library\PackageCache\com.unity.mathematics@1.2.6" />
-     <Folder Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.2" />
-     <Folder Include="Library\PackageCache\com.unity.modules.androidjni@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.2d.tilemap.extras@3.1.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <Folder Include="Assets\TextMesh Pro\Shaders" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Gizmos" />
-     <None Include="Library\PackageCache\com.unity.modules.audio@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.physics@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.collab-proxy@2.0.4" />
      <Folder Include="Assets\TextMesh Pro\Resources\Style Sheets" />
      <Folder Include="Assets\TextMesh Pro\Fonts" />
-     <None Include="Library\PackageCache\com.unity.modules.vehicles@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6" />
-     <Folder Include="Library\PackageCache\com.unity.ide.rider@3.0.21" />
-     <None Include="Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <Folder Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Tests" />
      <Folder Include="Assets\Objects\Obsolete" />
-     <None Include="Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.feature.2d@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders\TMP_SDF_SSD.cginc" />
-     <Folder Include="Library\PackageCache\com.unity.2d.animation@9.0.3" />
      <Folder Include="Assets\Assets" />
-     <None Include="Library\PackageCache\com.unity.collab-proxy@2.0.4\ValidationConfig.json" />
      <Folder Include="Assets\Fantasy Wooden GUI  Free\normal_ui_set A" />
-     <Folder Include="Library\PackageCache\com.unity.modules.vehicles@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.modules.xr@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Tests" />
-     <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders\TMP_Properties.cginc" />
-     <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders\TMP_SDF Internal Editor.shader" />
-     <Folder Include="Library\PackageCache\com.unity.modules.umbra@1.0.0" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-     <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.collab-proxy@2.0.4\Lib" />
-     <None Include="Library\PackageCache\com.unity.modules.director@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.jsonserialize@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.visualscripting@1.8.0\ValidationConfig.json" />
      <Folder Include="Assets\Fantasy Wooden GUI  Free\Scene" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders" />
-     <Folder Include="Library\PackageCache\com.unity.modules.director@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.modules.audio@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.modules.terrain@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\package.json" />
      <Folder Include="Assets\Objects\Chesspieces" />
-     <Folder Include="Library\PackageCache\com.unity.ide.visualstudio@2.0.18" />
-     <None Include="Library\PackageCache\com.unity.collections@1.2.4\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.androidjni@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-     <Folder Include="Library\PackageCache\com.unity.modules.video@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.modules.ai@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\PackageConversionData_Assets.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <Folder Include="Assets\Yoge\ParallaxBackground 1\Scenes" />
-     <Folder Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0" />
-     <None Include="Library\PackageCache\com.unity.2d.spriteshape@9.0.2\package.json" />
-     <None Include="Library\PackageCache\com.unity.mathematics@1.2.6\ValidationExceptions.json" />
-     <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Package Resources" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-     <Folder Include="Library\PackageCache\com.unity.modules.terrain@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.2d.tilemap.extras@3.1.0\Tests" />
-     <Folder Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Tests" />
-     <None Include="Library\PackageCache\com.unity.modules.animation@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.2d.tilemap.extras@3.1.0\ValidationExceptions.json" />
      <Folder Include="Assets\TextMesh Pro\Documentation" />
-     <None Include="Library\PackageCache\com.unity.2d.animation@9.0.3\package.json" />
      <Folder Include="Assets\Scripts\Upgrades" />
-     <None Include="Library\PackageCache\com.unity.collections@1.2.4\ValidationExceptions.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-     <None Include="Library\PackageCache\com.unity.burst@1.8.4\Unity.Burst.Unsafe.xml" />
-     <None Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.2\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.modules.uielements@1.0.0\package.json" />
-     <None Include="Library\PackageCache\com.unity.burst@1.8.4\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequesttexture@1.0.0" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
-     <Folder Include="Library\PackageCache\com.unity.ugui@1.0.0" />
-     <Folder Include="Library\PackageCache\com.unity.2d.spriteshape@9.0.2" />
-     <None Include="Library\PackageCache\com.unity.modules.ui@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.2d.spriteshape@9.0.2\Tests" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-     <Folder Include="Library\PackageCache\com.unity.2d.psdimporter@8.0.2\Tests" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -541,10 +392,10 @@
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Collections.LowLevel.ILSupport">
-     <HintPath>C:\Users\Admin\Documents\NotChessGame\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>C:\Users\Admin\Documents\NotChessGame\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -912,172 +763,131 @@
      <Reference Include="System.Xml.Serialization">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.2D.IK.Runtime">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="PsdPlugin">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Common.Path.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Shared.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualStudio.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.UI">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Core">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Animation.Runtime">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Tilemap.Extras">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Core.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Rider.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.PixelPerfect.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Flow">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Flow.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InternalAPIEngineBridge.001">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Common.Runtime">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Collections">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Psdimporter.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InternalAPIEditorBridge.001">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.SpriteShape.Runtime">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.State.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.PixelPerfect">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Common.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TextMeshPro">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TextMeshPro.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.State">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.SpriteShape.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Tilemap.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Animation.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.IK.Editor">
+     <HintPath>C:\Users\User\Orbital\NotChessGame\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
+     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
-      <Project>{abdba7dd-13d3-1403-3377-3e53adeb5177}</Project>
-      <Name>Unity.2D.IK.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="PsdPlugin.csproj">
-      <Project>{c18ad28e-efc7-4b78-6368-b9781fe6149e}</Project>
-      <Name>PsdPlugin</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{a9f937e7-1275-a180-de42-410baa17769c}</Project>
-      <Name>Unity.Burst.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{6e372066-65cd-0a8a-3e18-e8fa9be21ddb}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{7f3e51e4-a5ae-745d-0072-551075ace77e}</Project>
-      <Name>Unity.PlasticSCM.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Path.Editor.csproj">
-      <Project>{925f7e75-652a-6590-d929-ee62bac07621}</Project>
-      <Name>Unity.2D.Common.Path.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{fcb2a4fa-f53c-e1d8-e13d-e5d16f94bc30}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
-      <Project>{ec6d29ec-989b-2fd8-b5b5-8184d4702c4d}</Project>
-      <Name>Unity.VisualScripting.Shared.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{f5a39ffc-fd00-6a7e-b178-295a698b2a24}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{dda3fa74-5ac7-45f5-1e18-b3f0497b2896}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Core.csproj">
-      <Project>{f9e5c207-78eb-de31-fbfa-c775934f5951}</Project>
-      <Name>Unity.VisualScripting.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
-      <Project>{a504b33b-79cd-329d-3af0-123a69b4249b}</Project>
-      <Name>Unity.2D.Animation.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.csproj">
-      <Project>{f1ce0885-97ea-802b-b954-67cd07f5f510}</Project>
-      <Name>Unity.2D.Tilemap.Extras</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj">
-      <Project>{50cc37b3-5e7e-c960-c3a6-e27b7abbdca7}</Project>
-      <Name>Unity.VisualScripting.Core.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{d40ae67e-5436-32c6-c485-05181a6dd3cc}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.PixelPerfect.Editor.csproj">
-      <Project>{6d9409f4-7ec3-045f-c1e9-fe8eb4783927}</Project>
-      <Name>Unity.2D.PixelPerfect.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{3846b511-7962-fc49-a649-ceade7cd812c}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{79c94fe8-1569-851a-ebe9-49e439aeea00}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
-      <Project>{0cf79796-436d-259a-cdc5-615a0ceb7315}</Project>
-      <Name>Unity.VisualScripting.Flow</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
-      <Project>{be9d7672-4289-07b0-9f54-27a5aa27df10}</Project>
-      <Name>Unity.VisualScripting.Flow.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
-      <Project>{ca920142-5736-afd4-102f-5ea3d92c76f4}</Project>
-      <Name>Unity.InternalAPIEngineBridge.001</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{a2d7d4ea-059f-c85f-718b-c561220513ef}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
-      <Project>{43deacc5-bb0b-3dde-e4ec-f545f7274d01}</Project>
-      <Name>Unity.2D.Common.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
-      <Project>{20b8025c-dce2-d8b3-1e4c-74f455e2a1d0}</Project>
-      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{60fa28d0-cdcf-9829-c718-d4d568095dbb}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
-      <Project>{9403ab26-994d-6b7a-9cf0-e02ccbcf5130}</Project>
-      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{79ff9ab5-ef5e-d056-2e0f-6e424a1501af}</Project>
-      <Name>Unity.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj">
-      <Project>{e841a3d2-4e91-d5d1-eb02-80390e9c63d1}</Project>
-      <Name>Unity.2D.Psdimporter.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
-      <Project>{dd060cfc-a8a8-5dad-a4a8-d264d46ded27}</Project>
-      <Name>Unity.InternalAPIEditorBridge.001</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
-      <Project>{b18d0c6d-0566-bf8e-fa4a-796a86281860}</Project>
-      <Name>Unity.2D.SpriteShape.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
-      <Project>{ed71b867-9303-0ce9-5a6b-8a5e28099e40}</Project>
-      <Name>Unity.VisualScripting.State.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.PixelPerfect.csproj">
-      <Project>{9f7ed8e3-801d-e067-7a81-39f69a70ed38}</Project>
-      <Name>Unity.2D.PixelPerfect</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{561c1d4c-b1c3-8705-358e-10d1fe7920a1}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Editor.csproj">
-      <Project>{81dd2cdf-acf2-9729-6454-84817eeb81cd}</Project>
-      <Name>Unity.2D.Common.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{14a42669-3884-0db4-a53f-40b74b744028}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{8aa3c43a-740e-5ba1-1618-6ba14a6e2d2b}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.csproj">
-      <Project>{99f8f8b7-57e3-ea40-bbe7-d4e2d63d265d}</Project>
-      <Name>Unity.VisualScripting.State</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj">
-      <Project>{fe301ef9-17e4-9e12-f45d-e1a69c7feafe}</Project>
-      <Name>Unity.2D.SpriteShape.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj">
-      <Project>{c7cc7331-4783-51f4-967a-4f48ee9f6e1f}</Project>
-      <Name>Unity.2D.Tilemap.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Editor.csproj">
-      <Project>{bdf1e5f1-ca3c-0404-fc03-c40677956279}</Project>
-      <Name>Unity.2D.Animation.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.IK.Editor.csproj">
-      <Project>{95334c09-5393-2704-732c-0ad8cf3d1b05}</Project>
-      <Name>Unity.2D.IK.Editor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

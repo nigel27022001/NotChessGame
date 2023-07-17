@@ -14,10 +14,37 @@ public abstract class ChessPiece: MonoBehaviour
     public int yBoard = -1;
     public string rawName;
     private string pastLife;
+    public bool crossedRiver;
 
     public void Awake()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+        crossedRiver = false;
+    }
+
+    public void Update()
+    {
+        Game gameState = controller.GetComponent<Game>();
+        if (gameState.riverActive && !crossedRiver)
+        {
+            int riverY = gameState.riverSpot[xBoard];
+            if (player == "white")
+            {
+                if (yBoard > riverY)
+                {
+                    crossedRiver = true;
+                    print("crossed river");
+                }
+            }
+            else
+            {
+                if (yBoard < riverY)
+                {
+                    crossedRiver = true;
+                    print("crossed river");
+                }
+            }
+        }
     }
 
     public void SetCoords()
@@ -141,7 +168,7 @@ public abstract class ChessPiece: MonoBehaviour
         int x = xBoard + xIncrement;
         int y = yBoard + yIncrement;
 
-        while (sc.PositionOnBoard(x, y) && (sc.GetPosition(x,y) == null || sc.GetPosition(x,y).name == "PORTAL"))
+        while (sc.PositionOnBoard(x, y) && (sc.GetPosition(x,y) == null || sc.GetPosition(x,y).name == "PORTAL" || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false)))
         {
             MovePlateSpawn(x, y);
             x += xIncrement;
@@ -164,7 +191,7 @@ public abstract class ChessPiece: MonoBehaviour
         if (sc.PositionOnBoard(x, y))
         {
             GameObject cp = sc.GetPosition(x, y);
-            if (cp == null || cp.name == "PORTAL")
+            if (cp == null || cp.name == "PORTAL" || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
             {
                 MovePlateSpawn(x, y);
             } else if (cp != null)

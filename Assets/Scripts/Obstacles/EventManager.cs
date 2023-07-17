@@ -18,6 +18,7 @@ public class ObstacleEventManager : MonoBehaviour
     public GameObject WindPrefab;
     public Random rnd = new Random();
     private Game Gamestate;
+   
     
 
     public void Awake()
@@ -31,11 +32,12 @@ public class ObstacleEventManager : MonoBehaviour
     public void RiverEvent(int rownum)
     {
         anim.Play("River");
+        Gamestate.riverActive = true;
         for (int k = 0; k <= 7; k++)
         {
             GameObject obj = Instantiate(RiverPrefab, new Vector3(0, 0, 10), quaternion.identity);
             Rivers river = obj.GetComponent<Rivers>();
-            river.name = "OBSTACLE";
+            river.name = "RIVER";
             obj.transform.parent = Gamestate.Gameboard;
             if (Gamestate.GetPosition(k, rownum) != null)
             {
@@ -43,17 +45,23 @@ public class ObstacleEventManager : MonoBehaviour
                 {
                     river.Activate(k,rownum - 1);
                     Gamestate.positions[k, rownum - 1] = obj;
+                    Gamestate.riverSpot[k] = rownum - 1;
+                    print(k + " " + (rownum - 1));
                 }
                 if (Gamestate.GetPosition(k, rownum + 1) == null)
                 {
                     river.Activate(k,rownum + 1);
-                    Gamestate.positions[k, rownum - 1] = obj;
+                    Gamestate.positions[k, rownum + 1] = obj;
+                    Gamestate.riverSpot[k] = rownum + 1;
+                    print(k + " " + (rownum + 1));
                 }
             }
             else
             {
                 river.Activate(k,rownum);
                 Gamestate.positions[k, rownum] = obj;
+                Gamestate.riverSpot[k] = rownum;
+                print(k + " " + (rownum));
             }
             
         }
@@ -93,21 +101,170 @@ public class ObstacleEventManager : MonoBehaviour
             Gamestate.positions[x, y] = obj;
         }
 
-        int count = 0;
-        for (int k = 0; k < 8; k++)
+        int mainRow = rnd.Next(3, 5);
+        int start = 2;
+        Portal portal1 = null;
+        for (int k = 2; k <= 5; k++)
         {
-            if (Gamestate.GetPosition(k, 4) == null)
+            if (k == 2)
             {
-                count++;
+                if (Gamestate.GetPosition(k, mainRow) == null)
+                {
+                    CreateMountain(k, mainRow);
+                    print(1);
+                }
+                else
+                {
+                    if (mainRow == 3)
+                    {
+                        if (Gamestate.GetPosition(k, 4) == null)
+                        {
+                            CreateMountain(k, 4);
+                            print(1);
+                        }
+                    }
+                    else
+                    {
+                        if (Gamestate.GetPosition(k, 3) == null)
+                        {
+                            CreateMountain(k, 3);
+                            print(1);
+                        }
+                    }
+                }
+                if (mainRow == 3)
+                {
+                    if (Gamestate.GetPosition(k, 4) == null)
+                    {
+                        portal1 = CreatePortal(k, 4);
+                    }
+                    else if (Gamestate.GetPosition(k, 5) == null)
+                    {
+                        portal1 = CreatePortal(k, 5);
+                    }
+                    else if (Gamestate.GetPosition(1, 4) == null)
+                    {
+                        portal1 = CreatePortal(1, 4);
+                    }
+                    else if (Gamestate.GetPosition(1, 5) == null)
+                    {
+                        portal1 = CreatePortal(1, 5);
+                    }
+                    else if (Gamestate.GetPosition(1, 3) == null)
+                    {
+                        portal1 = CreatePortal(1, 3);
+                    }
+                }
+                else
+                {
+                    if (Gamestate.GetPosition(k, 3) == null)
+                    {
+                        portal1 = CreatePortal(k, 3);
+                    }
+                    else if (Gamestate.GetPosition(k, 2) == null)
+                    {
+                        portal1 = CreatePortal(k, 2);
+                    }
+                    else if (Gamestate.GetPosition(1, 3) == null)
+                    {
+                        portal1 = CreatePortal(1, 3);
+                    }
+                    else if (Gamestate.GetPosition(1, 2) == null)
+                    {
+                        portal1 = CreatePortal(1, 2);
+                    }
+                    else if (Gamestate.GetPosition(1, 4) == null)
+                    {
+                        portal1 = CreatePortal(1, 4);
+                    }
+                }
             }
-            
+            else if (k == 5)
+            {
+                if (mainRow == 3)
+                {
+                    if (Gamestate.GetPosition(k, 4) == null)
+                    {
+                        CreateMountain(k, 4);
+                    }
+                    else if (Gamestate.GetPosition(k, 3) == null)
+                    {
+                        CreateMountain(k, 3);
+                    }
+                }
+                else
+                {
+                    if (Gamestate.GetPosition(k, 3) == null)
+                    {
+                        CreateMountain(k, 3);
+                    }
+                    else if (Gamestate.GetPosition(k, 4) == null)
+                    {
+                        CreateMountain(k, 4);
+                    }
+                }
+                if (mainRow == 3)
+                {
+                    if (Gamestate.GetPosition(k, 3) == null)
+                    {
+                        CreatePairedPortal(k, 3,portal1);
+                    }
+                    else if (Gamestate.GetPosition(k, 2) == null)
+                    {
+                        CreatePairedPortal(k, 2,portal1);
+                    }
+                    else if (Gamestate.GetPosition(6, 3) == null)
+                    {
+                        CreatePairedPortal(6, 3,portal1);
+                    }
+                    else if (Gamestate.GetPosition(6, 2) == null)
+                    {
+                        CreatePairedPortal(6, 2,portal1);
+                    }
+                    else if (Gamestate.GetPosition(6, 4) == null)
+                    {
+                        CreatePairedPortal(6, 4,portal1);
+                    }
+                }
+                else
+                {
+                    if (Gamestate.GetPosition(k, 4) == null)
+                    {
+                        CreatePairedPortal(k, 4,portal1);
+                    }
+                    else if (Gamestate.GetPosition(k, 5) == null)
+                    {
+                        CreatePairedPortal(k, 5,portal1);
+                    }
+                    else if (Gamestate.GetPosition(6, 4) == null)
+                    {
+                        CreatePairedPortal(6, 4,portal1);
+                    }
+                    else if (Gamestate.GetPosition(6, 5) == null)
+                    {
+                        CreatePairedPortal(6, 5,portal1);
+                    }
+                    else if (Gamestate.GetPosition(6, 3) == null)
+                    {
+                        CreatePairedPortal(6, 3,portal1);
+                    }
+                }
+            }
+            else
+            {
+                int randomNumber = rnd.Next(1, 4);
+                int curr = 0;
+                while (curr <= randomNumber)
+                {
+                    int randomY = rnd.Next(2, 6);
+                    if (Gamestate.GetPosition(k, randomY) == null)
+                    {
+                        CreateMountain(k,randomY);
+                    }
+                    curr++;
+                }
+            }
         }
-        Portal portal1 = CreatePortal(3, 3);
-        Portal portal2 = CreatePairedPortal(3, 5, portal1);
-        portal1.SetPair(portal2);
-        CreateMountain(3,4);
-        CreateMountain(4,4);
-        CreateMountain(2,4);
     }
     public void LavaEvent(int noOfLava)
     {
@@ -158,12 +315,12 @@ public class ObstacleEventManager : MonoBehaviour
     }
     public void RandomEvent()
     {
-        int randomnum = rnd.Next(-1, 6);
+        int randomnum = 0 /*rnd.Next(0, 6)*/;
         print(randomnum);
         switch (randomnum)
         {
             case 0 :
-                int randomRiver = rnd.Next(2, 5);
+                int randomRiver = rnd.Next(3, 5);
                 RiverEvent(randomRiver);
                 break;
             case 1 :

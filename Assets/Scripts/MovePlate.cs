@@ -105,6 +105,18 @@ public class MovePlate : MonoBehaviour
             {
                 matrixX = cp.GetComponent<Portal>().GetPairPortal().GetXBoard();
                 matrixY = cp.GetComponent<Portal>().GetPairPortal().GetYBoard();
+                int originalX = reference.GetComponent<ChessPiece>().GetXBoard();
+                int originalY = reference.GetComponent<ChessPiece>().GetYBoard();
+                controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
+
+                reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
+                reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
+                //print(matrixX + "" + matrixY);
+                reference.GetComponent<ChessPiece>().MovePiece();
+
+                controller.GetComponent<Game>().SetPosition(reference);
+                controller.GetComponent<Game>().NextTurn();
+                reference.GetComponent<ChessPiece>().DestroyMovePlates();
             }
         }
 
