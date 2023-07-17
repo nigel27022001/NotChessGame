@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SQueen1 : ChessPiece
 {
     public Sprite bSQ1, wSQ1; 
     
+    public override void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Empress\n\nCan also move like a knight";
+    }
     public override void Activate(string player, int xCoord, int yCoord)
     {
         if (player == "white")

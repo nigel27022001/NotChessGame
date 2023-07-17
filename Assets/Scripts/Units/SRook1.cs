@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SRook1 : ChessPiece
 {
     public Sprite bSR1, wSR1;
 
+    public override void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Recon\n\nCan traverse over terrains";
+    }
     public override void Activate(string player, int xCoord, int yCoord)
     {
         if (player == "white")

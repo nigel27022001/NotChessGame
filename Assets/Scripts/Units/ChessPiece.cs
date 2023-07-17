@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public abstract class ChessPiece: MonoBehaviour
@@ -107,6 +108,14 @@ public abstract class ChessPiece: MonoBehaviour
             }
         }
     }
+    private void OnMouseOver()
+    {
+        this.Describe();
+    }
+    private void OnMouseExit()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "";
+    }
     protected MovePlate MovePlateSpawn(int matrixX, int matrixY)
     {
         float x = matrixX;
@@ -174,6 +183,12 @@ public abstract class ChessPiece: MonoBehaviour
     }
 
     public abstract void Activate(string player, int xCoord, int yCoord);
+
+    public virtual void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Basic Unit";
+    }
+    
     protected abstract void InitiateMovePlates();
     
     // Use "new" keyword on method to override

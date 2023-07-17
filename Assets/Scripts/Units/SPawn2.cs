@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SPawn2 : ChessPiece
 {
     public Sprite bSP2, wSP2;
     public UnitManager UM;
 
+    public override void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Headhunter\n\nCan convert a captured piece";
+    }
     public void Awake()
     {
         UM = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
