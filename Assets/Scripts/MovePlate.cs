@@ -37,6 +37,7 @@ public class MovePlate : MonoBehaviour
         {
             if (attack) // remove attacked piece
             {
+                GameObject.FindGameObjectWithTag("KillSound").GetComponent<AudioSource>().Play();
                 ChessPiece attackingPiece = reference.GetComponent<ChessPiece>();
                 if (cp.name == "OBSTACLE")
                 {

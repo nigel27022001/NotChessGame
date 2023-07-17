@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SPawn1 : ChessPiece
 {
     public Sprite bSP1, wSP1;
 
+    public override void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Guard\n\nCan move twice";
+    }
     public override void Activate(string player, int xCoord, int yCoord)
     {
         if (player == "white")

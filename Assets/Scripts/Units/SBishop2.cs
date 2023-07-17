@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SBishop2 : ChessPiece
 {
@@ -8,6 +9,10 @@ public class SBishop2 : ChessPiece
 
     public UnitManager UM;
 
+    public override void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Necromancer\n\nCan convert captured pieces into your pawns ";
+    }
     public void Awake()
     {
         UM = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();

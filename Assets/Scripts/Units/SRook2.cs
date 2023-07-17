@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SRook2 : ChessPiece
 {
     public Sprite bSR2, wSR2;
 
+    public override void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Cannon\n\nCan jump over a piece to capture another piece";
+    }
     public override void Activate(string player, int xCoord, int yCoord)
     {
         if (player == "white")

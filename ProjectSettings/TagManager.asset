@@ -20,6 +20,8 @@ TagManager:
   - PanelManager
   - UpgradeManager
   - OBSTACLE
+  - InfoPanel
+  - KillSound
   layers:
   - Default
   - TransparentFX

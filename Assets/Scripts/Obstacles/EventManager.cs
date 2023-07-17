@@ -137,11 +137,13 @@ public class ObstacleEventManager : MonoBehaviour
 
     public void PawnEvent()
     {
+        anim.Play("Rebellion");
         Gamestate.restriction = "pawn";
     }
 
     public void AntiMagicEvent()
     {
+        anim.Play("Anti-Magic");
         GameObject obj = Instantiate(AntiMagicPrefab);
         AntiMagicEvent AME = obj.GetComponent<AntiMagicEvent>();
         AME.Activate();
@@ -149,6 +151,7 @@ public class ObstacleEventManager : MonoBehaviour
 
     public void WindEvent()
     {
+        anim.Play("Windy");
         GameObject obj = Instantiate(WindPrefab);
         WindEvent WE = obj.GetComponent<WindEvent>();
         WE.Activate();

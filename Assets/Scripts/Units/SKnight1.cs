@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SKnight1 : ChessPiece
 {
@@ -8,6 +9,10 @@ public class SKnight1 : ChessPiece
     
     public UnitManager UM;
 
+    public override void Describe()
+    {
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Cavalry\n\nCan resist capture once, capturing them back instead";
+    }
     public void Awake()
     {
         UM = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
