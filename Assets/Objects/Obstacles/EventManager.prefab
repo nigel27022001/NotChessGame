@@ -48,3 +48,5 @@ MonoBehaviour:
   PortalPrefab: {fileID: 5840104240472991741, guid: f6e2f97d26d56f04a8f4417595dc5a56, type: 3}
   MountainPrefab: {fileID: 3963379540646096122, guid: 52f9209f87ccdb845bce78d794f49534, type: 3}
   LavaPrefab: {fileID: 7143300379723639896, guid: 81f681d793825cb46965cd2f4df99a6f, type: 3}
+  AntiMagicPrefab: {fileID: 7908674135093674624, guid: 28077814451016c459e459cdb09dd071, type: 3}
+  WindPrefab: {fileID: 2476992074657512502, guid: a6d59545c2e40aa49adc8e12a03856cb, type: 3}

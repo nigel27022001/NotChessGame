@@ -12,6 +12,7 @@ public abstract class ChessPiece: MonoBehaviour
     public int xBoard = -1;
     public int yBoard = -1;
     public string rawName;
+    private string pastLife;
 
     public void Awake()
     {
@@ -64,6 +65,16 @@ public abstract class ChessPiece: MonoBehaviour
     public void SetYBoard(int y)
     {
         yBoard = y;
+    }
+
+    public void SetPastLife(string pastName)
+    {
+        this.pastLife = pastName;
+    }
+
+    public string RetrievePastLife()
+    {
+        return pastLife;
     }
 
     public void DestroyMovePlates()

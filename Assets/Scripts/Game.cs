@@ -37,7 +37,7 @@ public class Game : MonoBehaviour
 
     public string currentPlayer = "white";
 
-    private int turnNumber = 1;
+    public int turnNumber = 1;
 
     private bool gameOver = false;
 
@@ -172,9 +172,7 @@ public class Game : MonoBehaviour
             
             GameObject obj = Instantiate(this.EventManager);
             ObstacleEventManager OEM = obj.GetComponent<ObstacleEventManager>();
-            OEM.ClearEvent();
-            OEM.LavaEvent(6);
-            Destroy(OEM);
+            OEM.RandomEvent();
             eventDone = true;
         }
         

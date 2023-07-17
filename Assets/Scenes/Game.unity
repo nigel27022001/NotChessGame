@@ -2464,7 +2464,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   currentPlayer: white
+  turnNumber: 1
   selectedUpgrade: 0
+  restriction: 
 --- !u!4 &1435107154
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,6 +2594,8 @@ MonoBehaviour:
   PortalPrefab: {fileID: 5840104240472991741, guid: f6e2f97d26d56f04a8f4417595dc5a56, type: 3}
   MountainPrefab: {fileID: 3963379540646096122, guid: 52f9209f87ccdb845bce78d794f49534, type: 3}
   LavaPrefab: {fileID: 7143300379723639896, guid: 81f681d793825cb46965cd2f4df99a6f, type: 3}
+  AntiMagicPrefab: {fileID: 0}
+  WindPrefab: {fileID: 0}
 --- !u!1 &1469946628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,7 +2910,7 @@ GameObject:
   - component: {fileID: 1620772325}
   m_Layer: 5
   m_Name: WinSound
-  m_TagString: Untagged
+  m_TagString: WinSound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

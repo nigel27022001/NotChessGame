@@ -1,0 +1,194 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.UIElements;
+using Random = System.Random;
+
+public class ObstacleEventManager : MonoBehaviour
+{
+    private Animator anim;
+    private GameObject controller;
+    public GameObject RiverPrefab;
+    public GameObject PortalPrefab;
+    public GameObject MountainPrefab;
+    public GameObject LavaPrefab;
+    public GameObject AntiMagicPrefab;
+    public GameObject WindPrefab;
+    public Random rnd = new Random();
+    private Game Gamestate;
+    
+
+    public void Awake()
+    {
+        controller = GameObject.FindGameObjectWithTag("GameController");
+        anim = GameObject.FindGameObjectWithTag("EventAnimator").GetComponent<Animator>();
+        Gamestate = controller.GetComponent<Game>();
+
+    }
+
+    public void RiverEvent(int rownum)
+    {
+        anim.Play("River");
+        for (int k = 0; k <= 7; k++)
+        {
+            GameObject obj = Instantiate(RiverPrefab, new Vector3(0, 0, 10), quaternion.identity);
+            Rivers river = obj.GetComponent<Rivers>();
+            river.name = "OBSTACLE";
+            obj.transform.parent = Gamestate.Gameboard;
+            if (Gamestate.GetPosition(k, rownum) != null)
+            {
+                if (Gamestate.GetPosition(k, rownum - 1) == null)
+                {
+                    river.Activate(k,rownum - 1);
+                    Gamestate.positions[k, rownum - 1] = obj;
+                }
+                if (Gamestate.GetPosition(k, rownum + 1) == null)
+                {
+                    river.Activate(k,rownum + 1);
+                    Gamestate.positions[k, rownum - 1] = obj;
+                }
+            }
+            else
+            {
+                river.Activate(k,rownum);
+                Gamestate.positions[k, rownum] = obj;
+            }
+            
+        }
+    }
+    
+    public void PortalEvent()
+    {
+        anim.Play("Portal");
+        Portal CreatePortal(int x, int y)
+        {
+            GameObject obj = Instantiate(PortalPrefab, new Vector3(0, 0, 10), quaternion.identity);
+            Portal cm = obj.GetComponent<Portal>();
+            obj.transform.parent = Gamestate.Gameboard;
+            cm.name = "PORTAL";
+            cm.Activate(x,y,1);
+            Gamestate.positions[x, y] = obj;
+            return cm;
+        }
+        Portal CreatePairedPortal(int x, int y, Portal pairing)
+        {
+            GameObject obj = Instantiate(PortalPrefab, new Vector3(0, 0, 10), quaternion.identity);
+            Portal cm = obj.GetComponent<Portal>();
+            obj.transform.parent = Gamestate.Gameboard;
+            cm.name = "PORTAL";
+            cm.Activate(x,y,2,pairing);
+            Gamestate.positions[x, y] = obj;
+            return cm;
+        }
+    
+        void CreateMountain(int x, int y)
+        {
+            GameObject obj = Instantiate(MountainPrefab, new Vector3(0, 0, 10), quaternion.identity);
+            Mountains cm = obj.GetComponent<Mountains>();
+            obj.transform.parent = Gamestate.Gameboard;
+            cm.name = "OBSTACLE";
+            cm.Activate(x,y);
+            Gamestate.positions[x, y] = obj;
+        }
+
+        int count = 0;
+        for (int k = 0; k < 8; k++)
+        {
+            if (Gamestate.GetPosition(k, 4) == null)
+            {
+                count++;
+            }
+            
+        }
+        Portal portal1 = CreatePortal(3, 3);
+        Portal portal2 = CreatePairedPortal(3, 5, portal1);
+        portal1.SetPair(portal2);
+        CreateMountain(3,4);
+        CreateMountain(4,4);
+        CreateMountain(2,4);
+    }
+    public void LavaEvent(int noOfLava)
+    {
+        anim.Play("Lava");
+        void CreateLava(int x, int y)
+        {
+            GameObject obj = Instantiate(LavaPrefab, new Vector3(0, 0, 10), quaternion.identity);
+            Lava cm = obj.GetComponent<Lava>();
+            obj.transform.parent = Gamestate.Gameboard;
+            cm.name = "OBSTACLE";
+            cm.Activate(x,y);
+            Gamestate.positions[x, y] = obj;
+        }
+        int i = 0;
+        
+        while (i < noOfLava)
+        {
+            int randomRow = rnd.Next(2,6);
+            int randomCol = rnd.Next(0,8);
+            if (Gamestate.GetPosition(randomCol, randomRow) == null && Gamestate.PositionOnBoard(randomCol, randomRow))
+            {
+                CreateLava(randomCol,randomRow);
+                i++;
+            }
+        }
+    }
+
+    public void PawnEvent()
+    {
+        Gamestate.restriction = "pawn";
+    }
+
+    public void AntiMagicEvent()
+    {
+        GameObject obj = Instantiate(AntiMagicPrefab);
+        AntiMagicEvent AME = obj.GetComponent<AntiMagicEvent>();
+        AME.Activate();
+    }
+
+    public void WindEvent()
+    {
+        GameObject obj = Instantiate(WindPrefab);
+        WindEvent WE = obj.GetComponent<WindEvent>();
+        WE.Activate();
+    }
+    public void RandomEvent()
+    {
+        int randomnum = 5;//rnd.Next(-1, 6);
+        print(randomnum);
+        switch (randomnum)
+        {
+            case 0 :
+                int randomRiver = rnd.Next(2, 5);
+                RiverEvent(randomRiver);
+                break;
+            case 1 :
+                int randomLava = rnd.Next(7, 13);
+                LavaEvent(randomLava);
+                break;
+            case 2 :
+                PawnEvent();
+                break;
+            case 3 :
+                PortalEvent();
+                break;
+            case 4 :
+                AntiMagicEvent();
+                break;
+            case 5 :
+                WindEvent();
+                break;
+        }
+    }
+    public void ClearEvent()
+    {
+        GameObject[] Obstacles = GameObject.FindGameObjectsWithTag("OBSTACLE");
+        for (int k = 0; k < Obstacles.Length; k++)
+        {
+            Destroy(Obstacles[k]);
+            Gamestate.SetPositionEmpty(Obstacles[k].GetComponent<Obstacles>().GetXBoard(), Obstacles[k].GetComponent<Obstacles>().GetYBoard());
+        }
+        Gamestate.restriction = null;
+    }
+}

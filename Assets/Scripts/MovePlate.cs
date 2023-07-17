@@ -71,6 +71,7 @@ public class MovePlate : MonoBehaviour
                         return;
                     }
                     */
+                    print(attackedPiece.name);
                     if (attackedPiece.name == "king")
                     {
                         if (attackedPiece.player == "black")

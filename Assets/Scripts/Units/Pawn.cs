@@ -34,7 +34,7 @@ public class Pawn : ChessPiece
                 if (yBoard == 6)
                 {
                     PawnMovePlate(xBoard, yBoard - 1);
-                    PawnMovePlate(xBoard, yBoard - 2);
+                    PawnMovePlate2(xBoard, yBoard - 2);
                 }
                 else
                 {
@@ -45,7 +45,7 @@ public class Pawn : ChessPiece
                 if (yBoard == 1)
                 {
                     PawnMovePlate(xBoard, yBoard + 1);
-                    PawnMovePlate(xBoard, yBoard + 2);
+                    PawnMovePlate2(xBoard, yBoard + 2);
                 }
                 else
                 {
@@ -80,6 +80,18 @@ public class Pawn : ChessPiece
                     {
                         MovePlateAttackSpawn(x - 1, y);
                     }
+                }
+            }
+        }
+
+        void PawnMovePlate2(int x, int y)
+        {
+            Game sc = controller.GetComponent<Game>();
+            if (sc.PositionOnBoard(x, y))
+            {
+                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL"))
+                {
+                    MovePlateSpawn(x, y);
                 }
             }
         }
