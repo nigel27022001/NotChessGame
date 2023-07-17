@@ -155,7 +155,7 @@ public class ObstacleEventManager : MonoBehaviour
     }
     public void RandomEvent()
     {
-        int randomnum = 5;//rnd.Next(-1, 6);
+        int randomnum = rnd.Next(-1, 6);
         print(randomnum);
         switch (randomnum)
         {
