@@ -20,6 +20,7 @@ public class Bishop : ChessPiece
             this.upgraded = false;
         }
         this.name = "bishop";
+        this.rawName = "bishop";
         this.xBoard = xCoord;
         this.yBoard = yCoord;
         this.SetCoords();

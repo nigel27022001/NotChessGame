@@ -27,7 +27,6 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradePanel()
     {
-        print("here");
         GameObject obj = Instantiate(Panel, new Vector3(100, 100, 10), Quaternion.identity);
         PanelManager panelManager = obj.GetComponent<PanelManager>();
         //panelManager.audio1.Play();
