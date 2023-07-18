@@ -173,7 +173,7 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber == 2/*% 15 == 0*/ && !eventDone)
+        if (turnNumber % 15 == 0 && !eventDone)
         {
             
             GameObject obj = Instantiate(this.EventManager);

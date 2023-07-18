@@ -41,19 +41,36 @@ public class ObstacleEventManager : MonoBehaviour
             obj.transform.parent = Gamestate.Gameboard;
             if (Gamestate.GetPosition(k, rownum) != null)
             {
-                if (Gamestate.GetPosition(k, rownum - 1) == null)
+                if (rownum == 4)
                 {
-                    river.Activate(k,rownum - 1);
-                    Gamestate.positions[k, rownum - 1] = obj;
-                    Gamestate.riverSpot[k] = rownum - 1;
-                    print(k + " " + (rownum - 1));
+                    if (Gamestate.GetPosition(k, rownum - 1) == null)
+                    {
+                        river.Activate(k, rownum - 1);
+                        Gamestate.positions[k, rownum - 1] = obj;
+                        Gamestate.riverSpot[k] = rownum - 1;
+                    }
+                    else if (Gamestate.GetPosition(k, rownum + 1) == null)
+                    {
+                        river.Activate(k, rownum + 1);
+                        Gamestate.positions[k, rownum + 1] = obj;
+                        Gamestate.riverSpot[k] = rownum + 1;
+                    }
                 }
-                if (Gamestate.GetPosition(k, rownum + 1) == null)
+
+                if (rownum == 3)
                 {
-                    river.Activate(k,rownum + 1);
-                    Gamestate.positions[k, rownum + 1] = obj;
-                    Gamestate.riverSpot[k] = rownum + 1;
-                    print(k + " " + (rownum + 1));
+                    if (Gamestate.GetPosition(k, rownum + 1) == null)
+                    {
+                        river.Activate(k, rownum + 1);
+                        Gamestate.positions[k, rownum + 1] = obj;
+                        Gamestate.riverSpot[k] = rownum + 1;
+                    }
+                    else if (Gamestate.GetPosition(k, rownum - 1) == null)
+                    {
+                        river.Activate(k, rownum - 1);
+                        Gamestate.positions[k, rownum - 1] = obj;
+                        Gamestate.riverSpot[k] = rownum - 1;
+                    }
                 }
             }
             else
@@ -61,7 +78,6 @@ public class ObstacleEventManager : MonoBehaviour
                 river.Activate(k,rownum);
                 Gamestate.positions[k, rownum] = obj;
                 Gamestate.riverSpot[k] = rownum;
-                print(k + " " + (rownum));
             }
             
         }
@@ -315,7 +331,7 @@ public class ObstacleEventManager : MonoBehaviour
     }
     public void RandomEvent()
     {
-        int randomnum = 0 /*rnd.Next(0, 6)*/;
+        int randomnum = rnd.Next(0, 6);
         print(randomnum);
         switch (randomnum)
         {
@@ -349,6 +365,13 @@ public class ObstacleEventManager : MonoBehaviour
             Destroy(Obstacles[k]);
             Gamestate.SetPositionEmpty(Obstacles[k].GetComponent<Obstacles>().GetXBoard(), Obstacles[k].GetComponent<Obstacles>().GetYBoard());
         }
+        GameObject[] Rivers = GameObject.FindGameObjectsWithTag("RIVER");
+        for (int k = 0; k < Obstacles.Length; k++)
+        {
+            Destroy(Rivers[k]);
+            Gamestate.SetPositionEmpty(Rivers[k].GetComponent<Obstacles>().GetXBoard(), Obstacles[k].GetComponent<Obstacles>().GetYBoard());
+        }
         Gamestate.restriction = null;
+        Gamestate.riverActive = false;
     }
 }

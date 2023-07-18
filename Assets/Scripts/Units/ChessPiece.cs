@@ -45,6 +45,10 @@ public abstract class ChessPiece: MonoBehaviour
                 }
             }
         }
+        if (gameState.riverActive == false && crossedRiver != false)
+        {
+            crossedRiver = false;
+        }
     }
 
     public void SetCoords()

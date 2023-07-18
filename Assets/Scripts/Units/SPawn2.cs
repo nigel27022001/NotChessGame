@@ -44,7 +44,7 @@ public class SPawn2 : ChessPiece
     {
         switch (this.player)
         {
-            case "black" :
+            case "black":
                 if (yBoard == 6)
                 {
                     PawnMovePlate(xBoard, yBoard - 1);
@@ -54,8 +54,9 @@ public class SPawn2 : ChessPiece
                 {
                     PawnMovePlate(xBoard, yBoard - 1);
                 }
+
                 break;
-            case "white" :
+            case "white":
                 if (yBoard == 1)
                 {
                     PawnMovePlate(xBoard, yBoard + 1);
@@ -65,6 +66,7 @@ public class SPawn2 : ChessPiece
                 {
                     PawnMovePlate(xBoard, yBoard + 1);
                 }
+
                 break;
         }
 
@@ -73,12 +75,14 @@ public class SPawn2 : ChessPiece
             Game sc = controller.GetComponent<Game>();
             if (sc.PositionOnBoard(x, y))
             {
-                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL"))
+                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL") ||
+                    (sc.GetPosition(x, y).name == "RIVER" && this.crossedRiver == false))
                 {
                     MovePlateSpawn(x, y);
                 }
-                
-                if (sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null && sc.GetPosition(x + 1, y).name != "OBSTACLE" && sc.GetPosition(x + 1,y).name != "PORTAL")
+
+                if (sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null &&
+                    sc.GetPosition(x + 1, y).name != "OBSTACLE" && sc.GetPosition(x + 1, y).name != "PORTAL")
                 {
                     if (sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null &&
                         sc.GetPosition(x + 1, y).GetComponent<ChessPiece>().player != player)
@@ -87,7 +91,8 @@ public class SPawn2 : ChessPiece
                     }
                 }
 
-                if (sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null && sc.GetPosition(x - 1, y).name != "OBSTACLE" && sc.GetPosition(x - 1,y).name != "PORTAL")
+                if (sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null &&
+                    sc.GetPosition(x - 1, y).name != "OBSTACLE" && sc.GetPosition(x - 1, y).name != "PORTAL")
                 {
                     if (sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null &&
                         sc.GetPosition(x - 1, y).GetComponent<ChessPiece>().player != player)
@@ -97,16 +102,17 @@ public class SPawn2 : ChessPiece
                 }
             }
         }
-    }
-    
-    void PawnMovePlate2(int x, int y)
-    {
-        Game sc = controller.GetComponent<Game>();
-        if (sc.PositionOnBoard(x, y))
+
+        void PawnMovePlate2(int x, int y)
         {
-            if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL"))
+            Game sc = controller.GetComponent<Game>();
+            if (sc.PositionOnBoard(x, y))
             {
-                MovePlateSpawn(x, y);
+                if (sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL" ||
+                    (sc.GetPosition(x, y).name == "RIVER" && this.crossedRiver == false))
+                {
+                    MovePlateSpawn(x, y);
+                }
             }
         }
     }

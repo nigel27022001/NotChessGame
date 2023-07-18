@@ -59,7 +59,7 @@ public class Pawn : ChessPiece
             Game sc = controller.GetComponent<Game>();
             if (sc.PositionOnBoard(x, y))
             {
-                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL"))
+                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL") || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
                 {
                     MovePlateSpawn(x, y);
                 }
@@ -89,7 +89,7 @@ public class Pawn : ChessPiece
             Game sc = controller.GetComponent<Game>();
             if (sc.PositionOnBoard(x, y))
             {
-                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL"))
+                if (sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL" || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
                 {
                     MovePlateSpawn(x, y);
                 }

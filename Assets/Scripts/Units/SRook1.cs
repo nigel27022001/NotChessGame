@@ -48,7 +48,7 @@ public class SRook1 : ChessPiece
         int x = xBoard + xIncrement;
         int y = yBoard + yIncrement;
         print(x + " " + y);
-        while (sc.PositionOnBoard(x, y) && (sc.GetPosition(x,y) == null || sc.GetPosition(x,y).name == "PORTAL"))
+        while (sc.PositionOnBoard(x, y) && (sc.GetPosition(x,y) == null || sc.GetPosition(x,y).name == "PORTAL")|| (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
         {
             MovePlateSpawn(x, y);
             x += xIncrement;

@@ -55,7 +55,7 @@ public class SRook2 : ChessPiece
             x += xIncrement;
             y += yIncrement;
         }
-        if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).name == "OBSTACLE")
+        if (sc.PositionOnBoard(x, y) && (sc.GetPosition(x, y).name == "OBSTACLE" || sc.GetPosition(x, y).name == "RIVER"))
         {
             MovePlateAttackSpawn(x, y);
         }

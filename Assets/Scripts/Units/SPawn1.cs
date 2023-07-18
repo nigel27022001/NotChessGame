@@ -52,13 +52,12 @@ public class SPawn1 : ChessPiece
             Game sc = controller.GetComponent<Game>();
             if (sc.PositionOnBoard(x, y))
             {
-                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL"))
+                if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL") || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
                 {
                     MovePlateSpawn(x, y);
                 }
-
-                if (sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null &&
-                    sc.GetPosition(x + 1, y).name != "OBSTACLE" && sc.GetPosition(x + 1, y).name != "PORTAL")
+                
+                if (sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null && sc.GetPosition(x + 1, y).name != "OBSTACLE" && sc.GetPosition(x + 1,y).name != "PORTAL")
                 {
                     if (sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null &&
                         sc.GetPosition(x + 1, y).GetComponent<ChessPiece>().player != player)
@@ -67,14 +66,25 @@ public class SPawn1 : ChessPiece
                     }
                 }
 
-                if (sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null &&
-                    sc.GetPosition(x - 1, y).name != "OBSTACLE" && sc.GetPosition(x - 1, y).name != "PORTAL")
+                if (sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null && sc.GetPosition(x - 1, y).name != "OBSTACLE" && sc.GetPosition(x - 1,y).name != "PORTAL")
                 {
                     if (sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null &&
                         sc.GetPosition(x - 1, y).GetComponent<ChessPiece>().player != player)
                     {
                         MovePlateAttackSpawn(x - 1, y);
                     }
+                }
+            }
+        }
+
+        void PawnMovePlate2(int x, int y)
+        {
+            Game sc = controller.GetComponent<Game>();
+            if (sc.PositionOnBoard(x, y))
+            {
+                if (sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL" || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
+                {
+                    MovePlateSpawn(x, y);
                 }
             }
         }
