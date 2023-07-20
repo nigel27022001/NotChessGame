@@ -93,7 +93,7 @@ public class ObstacleEventManager : MonoBehaviour
             obj.transform.parent = Gamestate.Gameboard;
             cm.name = "PORTAL";
             cm.Activate(x,y,1);
-            Gamestate.positions[x, y] = obj;
+            Gamestate.portalPositions[x, y] = cm;
             return cm;
         }
         Portal CreatePairedPortal(int x, int y, Portal pairing)
@@ -103,7 +103,7 @@ public class ObstacleEventManager : MonoBehaviour
             obj.transform.parent = Gamestate.Gameboard;
             cm.name = "PORTAL";
             cm.Activate(x,y,2,pairing);
-            Gamestate.positions[x, y] = obj;
+            Gamestate.portalPositions[x, y] = cm;
             return cm;
         }
     
@@ -223,23 +223,28 @@ public class ObstacleEventManager : MonoBehaviour
                 {
                     if (Gamestate.GetPosition(k, 3) == null)
                     {
-                        CreatePairedPortal(k, 3,portal1);
+                        Portal portal2 = CreatePairedPortal(k, 3,portal1);
+                        portal1.SetPair(portal2);
                     }
                     else if (Gamestate.GetPosition(k, 2) == null)
                     {
-                        CreatePairedPortal(k, 2,portal1);
+                        Portal portal2 = CreatePairedPortal(k, 2,portal1);
+                        portal1.SetPair(portal2);
                     }
                     else if (Gamestate.GetPosition(6, 3) == null)
                     {
-                        CreatePairedPortal(6, 3,portal1);
+                        Portal portal2 = CreatePairedPortal(6, 3,portal1);
+                        portal1.SetPair(portal2);
                     }
                     else if (Gamestate.GetPosition(6, 2) == null)
                     {
-                        CreatePairedPortal(6, 2,portal1);
+                        Portal portal2 = CreatePairedPortal(6, 2,portal1);
+                        portal1.SetPair(portal2);
                     }
                     else if (Gamestate.GetPosition(6, 4) == null)
                     {
-                        CreatePairedPortal(6, 4,portal1);
+                        Portal portal2 = CreatePairedPortal(6, 4,portal1);
+                        portal1.SetPair(portal2);
                     }
                 }
                 else
@@ -331,7 +336,7 @@ public class ObstacleEventManager : MonoBehaviour
     }
     public void RandomEvent()
     {
-        int randomnum = rnd.Next(0, 6);
+        int randomnum = 3 /*rnd.Next(0, 6)*/;
         print(randomnum);
         switch (randomnum)
         {

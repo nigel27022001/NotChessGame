@@ -10,7 +10,7 @@ using Image = UnityEngine.UI.Image;
 
 public class MovePlate : MonoBehaviour
 {
-    public GameObject controller;
+    public Game gameState;
     public Sprite AttackMovePlate;
     private GameObject reference = null;
 
@@ -28,11 +28,16 @@ public class MovePlate : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = AttackMovePlate;
         }
     }
-    
+
+    public void Awake()
+    {
+        gameState = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+        
+    }
+
     public void OnMouseUp()
     {
-        controller = GameObject.FindGameObjectWithTag("GameController");
-        GameObject cp = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
+        GameObject cp = gameState.GetPosition(matrixX, matrixY);
         if (cp != null)
         {
             if (attack) // remove attacked piece
@@ -46,52 +51,19 @@ public class MovePlate : MonoBehaviour
                 else
                 {
                     ChessPiece attackedPiece = cp.GetComponent<ChessPiece>();
-                    /*String attackingName = reference.GetComponent<Chessman>().name;
-                    if (attackingName == "bSB2" || attackingName == "wSB2")
-                    {
-                        reference.GetComponent<Chessman>().PawnNecromancy(1);
-                        print("tick");
-                    }
-                    
-                    if (cp.name == "wSN1" || cp.name == "bSN1")
-                    {
-                        if (cp.name == "wSN1")
-                        {
-                            cp.GetComponent<Chessman>().name = "wN";
-                            cp.GetComponent<Chessman>().Activate();
-                        }
-    
-                        if (cp.name == "bSN1")
-                        {
-                            cp.GetComponent<Chessman>().name = "bN";
-                            cp.GetComponent<Chessman>().Activate();
-                        }
-    
-                        controller.GetComponent<Game>().NextTurn();
-                        reference.GetComponent<Chessman>().DestroyMovePlates();
-                        return;
-                    }
-                    */
                     print(attackedPiece.name);
                     if (attackedPiece.name == "king")
                     {
                         if (attackedPiece.player == "black")
                         {
-                            controller.GetComponent<Game>().Winner("White");
+                            gameState.Winner("White");
                         }
 
                         if (attackedPiece.player == "white")
                         {
-                            controller.GetComponent<Game>().Winner("Black");
+                            gameState.Winner("Black");
                         }
                     }
-
-                    /*if (attackingPiece.name == "pawnS2")
-                    {
-                        SPawn2 obj = attackingPiece.gameObject.GetComponent<SPawn2>();
-                        reference = obj.Convert(cp);
-                    }
-                    */
                     else
                     {
                         attackedPiece.Defence();
@@ -99,55 +71,87 @@ public class MovePlate : MonoBehaviour
                     }
                 }
             }
-
-            if (cp.name == "PORTAL")
-                //need to update moveplate to allow cp.name == portal
-            {
-                matrixX = cp.GetComponent<Portal>().GetPairPortal().GetXBoard();
-                matrixY = cp.GetComponent<Portal>().GetPairPortal().GetYBoard();
-                int originalX = reference.GetComponent<ChessPiece>().GetXBoard();
-                int originalY = reference.GetComponent<ChessPiece>().GetYBoard();
-                controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
-
-                reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
-                reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
-                //print(matrixX + "" + matrixY);
-                reference.GetComponent<ChessPiece>().MovePiece();
-
-                controller.GetComponent<Game>().SetPosition(reference);
-                controller.GetComponent<Game>().NextTurn();
-                reference.GetComponent<ChessPiece>().DestroyMovePlates();
-            }
             else if(cp.name == "RIVER"){
                 int originalX = reference.GetComponent<ChessPiece>().GetXBoard();
                 int originalY = reference.GetComponent<ChessPiece>().GetYBoard();
-                controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
+                gameState.SetPositionEmpty(originalX, originalY);
 
                 reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
                 reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
                 //print(matrixX + "" + matrixY);
                 reference.GetComponent<ChessPiece>().MovePiece();
 
-                controller.GetComponent<Game>().SetPosition(reference);
-                controller.GetComponent<Game>().NextTurn();
+                gameState.SetPosition(reference);
+                gameState.NextTurn();
                 reference.GetComponent<ChessPiece>().DestroyMovePlates();
             }
         }
 
         else
         {
+            if (gameState.portalPositions[matrixX, matrixY] != null)
+            {
+                Portal portal2 = gameState.portalPositions[matrixX, matrixY]
+                    .GetPairPortal();
+                matrixX = portal2.GetXBoard();
+                matrixY = portal2.GetYBoard();
+                if (gameState.positions[matrixX, matrixY] != null)
+                {
+                    ChessPiece conflict = gameState.positions[matrixX, matrixY]
+                        .GetComponent<ChessPiece>();
+
+                    void Flush(int x, int y)
+                    {
+                        gameState.SetPositionEmpty(matrixX, matrixY);
+                        conflict.SetXBoard(matrixX + 1);
+                        conflict.SetYBoard(matrixY);
+                        conflict.MovePiece();
+                        gameState.SetPosition(conflict.gameObject);
+                    }
+                    if (gameState.positions[matrixX + 1, matrixY] == null)
+                    {
+                        Flush(matrixX + 1, matrixY);
+                    } else if (gameState.positions[matrixX - 1, matrixY] == null)
+                    {
+                        Flush(matrixX - 1, matrixY);
+                    } else if (gameState.positions[matrixX, matrixY + 1] == null)
+                    {
+                        Flush(matrixX, matrixY + 1);
+                    } else if (gameState.positions[matrixX, matrixY - 1] == null)
+                    {
+                        Flush(matrixX, matrixY - 1);
+                    } else if (gameState.positions[matrixX + 1, matrixY + 1] == null)
+                    {
+                        Flush(matrixX + 1, matrixY + 1);
+                    } else if (gameState.positions[matrixX - 1, matrixY + 1] == null)
+                    {
+                        Flush(matrixX - 1, matrixY + 1);
+                    } else if (gameState.positions[matrixX + 1, matrixY - 1] == null)
+                    {
+                        Flush(matrixX + 1, matrixY - 1);
+                    } else if (gameState.positions[matrixX - 1, matrixY - 1] == null)
+                    {
+                        Flush(matrixX - 1, matrixY - 1);
+                    }
+                    else
+                    {
+                        Destroy(conflict.gameObject);
+                    }
+                }
+            }
+
             // empty the old position
                 int originalX = reference.GetComponent<ChessPiece>().GetXBoard();
                 int originalY = reference.GetComponent<ChessPiece>().GetYBoard();
-                controller.GetComponent<Game>().SetPositionEmpty(originalX, originalY);
+                gameState.SetPositionEmpty(originalX, originalY);
 
                 reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
                 reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
                 //print(matrixX + "" + matrixY);
                 reference.GetComponent<ChessPiece>().MovePiece();
 
-                controller.GetComponent<Game>().SetPosition(reference);
-                controller.GetComponent<Game>().NextTurn();
+                gameState.SetPosition(reference);
+                gameState.NextTurn();
                 reference.GetComponent<ChessPiece>().DestroyMovePlates();
         }
     }

@@ -30,10 +30,10 @@ public class Game : MonoBehaviour
     public bool[] BlackAugments;
 
     public GameObject[,] positions = new GameObject[8, 8];
+    public Portal[,] portalPositions = new Portal[8, 8];
     public GameObject[] playerBlack = new GameObject[16];
     public GameObject[] playerWhite = new GameObject[16];
-    private GameObject[] portalPair1;
-    private GameObject[] portalPair2;
+    
 
     public string currentPlayer = "white";
 
@@ -173,7 +173,7 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (turnNumber % 15 == 0 && !eventDone)
+        if (turnNumber == 2 /*% 15 == 0*/ && !eventDone)
         {
             
             GameObject obj = Instantiate(this.EventManager);
