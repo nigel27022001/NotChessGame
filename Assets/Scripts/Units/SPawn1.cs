@@ -35,21 +35,28 @@ public class SPawn1 : ChessPiece
 
     protected override void InitiateMovePlates()
     {
+        Game sc = controller.GetComponent<Game>();
         switch (this.player)
         {
+            
             case "white":
-                PawnMovePlate(xBoard, yBoard + 2);
+                if (sc.GetPosition(xBoard, yBoard + 1) == null)
+                {
+                    PawnMovePlate(xBoard, yBoard + 2);   
+                }
                 PawnMovePlate(xBoard, yBoard + 1);
                 break;
             case "black":
-                PawnMovePlate(xBoard, yBoard - 2);
+                if (sc.GetPosition(xBoard, yBoard - 1) == null)
+                {
+                    PawnMovePlate(xBoard, yBoard - 2);   
+                }
                 PawnMovePlate(xBoard, yBoard - 1);
                 break;
         }
 
         void PawnMovePlate(int x, int y)
         {
-            Game sc = controller.GetComponent<Game>();
             if (sc.PositionOnBoard(x, y))
             {
                 if ((sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL") || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
@@ -79,7 +86,6 @@ public class SPawn1 : ChessPiece
 
         void PawnMovePlate2(int x, int y)
         {
-            Game sc = controller.GetComponent<Game>();
             if (sc.PositionOnBoard(x, y))
             {
                 if (sc.GetPosition(x, y) == null || sc.GetPosition(x, y).name == "PORTAL" || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
