@@ -697,24 +697,24 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Your pawns can now move twice.
 
-    Your pawns can now convert a captured
-    piece.
+    Your pawns can now transform into
+    a captured piece.
 
     Your rooks can now jump over a piece to capture it .
 
-    Your rooks
-    can now remove terrain obstacles by capturing them.
-
-    Your bishops can also
-    take one step forward and backwards.
-
-    Your bishops will spawn pawns everytime
-    you capture an opposing unit.
-
-    Your knights can resist capture once.
-
     Your
-    queen can now also move like a knight.
+    rooks can now remove terrain obstacles by capturing them.
+
+    Your bishops can
+    also take one step forward and backwards.
+
+    Your bishops will spawn pawns
+    everytime you capture an opposing unit.
+
+    Your knights can resist capture
+    once.
+
+    Your queen can now also move like a knight.
 
 
 
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 576359509}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6634547
+  m_Size: 0.6653645
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

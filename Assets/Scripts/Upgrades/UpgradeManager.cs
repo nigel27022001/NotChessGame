@@ -233,7 +233,7 @@ public class UpgradeManager : MonoBehaviour
                     return "Your pawns can now move twice.";
                     break;
                 case 1:
-                    return "Your pawns can now convert a captured piece.";
+                    return "Your pawns can transform into a captured piece";
                     break;
                 case 2:
                     return "Your rooks can now jump over a piece to capture it";

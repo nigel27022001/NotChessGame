@@ -10,7 +10,7 @@ public class SPawn2 : ChessPiece
 
     public override void Describe()
     {
-        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Headhunter\n\nCan convert a captured piece";
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Shapeshifter\n\nCan transform into captured piece";
     }
     public void Awake()
     {

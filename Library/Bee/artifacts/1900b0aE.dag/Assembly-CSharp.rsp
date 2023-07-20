@@ -417,6 +417,7 @@
 "Assets/Scripts/Upgrades/RookUpgrade2.cs"
 "Assets/Scripts/Upgrades/Upgradeable.cs"
 "Assets/Scripts/Upgrades/UpgradeManager.cs"
+"Assets/Scripts/UpgradeTracker.cs"
 -langversion:9.0
 
 /deterministic
