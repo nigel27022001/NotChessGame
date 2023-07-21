@@ -48,12 +48,10 @@
      <Compile Include="Assets\Scripts\Units\SBishop2.cs" />
      <Compile Include="Assets\Scripts\TypeWriter.cs" />
      <Compile Include="Assets\Scripts\Units\UnitManager.cs" />
-     <Compile Include="Assets\Scripts\Obstacles\Event.cs" />
      <Compile Include="Assets\Scripts\PanelManager.cs" />
      <Compile Include="Assets\Scripts\Upgrades\PawnUpgrade2.cs" />
      <Compile Include="Assets\Scripts\Upgrades\RookUpgrade2.cs" />
      <Compile Include="Assets\Scripts\Units\SPawn1.cs" />
-     <Compile Include="Assets\Scripts\Obstacles\WindEvent.cs" />
      <Compile Include="Assets\Scripts\Units\SRook2.cs" />
      <Compile Include="Assets\Scripts\Units\ChessPiece.cs" />
      <Compile Include="Assets\Scripts\UpgradeTracker.cs" />
@@ -64,6 +62,7 @@
      <Compile Include="Assets\Scripts\Units\SKnight1.cs" />
      <Compile Include="Assets\Scripts\Upgrades\BishopUpgrade2.cs" />
      <Compile Include="Assets\Scripts\MovePlate.cs" />
+     <Compile Include="Assets\Scripts\Events\RiverEvent.cs" />
      <Compile Include="Assets\Scripts\Obstacles\Lava.cs" />
      <Compile Include="Assets\Scripts\Upgrades\PawnUpgrade1.cs" />
      <Compile Include="Assets\Scripts\Units\Pawn.cs" />
@@ -74,15 +73,18 @@
      <Compile Include="Assets\Scripts\Obstacles\Rivers.cs" />
      <Compile Include="Assets\Scripts\Upgrades\BishopUpgrade1.cs" />
      <Compile Include="Assets\Scripts\Obstacles\Portal.cs" />
+     <Compile Include="Assets\Scripts\Events\Event.cs" />
      <Compile Include="Assets\Scripts\Upgrades\QueenUpgrade1.cs" />
-     <Compile Include="Assets\Scripts\Obstacles\EventManager.cs" />
      <Compile Include="Assets\Scripts\Units\SBishop1.cs" />
      <Compile Include="Assets\Scripts\Upgrades\KnightUpgrade1.cs" />
      <Compile Include="Assets\Scripts\Upgrades\Upgradeable.cs" />
+     <Compile Include="Assets\Scripts\Events\EventManager.cs" />
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\Events\WindEvent.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Units\SPawn2.cs" />
-     <Compile Include="Assets\Scripts\Obstacles\AntiMagicEvent.cs" />
+     <Compile Include="Assets\Scripts\Events\PortalEvent.cs" />
+     <Compile Include="Assets\Scripts\Events\AntiMagicEvent.cs" />
      <Compile Include="Assets\Scripts\Upgrades\RookUpgrade1.cs" />
      <Compile Include="Assets\Scripts\Units\Queen.cs" />
      <Compile Include="Assets\Scripts\Music.cs" />
@@ -90,6 +92,7 @@
      <Compile Include="Assets\Scripts\Obstacles\Mountains.cs" />
      <Compile Include="Assets\Scripts\Units\SRook1.cs" />
      <Compile Include="Assets\Scripts\Units\Knight.cs" />
+     <Compile Include="Assets\Scripts\Events\LavaEvent.cs" />
      <Compile Include="Assets\Scripts\Obstacles\Obstacles.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -112,6 +115,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <Folder Include="Assets\Animation" />
      <Folder Include="Assets\TextMesh Pro" />
+     <Folder Include="Assets\Scripts\Events" />
      <Folder Include="Assets\Objects\Obstacles" />
      <Folder Include="Assets\Scripts\Units" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -137,6 +141,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <Folder Include="Assets\Yoge\ParallaxBackground 1\Scenes" />
+     <Folder Include="Assets\Objects\Events" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <Folder Include="Assets\TextMesh Pro\Documentation" />
      <Folder Include="Assets\Scripts\Upgrades" />

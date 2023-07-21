@@ -44,26 +44,27 @@ public class SRook2 : ChessPiece
 
     void SpecialRook2Plate(int xIncrement, int yIncrement)
     {
-        Game sc = controller.GetComponent<Game>();
-
         int x = xBoard + xIncrement;
         int y = yBoard + yIncrement;
 
-        while (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y) == null)
+        while (gameState.PositionOnBoard(x, y) && gameState.GetPosition(x, y) == null && RiverCheck(x,y))
         {
             MovePlateSpawn(x, y);
             x += xIncrement;
             y += yIncrement;
         }
-        if (sc.PositionOnBoard(x, y) && (sc.GetPosition(x, y).name == "OBSTACLE" || sc.GetPosition(x, y).name == "RIVER"))
+
+        if (gameState.PositionOnBoard(x, y) && RiverCheck(x, y))
         {
-            MovePlateAttackSpawn(x, y);
-        }
-        else
-        {
-            if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+            if (gameState.GetPosition(x, y) != null)
             {
-                MovePlateAttackSpawn(x, y);
+                if (gameState.GetPosition(x, y).name == "OBSTACLE")
+                {
+                    MovePlateAttackSpawn(x, y);
+                } else if (gameState.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+                {
+                    MovePlateAttackSpawn(x, y);
+                }
             }
         }
     }
@@ -73,11 +74,11 @@ public class SRook2 : ChessPiece
         if (captured.name == "OBSTACLE")
         {
             Destroy(captured);
-            controller.GetComponent<Game>().SetPositionEmpty(xBoard, yBoard);
+            gameState.SetPositionEmpty(xBoard, yBoard);
             this.SetXBoard(x);
             this.SetYBoard(y);
             this.MovePiece();
-            controller.GetComponent<Game>().SetPosition(this.gameObject);
+            gameState.SetPosition(this.gameObject);
             this.DestroyMovePlates();
         }
         else
@@ -85,15 +86,14 @@ public class SRook2 : ChessPiece
             if (!captured.GetComponent<ChessPiece>().Defence())
             {
                 Destroy(captured);
-                controller.GetComponent<Game>().SetPositionEmpty(xBoard, yBoard);
+                gameState.SetPositionEmpty(xBoard, yBoard);
                 this.SetXBoard(x);
                 this.SetYBoard(y);
                 this.MovePiece();
-                controller.GetComponent<Game>().SetPosition(this.gameObject);
+                gameState.SetPosition(this.gameObject);
                 this.DestroyMovePlates();
             }
-
-            controller.GetComponent<Game>().NextTurn();
+            gameState.NextTurn();
         }
     }
 }

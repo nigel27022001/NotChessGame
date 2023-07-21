@@ -16,7 +16,7 @@ public class SKnight1 : ChessPiece
     public void Awake()
     {
         UM = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
-        controller = GameObject.FindGameObjectWithTag("GameController");
+        gameState = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
     }
     
     public override void Activate(string player, int xCoord, int yCoord)
@@ -61,11 +61,11 @@ public class SKnight1 : ChessPiece
     public override bool Defence()
     {
         ChessPiece newObj = UM.Replace(this.gameObject, "knight").GetComponent<ChessPiece>();
-        controller.GetComponent<Game>().SetPositionEmpty(xBoard, yBoard);
+        gameState.SetPositionEmpty(xBoard, yBoard);
         newObj.SetXBoard(xBoard);
         newObj.SetYBoard(yBoard);
         newObj.MovePiece();
-        controller.GetComponent<Game>().SetPosition(newObj.gameObject);
+        gameState.SetPosition(newObj.gameObject);
         this.DestroyMovePlates();
         return true;
     }

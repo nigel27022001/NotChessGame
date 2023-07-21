@@ -147,7 +147,6 @@ public class MovePlate : MonoBehaviour
 
                 reference.GetComponent<ChessPiece>().SetXBoard(matrixX);
                 reference.GetComponent<ChessPiece>().SetYBoard(matrixY);
-                //print(matrixX + "" + matrixY);
                 reference.GetComponent<ChessPiece>().MovePiece();
 
                 gameState.SetPosition(reference);

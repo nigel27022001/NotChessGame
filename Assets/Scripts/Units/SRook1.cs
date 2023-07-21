@@ -9,7 +9,7 @@ public class SRook1 : ChessPiece
 
     public override void Describe()
     {
-        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Cannon\n\nCan jump over a piece to capture another";
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Cannon\n\nCan jump over a piece and river to capture another";
     }
     public override void Activate(string player, int xCoord, int yCoord)
     {
@@ -43,32 +43,28 @@ public class SRook1 : ChessPiece
 
     void SpecialRook1Plate(int xIncrement, int yIncrement)
     {
-        Game sc = controller.GetComponent<Game>();
-
         int x = xBoard + xIncrement;
         int y = yBoard + yIncrement;
-        print(x + " " + y);
-        while (sc.PositionOnBoard(x, y) && (sc.GetPosition(x,y) == null || sc.GetPosition(x,y).name == "PORTAL")|| (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
+        while (gameState.PositionOnBoard(x, y) && gameState.GetPosition(x,y) == null )
         {
             MovePlateSpawn(x, y);
             x += xIncrement;
             y += yIncrement;
         }
 
-        if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).name != "OBSTACLE")
+        if (gameState.PositionOnBoard(x, y) && gameState.GetPosition(x, y).name != "OBSTACLE")
         {
-            if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+            if (gameState.PositionOnBoard(x, y) && gameState.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
             {
-                //MovePlateAttackSpawn(x, y);
                 x += xIncrement;
                 y += yIncrement;
             }
-            if (sc.PositionOnBoard(x, y))
+            if (gameState.PositionOnBoard(x, y))
             {
-                while (sc.PositionOnBoard(x, y))
+                while (gameState.PositionOnBoard(x, y))
                 {
-                    if (sc.GetPosition(x, y) != null && sc.GetPosition(x, y).GetComponent<ChessPiece>().player != player 
-                                                     && sc.GetPosition(x, y).name != "OBSTACLE")
+                    if (gameState.GetPosition(x, y) != null && gameState.GetPosition(x, y).GetComponent<ChessPiece>().player != player 
+                                                            && gameState.GetPosition(x, y).name != "OBSTACLE")
                     {
                         MovePlateAttackSpawn(x, y);
                         return;

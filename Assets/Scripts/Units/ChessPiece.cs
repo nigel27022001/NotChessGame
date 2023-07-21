@@ -7,24 +7,23 @@ using UnityEngine;
 public abstract class ChessPiece: MonoBehaviour
 {
     public string player;
-    public GameObject controller;
+    protected Game gameState;
     public GameObject movePlate;
-    public bool upgraded;
-    public int xBoard = -1;
-    public int yBoard = -1;
+    protected bool upgraded;
+    protected int xBoard = -1;
+    protected int yBoard = -1;
     public string rawName;
     private string pastLife;
-    public bool crossedRiver;
+    protected bool crossedRiver;
 
     public void Awake()
     {
-        controller = GameObject.FindGameObjectWithTag("GameController");
+        gameState = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
         crossedRiver = false;
     }
 
     public void Update()
     {
-        Game gameState = controller.GetComponent<Game>();
         if (gameState.riverActive && !crossedRiver)
         {
             int riverY = gameState.riverSpot[xBoard];
@@ -33,7 +32,7 @@ public abstract class ChessPiece: MonoBehaviour
                 if (yBoard > riverY)
                 {
                     crossedRiver = true;
-                    print("crossed river");
+                    print("crossed");
                 }
             }
             else
@@ -41,13 +40,14 @@ public abstract class ChessPiece: MonoBehaviour
                 if (yBoard < riverY)
                 {
                     crossedRiver = true;
-                    print("crossed river");
+                    print("crossed");
                 }
             }
         }
         if (gameState.riverActive == false && crossedRiver != false)
         {
             crossedRiver = false;
+            print("over");
         }
     }
 
@@ -119,10 +119,10 @@ public abstract class ChessPiece: MonoBehaviour
     }
     private void OnMouseUp()
     {
-        if (!controller.GetComponent<Game>().IsGameOver() &&
-            controller.GetComponent<Game>().GetCurrentPlayer() == player)
+        if (!gameState.IsGameOver() &&
+            gameState.GetCurrentPlayer() == player)
         {
-            if (controller.GetComponent<Game>().restriction == null)
+            if (gameState.restriction == null)
             {
                 DestroyMovePlates();
 
@@ -130,7 +130,7 @@ public abstract class ChessPiece: MonoBehaviour
             }
             else
             {
-                if (controller.GetComponent<Game>().restriction == this.name || controller.GetComponent<Game>().restriction == rawName )
+                if (gameState.restriction == this.name || gameState.restriction == rawName )
                 {
                     DestroyMovePlates();
 
@@ -165,45 +165,120 @@ public abstract class ChessPiece: MonoBehaviour
         mpScript.SetCoords(matrixX, matrixY);
         return mpScript;
     }
+
+    protected bool RiverCheck(int x, int y)
+    {
+        if (gameState.riverActive && crossedRiver)
+        {
+            if (this.player == "white")
+            {
+                if (gameState.riverSpot[x] < y)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (gameState.riverSpot[x] > y)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     protected void LineMovePlate(int xIncrement, int yIncrement)
     {
-        Game sc = controller.GetComponent<Game>();
-
         int x = xBoard + xIncrement;
         int y = yBoard + yIncrement;
 
-        while (sc.PositionOnBoard(x, y) && (sc.GetPosition(x,y) == null || sc.GetPosition(x,y).name == "PORTAL" || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false)))
+        while (gameState.PositionOnBoard(x, y) && gameState.GetPosition(x,y) == null && RiverCheck(x,y))
         {
             MovePlateSpawn(x, y);
             x += xIncrement;
             y += yIncrement;
         }
 
-        if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y).name != "OBSTACLE")
+        if (gameState.PositionOnBoard(x, y) && RiverCheck(x, y))
         {
-            if (sc.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+            if (gameState.PositionOnBoard(x, y) && gameState.GetPosition(x, y).name != "OBSTACLE")
             {
-                MovePlateAttackSpawn(x, y);
-            } 
+                if (gameState.GetPosition(x, y).GetComponent<ChessPiece>().player != player)
+                {
+                    MovePlateAttackSpawn(x, y);
+                }
+            }
         }
-            
     }
     
     protected void PointMovePlate(int x, int y)
     {
-        Game sc = controller.GetComponent<Game>();
-        if (sc.PositionOnBoard(x, y))
+        if (gameState.PositionOnBoard(x, y))
         {
-            GameObject cp = sc.GetPosition(x, y);
-            if (cp == null || cp.name == "PORTAL" || (sc.GetPosition(x,y).name == "RIVER" && this.crossedRiver == false))
+            GameObject cp = gameState.GetPosition(x, y);
+            if (cp == null)
             {
-                MovePlateSpawn(x, y);
-            } else if (cp != null)
+                if (RiverCheck(x, y))
+                {
+                    MovePlateSpawn(x, y);
+                }
+            } else 
             {
                 if(cp.name != "OBSTACLE" && cp.GetComponent<ChessPiece>().player != player)
                 {
                     MovePlateAttackSpawn(x, y);
                 }
+            }
+        }
+    }
+    protected void PawnMovePlate(int x, int y)
+    {
+        if (gameState.PositionOnBoard(x, y))
+        {
+            if (gameState.GetPosition(x, y) == null )
+            {
+                MovePlateSpawn(x, y);
+            }
+                
+            if (gameState.PositionOnBoard(x + 1, y) && gameState.GetPosition(x + 1, y) != null && gameState.GetPosition(x + 1, y).name != "OBSTACLE" )
+            {
+                if (gameState.PositionOnBoard(x + 1, y) && gameState.GetPosition(x + 1, y) != null &&
+                    gameState.GetPosition(x + 1, y).GetComponent<ChessPiece>().player != player)
+                {
+                    MovePlateAttackSpawn(x + 1, y);
+                }
+            }
+
+            if (gameState.PositionOnBoard(x - 1, y) && gameState.GetPosition(x - 1, y) != null && gameState.GetPosition(x - 1, y).name != "OBSTACLE")
+            {
+                if (gameState.PositionOnBoard(x - 1, y) && gameState.GetPosition(x - 1, y) != null &&
+                    gameState.GetPosition(x - 1, y).GetComponent<ChessPiece>().player != player)
+                {
+                    MovePlateAttackSpawn(x - 1, y);
+                }
+            }
+        }
+    }
+
+    protected void PawnMovePlate2(int x, int y)
+    {
+        if (gameState.PositionOnBoard(x, y))
+        {
+            if (gameState.GetPosition(x, y) == null)
+            {
+                MovePlateSpawn(x, y);
             }
         }
     }
@@ -233,13 +308,13 @@ public abstract class ChessPiece: MonoBehaviour
         if (!captured.GetComponent<ChessPiece>().Defence())
         {
             Destroy(captured);
-            controller.GetComponent<Game>().SetPositionEmpty(xBoard, yBoard);
+            gameState.SetPositionEmpty(xBoard, yBoard);
             this.SetXBoard(x);
             this.SetYBoard(y);
             this.MovePiece();
-            controller.GetComponent<Game>().SetPosition(this.gameObject);
+            gameState.SetPosition(this.gameObject);
             this.DestroyMovePlates();
         }
-        controller.GetComponent<Game>().NextTurn();
+        gameState.NextTurn();
     }
 }

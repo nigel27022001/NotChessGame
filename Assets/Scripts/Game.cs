@@ -12,22 +12,13 @@ using Random = System.Random;
 
 public class Game : MonoBehaviour
 {
-    public GameObject Chesspiece;
     public GameObject EventManager;
     public GameObject UnitManagerPrefab;
     private UnitManager UM;
     public Transform Gameboard;
-    public GameObject panel;
     private AudioSource audio;
     public GameObject UpgradeManagerPrefab;
     public UpgradeManager UpgradeM;
-
-    public static int numOfUpgrade = 8;
-    // Random Number Generator to Generate Random Augments
-    public Random rnd = new Random();
-    // Augment Index: 1: Pawn1 2: Pawn2 3: Rook1 4: Rook2 5: Bishop1 6: Bishop2 7: Knight1 8: Knight2 9:Queen 10: King
-    public bool[] WhiteAugments;
-    public bool[] BlackAugments;
 
     public GameObject[,] positions = new GameObject[8, 8];
     public Portal[,] portalPositions = new Portal[8, 8];
@@ -66,7 +57,7 @@ public class Game : MonoBehaviour
     {
         playerWhite = new GameObject[]
         {
-            UM.Create("rook","white", 0, 0), UM.Create("knight","white", 1, 0),
+            UM.Create("rookS2","white", 0, 0), UM.Create("knight","white", 1, 0),
             UM.Create("bishop","white", 2, 0), UM.Create("queen", "white", 3, 0),
             UM.Create("king", "white", 4, 0), UM.Create("bishop","white", 5, 0), 
             UM.Create("knight","white", 6, 0), UM.Create("rook","white", 7, 0),
@@ -91,31 +82,10 @@ public class Game : MonoBehaviour
             SetPosition(playerBlack[i]);
             SetPosition(playerWhite[i]);
         }
-
-        BlackAugments = new bool[numOfUpgrade];
-        WhiteAugments = new bool[numOfUpgrade];
-        for (int i = 0; i < BlackAugments.Length; i++)
-        {
-            BlackAugments[i] = false;
-            WhiteAugments[i] = false;
-        }
-
         restriction = null;
         riverActive = false;
     }
-
-    public GameObject Create(string name, int x, int y)
-    {
-        GameObject obj = Instantiate(Chesspiece, new Vector3(0, 0, 10), quaternion.identity);
-        Chessman cm = obj.GetComponent<Chessman>();
-        obj.transform.parent = Gameboard;
-        cm.name = name;
-        cm.SetXBoard(x);
-        cm.SetYBoard(y);
-        cm.Activate();
-        return obj;
-    }
-
+    
     public void SetPosition(GameObject obj)
     {
             ChessPiece cp = obj.GetComponent<ChessPiece>();
@@ -227,31 +197,5 @@ public class Game : MonoBehaviour
         GameObject.FindGameObjectWithTag("Turn").GetComponent<TextMeshProUGUI>().text = playerWinner + " wins!";
         GameObject.FindGameObjectWithTag("Player").GetComponent<TextMeshProUGUI>().text = "Tap to Restart";
     }
-
-    public int RowCheck(int rowNum)
-    {
-        
-        bool checkIfNotFull = false;
-        for (int k = 0; k <= 7; k++)
-        {
-            if (GetPosition(k, rowNum) == null)
-            {
-                checkIfNotFull = true;
-            }
-        }
-        if (!checkIfNotFull)
-        {
-            return -1;
-        }
-        else
-        {
-            int rndCol = rnd.Next(0, 8);
-            while (GetPosition(rndCol, rowNum) != null)
-            {
-                rndCol = rnd.Next(0, 8);
-            }
-
-            return rndCol;
-        }
-    }
+    
 }

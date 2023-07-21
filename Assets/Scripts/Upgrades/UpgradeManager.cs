@@ -11,18 +11,28 @@ public class UpgradeManager : MonoBehaviour
     private Game gameState;
 
     private UnitManager UM;
-
-    public GameObject Panel;
     
-    public Random rnd = new Random();
+    private bool[] WhiteAugments;
+    private bool[] BlackAugments;
 
-    public GameObject PU1, PU2, RU1, RU2, BU1, BU2, KU1, QU1;
+    [SerializeField] private GameObject Panel;
     
-    public int numOfUpgrade = 8;
+    Random rnd = new Random();
+
+    [SerializeField] private GameObject PU1, PU2, RU1, RU2, BU1, BU2, KU1, QU1;
+    
+    private int numOfUpgrade = 8;
     public void Awake()
     {
         UM = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
         gameState = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+        BlackAugments = new bool[numOfUpgrade];
+        WhiteAugments = new bool[numOfUpgrade];
+        for (int i = 0; i < BlackAugments.Length; i++)
+        {
+            BlackAugments[i] = false;
+            WhiteAugments[i] = false;
+        }
     }
 
     public void UpgradePanel()
@@ -39,9 +49,9 @@ public class UpgradeManager : MonoBehaviour
             {
 
                 bool check = false;
-                for (int i = 0; i < gameState.WhiteAugments.Length; i++)
+                for (int i = 0; i < WhiteAugments.Length; i++)
                 {
-                    check = check || !gameState.WhiteAugments[i];
+                    check = check || !WhiteAugments[i];
                 }
 
                 if (check == false)
@@ -51,21 +61,21 @@ public class UpgradeManager : MonoBehaviour
                 }
 
                 curr = rnd.Next(0, numOfUpgrade);
-                while (gameState.WhiteAugments[curr] == true)
+                while (WhiteAugments[curr] == true)
                 {
                     curr = rnd.Next(0, numOfUpgrade);
                 }
 
-                gameState.WhiteAugments[curr] = true;
+                WhiteAugments[curr] = true;
             }
 
             if (gameState.currentPlayer != "black")
             {
 
                 bool check = false;
-                for (int i = 0; i < gameState.BlackAugments.Length; i++)
+                for (int i = 0; i < BlackAugments.Length; i++)
                 {
-                    check = check || !gameState.BlackAugments[i];
+                    check = check || !BlackAugments[i];
                 }
 
                 if (check == false)
@@ -75,12 +85,12 @@ public class UpgradeManager : MonoBehaviour
                 }
 
                 curr = rnd.Next(0, numOfUpgrade);
-                while (gameState.BlackAugments[curr] == true)
+                while (BlackAugments[curr] == true)
                 {
                     curr = rnd.Next(0, numOfUpgrade);
                 }
 
-                gameState.BlackAugments[curr] = true;
+                BlackAugments[curr] = true;
             }
 
 
@@ -136,42 +146,42 @@ public class UpgradeManager : MonoBehaviour
                 switch (number)
                 {
                     case 0:
-                        gameState.WhiteAugments[0] = true;
+                        WhiteAugments[0] = true;
                         upgrade = Instantiate(PU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 1:
-                        gameState.WhiteAugments[1] = true;
+                        WhiteAugments[1] = true;
                         upgrade = Instantiate(PU2).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 2:
-                        gameState.WhiteAugments[2] = true;
+                        WhiteAugments[2] = true;
                         upgrade = Instantiate(RU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 3:
-                        gameState.WhiteAugments[3] = true;
+                        WhiteAugments[3] = true;
                          upgrade = Instantiate(RU2).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 4:
-                        gameState.WhiteAugments[4] = true;
+                        WhiteAugments[4] = true;
                         upgrade = Instantiate(BU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 5:
-                        gameState.WhiteAugments[5] = true;
+                        WhiteAugments[5] = true;
                         upgrade = Instantiate(KU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 6:
-                        gameState.WhiteAugments[6] = true;
+                        WhiteAugments[6] = true;
                         upgrade = Instantiate(QU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 7:
-                        gameState.WhiteAugments[7] = true;
+                        WhiteAugments[7] = true;
                         upgrade = Instantiate(BU2).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
@@ -182,42 +192,42 @@ public class UpgradeManager : MonoBehaviour
                 switch (number)
                 {
                     case 0:
-                        gameState.BlackAugments[0] = true;
+                        BlackAugments[0] = true;
                         upgrade = Instantiate(PU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 1:
-                        gameState.BlackAugments[1] = true;
+                        BlackAugments[1] = true;
                         upgrade = Instantiate(PU2).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 2:
-                        gameState.BlackAugments[2] = true;
+                        BlackAugments[2] = true;
                         upgrade = Instantiate(RU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 3:
-                        gameState.BlackAugments[3] = true;
+                        BlackAugments[3] = true;
                         upgrade = Instantiate(RU2).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 4:
-                        gameState.BlackAugments[4] = true;
+                        BlackAugments[4] = true;
                         upgrade = Instantiate(BU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 5:
-                        gameState.BlackAugments[5] = true;
+                        BlackAugments[5] = true;
                         upgrade = Instantiate(KU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 6:
-                        gameState.BlackAugments[6] = true;
+                        BlackAugments[6] = true;
                         upgrade = Instantiate(QU1).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;
                     case 7:
-                        gameState.BlackAugments[7] = true;
+                        BlackAugments[7] = true;
                         upgrade = Instantiate(BU2).GetComponent<Upgradeable>();
                         upgrade.Upgrade();
                         break;

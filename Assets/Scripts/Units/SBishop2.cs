@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Random = System.Random;
 
 public class SBishop2 : ChessPiece
 {
     public Sprite bSB2, wSB2;
 
     public UnitManager UM;
+
+    public Random rnd = new Random();
 
     public override void Describe()
     {
@@ -16,7 +19,7 @@ public class SBishop2 : ChessPiece
     public void Awake()
     {
         UM = GameObject.FindGameObjectWithTag("UnitManager").GetComponent<UnitManager>();
-        controller = GameObject.FindGameObjectWithTag("GameController");
+        gameState = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
     }
     public override void Activate(string player, int xCoord, int yCoord)
     {
@@ -53,19 +56,45 @@ public class SBishop2 : ChessPiece
         if (!captured.GetComponent<ChessPiece>().Defence())
         {
             Destroy(captured);
-            controller.GetComponent<Game>().SetPositionEmpty(xBoard, yBoard);
+            gameState.SetPositionEmpty(xBoard, yBoard);
             this.SetXBoard(x);
             this.SetYBoard(y);
             this.MovePiece();
-            controller.GetComponent<Game>().SetPosition(this.gameObject);
+            gameState.SetPosition(this.gameObject);
             this.PawnNecromancy(1);
-            controller.GetComponent<Game>().NextTurn();
+            gameState.NextTurn();
             this.DestroyMovePlates();
         }
     }
     
     private void PawnNecromancy(int number)
     {
+        int RowCheck(int rowNum)
+        {
+        
+            bool checkIfNotFull = false;
+            for (int k = 0; k <= 7; k++)
+            {
+                if (gameState.GetPosition(k, rowNum) == null)
+                {
+                    checkIfNotFull = true;
+                }
+            }
+            if (!checkIfNotFull)
+            {
+                return -1;
+            }
+            else
+            {
+                int rndCol = rnd.Next(0, 8);
+                while (gameState.GetPosition(rndCol, rowNum) != null)
+                {
+                    rndCol = rnd.Next(0, 8);
+                }
+
+                return rndCol;
+            }
+        }
         int spawnNum = number;
         int curr = 0;
         while (curr < number)
@@ -79,12 +108,12 @@ public class SBishop2 : ChessPiece
             {
                 spawnRow = 6;
             }
-            int colNum = controller.GetComponent<Game>().RowCheck(spawnRow);
+            int colNum = RowCheck(spawnRow);
             if (colNum == -1)
             {
                 while (colNum == -1)
                 {
-                    colNum = controller.GetComponent<Game>().RowCheck(spawnRow);
+                    colNum = RowCheck(spawnRow);
                     if (player == "w")
                     {
                         spawnRow++;
@@ -97,7 +126,7 @@ public class SBishop2 : ChessPiece
             }
 
             GameObject cm = UM.Create("pawn", this.player, colNum, spawnRow);
-            controller.GetComponent<Game>().SetPosition(cm);
+            gameState.SetPosition(cm);
             curr++;
         }
     }
