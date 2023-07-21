@@ -72,7 +72,7 @@ public class ObstacleEventManager : MonoBehaviour
     }
     public void RandomEvent()
     {
-        int randomnum = 1;/*rnd.Next(0, 6)*/;
+        int randomnum = rnd.Next(0, 6);
         print(randomnum);
         switch (randomnum)
         {
