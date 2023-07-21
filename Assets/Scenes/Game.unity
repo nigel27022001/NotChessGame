@@ -549,8 +549,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016, y: 0.8206833}
   m_AnchorMax: {x: 0.23846272, y: 0.96700007}
-  m_AnchoredPosition: {x: -0.5, y: 0}
-  m_SizeDelta: {x: -77, y: -58}
+  m_AnchoredPosition: {x: -10.26001, y: -3.0799866}
+  m_SizeDelta: {x: -135.19, y: -93.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242042782
 MonoBehaviour:
@@ -791,8 +791,8 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &519420032
-Transform:
+--- !u!224 &519420032
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -806,6 +806,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &522291870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,15 +3421,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20c5104752d9494e8559c01c58ae550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Chesspiece: {fileID: 6203757184339225184, guid: d9f65a435171452428d246db60bc7260, type: 3}
   EventManager: {fileID: 5058213141597219757, guid: 857c6b5b46a265a4e8c35da25afcc0a3, type: 3}
   UnitManagerPrefab: {fileID: 6071471730286629784, guid: d6922498eea83b64f9b60adda2aa2160, type: 3}
   Gameboard: {fileID: 0}
-  panel: {fileID: 5976253646594263000, guid: b9b853cd00a82994ba2139eae87b9010, type: 3}
   UpgradeManagerPrefab: {fileID: 5157973904316235821, guid: 82559d178d707b24f8089e74a06a85c2, type: 3}
   UpgradeM: {fileID: 0}
-  WhiteAugments: 00000000000000
-  BlackAugments: 00000000000000
   playerBlack:
   - {fileID: 0}
   - {fileID: 0}
@@ -3463,6 +3464,8 @@ MonoBehaviour:
   turnNumber: 1
   selectedUpgrade: 0
   restriction: 
+  riverActive: 0
+  riverSpot: 
 --- !u!4 &1435107154
 Transform:
   m_ObjectHideFlags: 0
@@ -3586,10 +3589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831a5b2b35105f64f99140d9c2e95079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RiverPrefab: {fileID: 6464084626532730927, guid: b4107d2a1ae373f4ea8cdafef0b3d585, type: 3}
-  PortalPrefab: {fileID: 5840104240472991741, guid: f6e2f97d26d56f04a8f4417595dc5a56, type: 3}
-  MountainPrefab: {fileID: 3963379540646096122, guid: 52f9209f87ccdb845bce78d794f49534, type: 3}
-  LavaPrefab: {fileID: 7143300379723639896, guid: 81f681d793825cb46965cd2f4df99a6f, type: 3}
+  RiverEventPrefab: {fileID: 0}
+  PortalEventPrefab: {fileID: 0}
+  LavaEventPrefab: {fileID: 0}
   AntiMagicPrefab: {fileID: 0}
   WindPrefab: {fileID: 0}
 --- !u!1 &1469946628
@@ -4531,12 +4533,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
