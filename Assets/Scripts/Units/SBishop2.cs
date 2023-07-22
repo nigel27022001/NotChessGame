@@ -14,7 +14,7 @@ public class SBishop2 : ChessPiece
 
     public override void Describe()
     {
-        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Necromancer\n\nCan convert captured pieces into your pawns ";
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Necromancer\n\nCan convert captured pieces into your pawns";
     }
     public void Awake()
     {

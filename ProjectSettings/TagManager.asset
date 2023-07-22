@@ -22,6 +22,7 @@ TagManager:
   - OBSTACLE
   - InfoPanel
   - KillSound
+  - RIVER
   layers:
   - Default
   - TransparentFX

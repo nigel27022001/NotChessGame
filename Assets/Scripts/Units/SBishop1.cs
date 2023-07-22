@@ -9,7 +9,7 @@ public class SBishop1 : ChessPiece
 
     public override void Describe()
     {
-        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Priest\n\n.Can also take one step forward and backward ";
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Priest\n\nCan also take one step forward and backward";
     }
 
     public override void Activate(string player, int xCoord, int yCoord)
