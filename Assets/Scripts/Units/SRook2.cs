@@ -9,7 +9,7 @@ public class SRook2 : ChessPiece
 
     public override void Describe()
     {
-        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Recon\n\nCan traverse over terrains";
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Recon\n\nCan remove hard terrains";
     }
     public override void Activate(string player, int xCoord, int yCoord)
     {

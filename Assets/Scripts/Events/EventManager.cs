@@ -107,11 +107,6 @@ public class ObstacleEventManager : MonoBehaviour
             Gamestate.SetPositionEmpty(Obstacles[k].GetComponent<Obstacles>().GetXBoard(), Obstacles[k].GetComponent<Obstacles>().GetYBoard());
         }
         GameObject[] Rivers = GameObject.FindGameObjectsWithTag("RIVER");
-        for (int k = 0; k < Obstacles.Length; k++)
-        {
-            Destroy(Rivers[k]);
-            Gamestate.SetPositionEmpty(Rivers[k].GetComponent<Obstacles>().GetXBoard(), Obstacles[k].GetComponent<Obstacles>().GetYBoard());
-        }
         Gamestate.restriction = null;
         Gamestate.riverActive = false;
     }
