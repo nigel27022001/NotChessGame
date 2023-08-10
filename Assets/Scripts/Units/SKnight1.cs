@@ -11,7 +11,7 @@ public class SKnight1 : ChessPiece
 
     public override void Describe()
     {
-        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Cavalry\n\nCan resist capture once, capturing them back instead";
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Cavalry\n\nCan resist capture once";
     }
     public void Awake()
     {

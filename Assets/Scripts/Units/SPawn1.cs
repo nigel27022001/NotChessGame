@@ -9,7 +9,7 @@ public class SPawn1 : ChessPiece
 
     public override void Describe()
     {
-        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Guard\n\nCan move twice";
+        GameObject.FindGameObjectWithTag("InfoPanel").GetComponent<TextMeshProUGUI>().text = "Guard\n\nCan move two tiles at once";
     }
     public override void Activate(string player, int xCoord, int yCoord)
     {

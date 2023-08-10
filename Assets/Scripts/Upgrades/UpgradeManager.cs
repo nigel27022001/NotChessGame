@@ -45,19 +45,12 @@ public class UpgradeManager : MonoBehaviour
         void AllocateUpgrade(int optionNumber)
         {
             int curr = 0;
+            bool check = false;
             if (gameState.currentPlayer != "white")
             {
-
-                bool check = false;
                 for (int i = 0; i < WhiteAugments.Length; i++)
                 {
                     check = check || !WhiteAugments[i];
-                }
-
-                if (check == false)
-                {
-                    print("No More Upgrades");
-                    return;
                 }
 
                 curr = rnd.Next(0, numOfUpgrade);
@@ -71,17 +64,9 @@ public class UpgradeManager : MonoBehaviour
 
             if (gameState.currentPlayer != "black")
             {
-
-                bool check = false;
                 for (int i = 0; i < BlackAugments.Length; i++)
                 {
                     check = check || !BlackAugments[i];
-                }
-
-                if (check == false)
-                {
-                    print("No More Upgrades");
-                    return;
                 }
 
                 curr = rnd.Next(0, numOfUpgrade);
@@ -93,6 +78,30 @@ public class UpgradeManager : MonoBehaviour
                 BlackAugments[curr] = true;
             }
 
+            if (check == false)
+            {
+                switch (optionNumber)
+                {
+                    case 1:
+                        panelManager.GetComponent<PanelManager>().Option1Text.GetComponent<TextMeshProUGUI>().text =
+                            "No More Upgrades";
+                        panelManager.GetComponent<PanelManager>().Option1Image.SetActive(false);
+                        panelManager.GetComponent<PanelManager>().Option1Button.SetActive(false);
+                    break;
+                case 2:
+                    panelManager.GetComponent<PanelManager>().Option2Text.GetComponent<TextMeshProUGUI>().text =
+                        "No More Upgrades";
+                    panelManager.GetComponent<PanelManager>().Option2Image.SetActive(false);
+                    panelManager.GetComponent<PanelManager>().Option2Button.SetActive(false);
+                    break;
+                case 3:
+                    panelManager.GetComponent<PanelManager>().Option3Text.GetComponent<TextMeshProUGUI>().text =
+                        "No More Upgrades";
+                    panelManager.GetComponent<PanelManager>().Option3Image.SetActive(false);
+                    panelManager.GetComponent<PanelManager>().Option3Button.SetActive(false);
+                    break;
+                }
+            }
 
             switch (optionNumber)
             {
