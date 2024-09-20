@@ -5,4 +5,5 @@ Our Rogue-Like take on Chess, with Unique Unit Upgrades and Turn Based Events.
 
 
 Trailer can be found on https://drive.google.com/file/d/1-KdcgF6TnghR0n-TKG9c66wGyHFtGUPb/view?usp=drive_link
+
 Game can be played on https://nigel27022001.github.io/NotChessGame/
